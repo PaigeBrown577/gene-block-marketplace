@@ -15,40 +15,46 @@ import { LinkContainer } from "react-router-bootstrap";
 import Login from "./Login";
 import Signup from "./Signup";
 import NavigationBar from "./NavigationBar";
-import Personal from "./Personal";
+import Personal from "./personalPage/Personal";
 
 function App() {
   return (
-    <div className="App">
     <Router>
 
+    <div className="App">
       <NavigationBar />
 
-
-
-      <header className="App-header">
+      
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/login">
+          <header className="App-header">
             <Login />
+          </header>
           </Route>
           <Route path="/signup">
+          <header className="App-header">
             <Signup />
-          </Route>
-          <Route path="/personal">
-            <Personal />
-          </Route>          
+          </header>
+          </Route>       
           <Route path="/" exact>
+          <header className="App-header">
             <Home />
+          </header>
           </Route>
         </Switch>
 
+      </div>
 
-      </header>
+      <Switch>
+        <Route path="/personal">
+          <Personal />
+        </Route>   
+      </Switch>
+
       </Router>
-    </div>
   );
 }
 
