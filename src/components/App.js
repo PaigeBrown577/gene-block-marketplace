@@ -1,5 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from '../logo.svg';
+import '../styles/App.css';
 
 import React from "react";
 import {
@@ -9,35 +9,20 @@ import {
   Link
 } from "react-router-dom";
 
-import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap'
+// import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap'
 import { LinkContainer } from "react-router-bootstrap";
 
 import Login from "./Login";
 import Signup from "./Signup";
+import NavigationBar from "./NavigationBar";
 
 function App() {
   return (
     <div className="App">
     <Router>
 
-      <Navbar collapseOnSelect bg="light" expand="md" className="mb-3">
-        <LinkContainer to="/">
-          <Navbar.Brand className="font-weight-bold text-muted">
-            Block Marketplace
-          </Navbar.Brand>
-        </LinkContainer>
-        <Navbar.Toggle />
-        <Navbar.Collapse className="justify-content-end">
-          <Nav activeKey={window.location.pathname}>
-            <LinkContainer to="/login">
-              <Nav.Link>Login</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to="/signup">
-              <Nav.Link>Signup</Nav.Link>
-            </LinkContainer>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+      <NavigationBar />
+
 
 
       <header className="App-header">
