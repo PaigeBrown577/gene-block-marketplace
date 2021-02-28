@@ -1,10 +1,13 @@
 import React from "react";
 import "./SidebarOption.css";
 
-function SidebarOption({ active, text, Icon }) {
+import Icon from '@material-ui/core/Icon';
+
+function SidebarOption({ active, text, IconName }) {
   return (
     <div className={`sidebarOption ${active && "sidebarOption--active"}`}>
-      <Icon />
+      {/* <Icon /> */}
+      <Icon>{IconName}</Icon>
       <h2>{text}</h2>
     </div>
   );
