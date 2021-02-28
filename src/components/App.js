@@ -15,6 +15,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import Login from "./Login";
 import Signup from "./Signup";
 import NavigationBar from "./NavigationBar";
+import Personal from "./Personal";
 
 function App() {
   return (
@@ -36,6 +37,9 @@ function App() {
           <Route path="/signup">
             <Signup />
           </Route>
+          <Route path="/personal">
+            <Personal />
+          </Route>          
           <Route path="/" exact>
             <Home />
           </Route>
