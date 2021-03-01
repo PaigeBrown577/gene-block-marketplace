@@ -15,4 +15,10 @@
 .searchBar > input {
     border: none;
     background-color: var(--twitter-background);
-  }
+}
+
+.exploreForm {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}

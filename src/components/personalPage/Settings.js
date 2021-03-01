@@ -41,7 +41,7 @@ function Settings() {
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Birthday</Form.Label>
                     <Form.Row className="align-items-center">
-                        <Col sm={3} className="my-1">
+                        <Col sm={4} className="my-1">
                             <Form.Control as="select">
                             <option>January</option>
                             <option>February</option>
@@ -92,7 +92,7 @@ function Settings() {
                                 <option>31</option>
                             </Form.Control>
                         </Col>
-                        <Col xs="auto" className="my-1"> 
+                        <Col sm={3} className="my-1"> 
                             <Form.Control type="text" placeholder="year" />
                         </Col>
                     </Form.Row>
