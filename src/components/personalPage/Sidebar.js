@@ -31,11 +31,7 @@ function Sidebar() {
 
 
     <div className="sidebar">
-      {/* <SidebarOption active Icon={HomeIcon} text="Home" />
-      <SidebarOption Icon={SearchIcon} text="Explore" />
-      <SidebarOption Icon={MailOutlineIcon} text="Messages" /> */}
       {/* <SidebarOption Icon={PermIdentityIcon} text="Profile" /> */}
-      {/* <SidebarOption Icon={SettingsIcon} text="Settings" /> */}
 
       <Link to="/personal">
         <SidebarOption active Icon={HomeIcon} text="Home" />

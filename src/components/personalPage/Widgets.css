@@ -16,6 +16,10 @@
     border: none;
     background-color: var(--twitter-background);
   }
+
+  .widgets_send_message {
+    background-color: white;
+  }
   
   .widgets__searchIcon {
     color: gray;

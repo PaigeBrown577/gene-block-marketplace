@@ -3,6 +3,8 @@ import TweetBox from "./TweetBox";
 import Post from "./Post";
 import "./Feed.css";
 import FlipMove from "react-flip-move";
+import SearchIcon from "@material-ui/icons/Search";
+
 
 let posts = [{displayName: "John", username: "johnboi", text: "Hi there", avatar: "https://upload.wikimedia.org/wikipedia/commons/0/04/John_Legend_2019_by_Glenn_Francis.jpg"},
 {displayName: "Jean", username: "French", text: "Bonjour", avatar: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/1280px-Flag_of_France.svg.png"},
@@ -14,9 +16,16 @@ function Feed() {
 
   return (
     <div className="feed">
-      <div className="feed__header">
+      {/* <div className="feed__header">
         <h2>Home</h2>
+      </div> */}
+
+      <div className="searchBar">
+          <SearchIcon className="widgets__searchIcon" />
+          <input placeholder="Search" type="text" />
       </div>
+
+      <hr/>
 
       <FlipMove>
         {posts.map((post) => (

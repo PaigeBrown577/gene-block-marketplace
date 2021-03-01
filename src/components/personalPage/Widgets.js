@@ -2,12 +2,19 @@ import React from "react";
 import "./Widgets.css";
 import SearchIcon from "@material-ui/icons/Search";
 
+import SendNewMessage from "./SendNewMessage";
+
 function Widgets() {
   return (
     <div className="widgets">
-      <div className="widgets__input">
+
+      {/* <div className="widgets__input">
         <SearchIcon className="widgets__searchIcon" />
         <input placeholder="Search" type="text" />
+      </div> */}
+
+      <div className="widgets__input widgets_send_message">
+        <SendNewMessage />
       </div>
 
       <div className="widgets__widgetContainer">

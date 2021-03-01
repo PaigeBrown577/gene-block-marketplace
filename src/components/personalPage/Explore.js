@@ -23,7 +23,7 @@ function Explore() {
             <SearchIcon className="widgets__searchIcon" />
             <input placeholder="Search" type="text" />
         </div>
-
+        
         <p></p>
 
         <div className="exploreForm">

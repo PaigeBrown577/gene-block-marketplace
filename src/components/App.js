@@ -28,19 +28,19 @@ function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/login">
-          <header className="App-header">
-            <Login />
-          </header>
+            <header className="App-header">
+              <Login />
+            </header>
           </Route>
           <Route path="/signup">
-          <header className="App-header">
-            <Signup />
-          </header>
+            <header className="App-header">
+              <Signup />
+            </header>
           </Route>       
           <Route path="/" exact>
-          <header className="App-header">
-            <Home />
-          </header>
+            <header className="App-header">
+              <Home />
+            </header>
           </Route>
         </Switch>
     </div>
