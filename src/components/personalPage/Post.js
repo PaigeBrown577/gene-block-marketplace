@@ -6,6 +6,7 @@ import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import RepeatIcon from "@material-ui/icons/Repeat";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import PublishIcon from "@material-ui/icons/Publish";
+import StarOutlineIcon from '@material-ui/icons/StarOutline';
 
 const Post = forwardRef(
   ({ displayName, username, verified, text, image, avatar }, ref) => {
@@ -31,10 +32,8 @@ const Post = forwardRef(
           </div>
           <img src={image} alt="" />
           <div className="post__footer">
-            <ChatBubbleOutlineIcon fontSize="small" />
-            <RepeatIcon fontSize="small" />
-            <FavoriteBorderIcon fontSize="small" />
-            <PublishIcon fontSize="small" />
+            <ChatBubbleOutlineIcon fontSize="medium" />
+            <StarOutlineIcon fontSize="medium" />
           </div>
         </div>
       </div>
