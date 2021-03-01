@@ -49,6 +49,10 @@ function Sidebar() {
         <SidebarOption Icon={MailOutlineIcon} text="Messages" />
       </Link>
 
+      <Link to="/personal/makePost">
+        <SidebarOption Icon={SettingsIcon} text="Make A New Post" />
+      </Link>
+
       <Link to="/personal/settings">
         <SidebarOption Icon={SettingsIcon} text="Settings" />
       </Link>

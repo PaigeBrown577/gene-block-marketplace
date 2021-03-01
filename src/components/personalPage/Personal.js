@@ -7,6 +7,7 @@ import "./Personal.css";
 import Explore from "./Explore";
 import Messages from "./Messages";
 import Settings from "./Settings";
+import MakePost from "./MakePost";
 
 import {
   BrowserRouter as Router,
@@ -31,6 +32,9 @@ function Personal() {
           </Route>
           <Route path="/personal/messages">
             <Messages />
+          </Route>
+          <Route path="/personal/makePost">
+            <MakePost />
           </Route>
           <Route path="/personal/settings">
             <Settings />
