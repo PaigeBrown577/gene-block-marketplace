@@ -1,3 +1,18 @@
 .explore {
     flex: 0.9;
 }
+
+.searchBar {
+    display: flex;
+    align-items: center;
+    background-color: var(--twitter-background);
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.searchBar > input {
+    border: none;
+    background-color: var(--twitter-background);
+  }
