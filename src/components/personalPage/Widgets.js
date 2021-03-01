@@ -11,7 +11,7 @@ function Widgets() {
       </div>
 
       <div className="widgets__widgetContainer">
-        <h2>Your messages</h2>
+        <h2>Unread Messages</h2>
         <br/>
         <hr/>
         <p>hello</p>

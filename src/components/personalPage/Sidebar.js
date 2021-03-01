@@ -10,6 +10,13 @@ import { Button } from "@material-ui/core";
 
 import Icon from '@material-ui/core/Icon';
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 function Sidebar() {
   return (
     // <div className="sidebar">
@@ -24,11 +31,27 @@ function Sidebar() {
 
 
     <div className="sidebar">
-      <SidebarOption active Icon={HomeIcon} text="Home" />
+      {/* <SidebarOption active Icon={HomeIcon} text="Home" />
       <SidebarOption Icon={SearchIcon} text="Explore" />
-      <SidebarOption Icon={MailOutlineIcon} text="Messages" />
+      <SidebarOption Icon={MailOutlineIcon} text="Messages" /> */}
       {/* <SidebarOption Icon={PermIdentityIcon} text="Profile" /> */}
-      <SidebarOption Icon={SettingsIcon} text="Settings" />
+      {/* <SidebarOption Icon={SettingsIcon} text="Settings" /> */}
+
+      <Link to="/personal">
+        <SidebarOption active Icon={HomeIcon} text="Home" />
+      </Link>
+
+      <Link to="/personal/explore">
+        <SidebarOption Icon={SearchIcon} text="Explore" />
+      </Link>
+
+      <Link to="/personal/messages">
+        <SidebarOption Icon={MailOutlineIcon} text="Messages" />
+      </Link>
+
+      <Link to="/personal/settings">
+        <SidebarOption Icon={SettingsIcon} text="Settings" />
+      </Link>
 
     </div>
   );
