@@ -12,25 +12,25 @@ import Icon from '@material-ui/core/Icon';
 
 function Sidebar() {
   return (
-    <div className="sidebar">
-    <SidebarOption active IconName="home" text="Home" />
-    <SidebarOption IconName="search" text="Explore" />
-    <SidebarOption IconName="forum" text="Messages" />
-    {/* <SidebarOption Icon={PermIdentityIcon} text="Profile" /> */}
-    <SidebarOption IconName="settings" text="Settings" />
-
-    </div>
-
-
-
     // <div className="sidebar">
-    //   <SidebarOption active Icon={HomeIcon} text="Home" />
-    //   <SidebarOption Icon={SearchIcon} text="Explore" />
-    //   <SidebarOption Icon={MailOutlineIcon} text="Messages" />
-    //   {/* <SidebarOption Icon={PermIdentityIcon} text="Profile" /> */}
-    //   <SidebarOption Icon={SettingsIcon} text="Settings" />
+    // <SidebarOption active IconName="home" text="Home" />
+    // <SidebarOption IconName="search" text="Explore" />
+    // <SidebarOption IconName="forum" text="Messages" />
+    // {/* <SidebarOption Icon={PermIdentityIcon} text="Profile" /> */}
+    // <SidebarOption IconName="settings" text="Settings" />
 
     // </div>
+
+
+
+    <div className="sidebar">
+      <SidebarOption active Icon={HomeIcon} text="Home" />
+      <SidebarOption Icon={SearchIcon} text="Explore" />
+      <SidebarOption Icon={MailOutlineIcon} text="Messages" />
+      {/* <SidebarOption Icon={PermIdentityIcon} text="Profile" /> */}
+      <SidebarOption Icon={SettingsIcon} text="Settings" />
+
+    </div>
   );
 }
 

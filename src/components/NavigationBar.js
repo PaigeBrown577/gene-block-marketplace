@@ -1,11 +1,12 @@
 import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap'
 import { LinkContainer } from "react-router-bootstrap";
+import "../styles/NavigationBar.css"
 
 function NavigationBar() {
     return (
-        <Navbar collapseOnSelect bg="light" expand="md" className="mb-3">
+        <Navbar collapseOnSelect expand="md" className="navbar navbar-dark bg-primary">
             <LinkContainer to="/">
-            <Navbar.Brand className="font-weight-bold text-muted">
+            <Navbar.Brand className="font-weight-bold navbarBrand">
                 Block Marketplace
             </Navbar.Brand>
             </LinkContainer>
