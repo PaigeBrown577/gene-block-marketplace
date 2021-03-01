@@ -8,7 +8,6 @@ import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
 
 function MakePost() {
 
-
   return (
       <div className="makepost">
         <h1>Make a New Post</h1>
