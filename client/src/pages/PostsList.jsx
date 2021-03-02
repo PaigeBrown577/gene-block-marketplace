@@ -45,13 +45,8 @@ class PostsList extends Component {
 
         const columns = [
             {
-                Header: 'ID',
-                accessor: '_id',
-                filterable: true,
-            },
-            {
                 Header: 'Title',
-                accessor: 'name',
+                accessor: 'title',
                 filterable: true,
             },
             {
