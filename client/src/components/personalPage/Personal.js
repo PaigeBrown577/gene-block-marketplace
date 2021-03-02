@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "./Sidebar";
 import Feed from "./Feed";
 import Widgets from "./Widgets";
-import "./Personal.css";
+import "../../styles/Personal.css";
 
 import Explore from "./Explore";
 import Messages from "./Messages";

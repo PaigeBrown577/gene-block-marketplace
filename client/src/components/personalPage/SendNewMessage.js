@@ -1,5 +1,5 @@
 import React from "react";
-import "./SendNewMessage.css";
+import "../../styles/SendNewMessage.css";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";

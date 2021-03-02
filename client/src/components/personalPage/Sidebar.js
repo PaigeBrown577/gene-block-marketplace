@@ -1,5 +1,5 @@
 import React from "react";
-import "./Sidebar.css";
+import "../../styles/Sidebar.css";
 import SidebarOption from "./SidebarOption";
 import HomeIcon from "@material-ui/icons/Home";
 import SearchIcon from "@material-ui/icons/Search";

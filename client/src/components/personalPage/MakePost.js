@@ -1,5 +1,5 @@
 import React from "react";
-import "./MakePost.css";
+import "../../styles/MakePost.css";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";

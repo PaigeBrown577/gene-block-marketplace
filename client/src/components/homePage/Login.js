@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import "../styles/Login.css";
+import "../../styles/Login.css";
 
-function Signup() {
+function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
   
@@ -16,7 +16,7 @@ function Signup() {
     }
   
     return (
-      <div className="Signup">
+      <div className="Login">
         <Form onSubmit={handleSubmit}>
           <Form.Group size="lg" controlId="email">
             <Form.Label>Email</Form.Label>
@@ -35,17 +35,8 @@ function Signup() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
-          {/* add the functionality to check the passwords match */}
-          <Form.Group size="lg" controlId="password">
-            <Form.Label>Confirm Password</Form.Label>
-            <Form.Control
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </Form.Group>
           <Button block size="lg" type="submit" disabled={!validateForm()}>
-            Signup
+            Login
           </Button>
         </Form>
       </div>
@@ -54,4 +45,6 @@ function Signup() {
 }
 
 
-export default Signup;
+
+
+export default Login;

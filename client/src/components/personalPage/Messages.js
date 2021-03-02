@@ -1,5 +1,5 @@
 import React from "react";
-import "./Messages.css";
+import "../../styles/Messages.css";
 
 import SendNewMessage from "./SendNewMessage";
 

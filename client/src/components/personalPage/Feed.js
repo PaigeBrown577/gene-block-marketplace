@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TweetBox from "./TweetBox";
 import Post from "./Post";
-import "./Feed.css";
+import "../../styles/Feed.css";
 import FlipMove from "react-flip-move";
 import SearchIcon from "@material-ui/icons/Search";
 

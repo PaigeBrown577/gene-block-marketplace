@@ -1,6 +1,6 @@
 import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap'
 import { LinkContainer } from "react-router-bootstrap";
-import "../styles/NavigationBar.css"
+import "../../styles/NavigationBar.css"
 
 function NavigationBar() {
     return (

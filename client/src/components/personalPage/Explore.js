@@ -1,5 +1,5 @@
 import React from "react";
-import "./Explore.css";
+import "../../styles/Explore.css";
 
 import SearchIcon from "@material-ui/icons/Search";
 

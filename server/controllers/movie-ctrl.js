@@ -7,7 +7,7 @@ createMovie = (req, res) => {
         return res.status(400).json({
             success: false,
             error: 'You must provide a movie',
-        })
+        })``
     }
 
     const movie = new Movie(body)

@@ -12,10 +12,10 @@ import {
 // import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap'
 import { LinkContainer } from "react-router-bootstrap";
 
-import Login from "./Login";
-import Signup from "./Signup";
-import NavigationBar from "./NavigationBar";
-import Personal from "./personalPage/Personal";
+import Login from "../components/homePage/Login";
+import Signup from "../components/homePage/Signup";
+import NavigationBar from "../components/homePage/NavigationBar";
+import Personal from "../components/personalPage/Personal";
 
 function App() {
   return (
@@ -36,7 +36,7 @@ function App() {
             <header className="App-header">
               <Signup />
             </header>
-          </Route>       
+          </Route>
           <Route path="/" exact>
             <header className="App-header">
               <Home />
@@ -48,7 +48,7 @@ function App() {
       <Switch>
         <Route path="/personal">
           <Personal />
-        </Route>   
+        </Route>
       </Switch>
 
       </Router>
@@ -74,9 +74,6 @@ function Home() {
           </a>
     </div>
     );
-}  
-
-
-
+}
 
 export default App;
