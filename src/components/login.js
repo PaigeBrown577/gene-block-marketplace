@@ -36,7 +36,8 @@ function Login() {
             />
           </Form.Group>
           <Button block size="lg" type="submit" disabled={!validateForm()}>
-            Login
+            <a href="/personal" style={{color:"white"}}>Login </a>
+            
           </Button>
         </Form>
       </div>
