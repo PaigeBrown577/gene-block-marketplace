@@ -1,6 +1,6 @@
 const Post = require('../models/post-model')
 
-createMovie = (req, res) => {
+createPost = (req, res) => {
     const body = req.body
 
     if (!body) {
@@ -21,7 +21,7 @@ createMovie = (req, res) => {
         .then(() => {
             return res.status(201).json({
                 success: true,
-                id: movie._id,
+                id: post._id,
                 message: 'Post created!',
             })
         })
@@ -33,7 +33,7 @@ createMovie = (req, res) => {
         })
 }
 
-updateMovie = async (req, res) => {
+updatePost = async (req, res) => {
     const body = req.body
 
     if (!body) {
@@ -47,7 +47,7 @@ updateMovie = async (req, res) => {
         if (err) {
             return res.status(404).json({
                 err,
-                message: 'Movie not found!',
+                message: 'Post not found!',
             })
         }
         post.title = body.title
@@ -73,18 +73,18 @@ updateMovie = async (req, res) => {
 }
 
 deletePost = async (req, res) => {
-    await Post.findOneAndDelete({ _id: req.params.id }, (err, movie) => {
+    await Post.findOneAndDelete({ _id: req.params.id }, (err, post) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
 
-        if (!movie) {
+        if (!post) {
             return res
                 .status(404)
                 .json({ success: false, error: `Post not found` })
         }
 
-        return res.status(200).json({ success: true, data: movie })
+        return res.status(200).json({ success: true, data: post })
     }).catch(err => console.log(err))
 }
 
@@ -99,6 +99,7 @@ getPostById = async (req, res) => {
 }
 
 getPosts = async (req, res) => {
+    // console.log('here');
     await Post.find({}, (err, posts) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })

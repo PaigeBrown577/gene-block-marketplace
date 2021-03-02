@@ -5,9 +5,9 @@ const PostCtrl = require('../controllers/post-ctrl')
 const router = express.Router()
 
 router.post('/post', PostCtrl.createPost)
-router.put('/movie/:id', PostCtrl.updatePost)
-router.delete('/movie/:id', PostCtrl.deletePost)
-router.get('/movie/:id', PostCtrl.getPostById)
-router.get('/movies', PostCtrl.getPosts)
+router.put('/post/:id', PostCtrl.updatePost)
+router.delete('/post/:id', PostCtrl.deletePost)
+router.get('/post/:id', PostCtrl.getPostById)
+router.get('/posts', PostCtrl.getPosts)
 
 module.exports = router

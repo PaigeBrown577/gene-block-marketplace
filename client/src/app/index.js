@@ -1,6 +1,8 @@
 import logo from '../logo.svg';
 import '../styles/App.css';
 
+import {PostsList} from '../pages';
+
 import React from "react";
 import {
   BrowserRouter as Router,
@@ -31,6 +33,7 @@ function App() {
               <Signup />
             </header>
           </Route>
+          <Route path="/posts/list" exact component={PostsList} />
           <Route path="/" exact>
             <header className="App-header">
               <Home />
