@@ -45,7 +45,8 @@ function Signup() {
             />
           </Form.Group>
           <Button block size="lg" type="submit" disabled={!validateForm()}>
-            Signup
+          <a href="/login" style={{color:"white"}}>Signup </a>
+            
           </Button>
         </Form>
       </div>
