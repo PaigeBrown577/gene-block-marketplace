@@ -1,3 +1,5 @@
+import PostsInsert from './PostsInsert';
 import PostsList from './PostsList';
+import PostsUpdate from './PostsUpdate';
 
-export {PostsList}
+export {PostsInsert, PostsList, PostsUpdate}

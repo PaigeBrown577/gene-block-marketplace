@@ -1,7 +1,7 @@
 import logo from '../logo.svg';
 import '../styles/App.css';
 
-import {PostsList} from '../pages';
+import {PostsList, PostsInsert, PostsUpdate} from '../pages';
 
 import React from "react";
 import {
@@ -34,6 +34,12 @@ function App() {
             </header>
           </Route>
           <Route path="/posts/list" exact component={PostsList} />
+          <Route path="/posts/create" exact component={PostsInsert} />
+                <Route
+                    path="/posts/update/:id"
+                    exact
+                    component={PostsUpdate}
+                />
           <Route path="/" exact>
             <header className="App-header">
               <Home />

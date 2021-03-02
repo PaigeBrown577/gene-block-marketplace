@@ -63,9 +63,9 @@ class PostsList extends Component {
 
         return (
             <Wrapper>
-                <div>
+                {/* <div>
                     <p>In this page you'll see the list of movies</p>
-                </div>
+                </div> */}
                 {showTable && (
                     <ReactTable
                         data={posts}
