@@ -89,43 +89,43 @@ class PostsInsert extends Component {
         })
     }
 
-    render() {
-        const { id, title, price, description, meeting_location, tag} = this.state
-        return (
-            <Wrapper>
-                <Title>Create Post</Title>
+    // render() {
+    //     const { id, title, price, description, meeting_location, tag} = this.state
+    //     return (
+    //         <Wrapper>
+    //             <Title>Create Post</Title>
 
-                <Label>Title: </Label>
-                <InputText
-                    type="text"
-                    value={title}
-                    onChange={this.handleChangeInputTitle}
-                />
+    //             <Label>Title: </Label>
+    //             <InputText
+    //                 type="text"
+    //                 value={title}
+    //                 onChange={this.handleChangeInputTitle}
+    //             />
 
-                <Label>Price: </Label>
-                <InputText
-                    type="number"
-                    step="0.1"
-                    lang="en-US"
-                    min="0"
-                    max="10"
-                    pattern="[0-9]+([,\.][0-9]+)?"
-                    value={price}
-                    onChange={this.handleChangeInputPrice}
-                />
+    //             <Label>Price: </Label>
+    //             <InputText
+    //                 type="number"
+    //                 step="0.1"
+    //                 lang="en-US"
+    //                 min="0"
+    //                 max="10"
+    //                 pattern="[0-9]+([,\.][0-9]+)?"
+    //                 value={price}
+    //                 onChange={this.handleChangeInputPrice}
+    //             />
 
-                <Label>Description: </Label>
-                <InputText
-                    type="text"
-                    value={description}
-                    onChange={this.handleChangeInputDescription}
-                />
+    //             <Label>Description: </Label>
+    //             <InputText
+    //                 type="text"
+    //                 value={description}
+    //                 onChange={this.handleChangeInputDescription}
+    //             />
 
-                <Button onClick={this.handleIncludePost}>Add Post</Button>
-                <CancelButton href={'/posts/list'}>Cancel</CancelButton>
-            </Wrapper>
-        )
-    }
+    //             <Button onClick={this.handleIncludePost}>Add Post</Button>
+    //             <CancelButton href={'/posts/list'}>Cancel</CancelButton>
+    //         </Wrapper>
+    //     )
+    // }
 }
 
 export default PostsInsert

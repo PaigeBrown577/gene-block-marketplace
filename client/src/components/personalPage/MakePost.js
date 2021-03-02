@@ -1,14 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
 import "../../styles/MakePost.css";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
+import { PostsInsert } from '../../pages';
 
-function MakePost() {
-
-  return (
+function MakePost() { 
+    return (
       <div className="makepost">
         <h1>Make a New Post</h1>
 
@@ -19,6 +18,7 @@ function MakePost() {
 
 
         <div className="makepostForm">
+            {/* <PostsInsert id="0" /> */}
             <Form>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Title</Form.Label>
@@ -69,10 +69,6 @@ function MakePost() {
                 <Button variant="primary" type="submit">Post</Button>
             </Form>
         </div>
-
-
-
-        
       </div>
   );
 }
