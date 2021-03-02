@@ -9,13 +9,7 @@ import {
   Link
 } from "react-router-dom";
 
-// import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap'
-import { LinkContainer } from "react-router-bootstrap";
-
-import Login from "../components/homePage/Login";
-import Signup from "../components/homePage/Signup";
-import NavigationBar from "../components/homePage/NavigationBar";
-import Personal from "../components/personalPage/Personal";
+import {Login, Signup, NavigationBar, Personal} from "../components";
 
 function App() {
   return (

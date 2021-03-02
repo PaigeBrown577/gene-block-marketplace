@@ -1,4 +1,4 @@
-const Movie = require('../models/movie-model')
+const Post = require('../models/post-model')
 
 createMovie = (req, res) => {
     const body = req.body
@@ -6,29 +6,29 @@ createMovie = (req, res) => {
     if (!body) {
         return res.status(400).json({
             success: false,
-            error: 'You must provide a movie',
+            error: 'You must provide a post',
         })``
     }
 
-    const movie = new Movie(body)
+    const post = new Post(body)
 
-    if (!movie) {
+    if (!post) {
         return res.status(400).json({ success: false, error: err })
     }
 
-    movie
+    post
         .save()
         .then(() => {
             return res.status(201).json({
                 success: true,
                 id: movie._id,
-                message: 'Movie created!',
+                message: 'Post created!',
             })
         })
         .catch(error => {
             return res.status(400).json({
                 error,
-                message: 'Movie not created!',
+                message: 'Post not created!',
             })
         })
 }
@@ -43,36 +43,37 @@ updateMovie = async (req, res) => {
         })
     }
 
-    Movie.findOne({ _id: req.params.id }, (err, movie) => {
+    Post.findOne({ _id: req.params.id }, (err, post) => {
         if (err) {
             return res.status(404).json({
                 err,
                 message: 'Movie not found!',
             })
         }
-        movie.name = body.name
-        movie.time = body.time
-        movie.rating = body.rating
-        movie
+        post.title = body.title
+        post.price = body.price
+        post.description = body.description
+        post.meeting_location = body.meeting_location
+        post
             .save()
             .then(() => {
                 return res.status(200).json({
                     success: true,
-                    id: movie._id,
-                    message: 'Movie updated!',
+                    id: post._id,
+                    message: 'Post updated!',
                 })
             })
             .catch(error => {
                 return res.status(404).json({
                     error,
-                    message: 'Movie not updated!',
+                    message: 'Post not updated!',
                 })
             })
     })
 }
 
-deleteMovie = async (req, res) => {
-    await Movie.findOneAndDelete({ _id: req.params.id }, (err, movie) => {
+deletePost = async (req, res) => {
+    await Post.findOneAndDelete({ _id: req.params.id }, (err, movie) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -80,41 +81,41 @@ deleteMovie = async (req, res) => {
         if (!movie) {
             return res
                 .status(404)
-                .json({ success: false, error: `Movie not found` })
+                .json({ success: false, error: `Post not found` })
         }
 
         return res.status(200).json({ success: true, data: movie })
     }).catch(err => console.log(err))
 }
 
-getMovieById = async (req, res) => {
-    await Movie.findOne({ _id: req.params.id }, (err, movie) => {
+getPostById = async (req, res) => {
+    await Post.findOne({ _id: req.params.id }, (err, post) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
 
-        return res.status(200).json({ success: true, data: movie })
+        return res.status(200).json({ success: true, data: post })
     }).catch(err => console.log(err))
 }
 
-getMovies = async (req, res) => {
-    await Movie.find({}, (err, movies) => {
+getPosts = async (req, res) => {
+    await Post.find({}, (err, posts) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
-        if (!movies.length) {
+        if (!posts.length) {
             return res
                 .status(404)
-                .json({ success: false, error: `Movie not found` })
+                .json({ success: false, error: `Post not found` })
         }
-        return res.status(200).json({ success: true, data: movies })
+        return res.status(200).json({ success: true, data: posts })
     }).catch(err => console.log(err))
 }
 
 module.exports = {
-    createMovie,
-    updateMovie,
-    deleteMovie,
-    getMovies,
-    getMovieById,
+    createPost,
+    updatePost,
+    deletePost,
+    getPosts,
+    getPostById,
 }
