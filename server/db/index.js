@@ -1,9 +1,13 @@
 const mongoose = require('mongoose')
 
-const url = 'mongodb+srv://rghosh:bmarket@block-marketplace.0z7u0.mongodb.net/bmarket_db?retryWrites=true';
+var dotenv = require('dotenv');
+dotenv.config();
+
+const url = process.env.MONGO_URI;
+
 
 mongoose
-    .connect(url, { useNewUrlParser: true, useUnifiedTopology : true })
+    .connect(uri, { useNewUrlParser: true, useUnifiedTopology : true })
     .catch(e => {
         console.error('Connection error', e.message)
     })
