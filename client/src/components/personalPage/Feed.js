@@ -13,6 +13,19 @@ let posts = [{displayName: "John", username: "johnboi", text: "Hi there", avatar
 ];
 
 function Feed() {
+  const [searchbarValue, setSearchbarValue] = useState("");
+
+  const handleSearchbarChange = (event) => {
+    setSearchbarValue(event.target.value);
+  }
+
+  const handleClearClick = () => {
+    setSearchbarValue("");
+  }
+
+  const shouldDisplayClearButton = searchbarValue.length > 0;
+
+  // console.log(searchbarValue);
 
   return (
     <div className="feed">
@@ -22,7 +35,8 @@ function Feed() {
 
       <div className="searchBar">
           <SearchIcon className="widgets__searchIcon" />
-          <input placeholder="Search" type="text" />
+          <input placeholder="Search" type="text" value={searchbarValue} onChange={handleSearchbarChange} />
+          {shouldDisplayClearButton && <button onClick={handleClearClick}>clear</button>}
       </div>
 
       <hr/>
