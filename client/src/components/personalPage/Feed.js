@@ -39,8 +39,6 @@ function Feed() {
      || lowercaseTitle.includes(search) || lowercaseText.includes(search);
 
     // filters by displayName, tag, title, text
-
-    // return post.displayName.includes(searchbarValue) || post.text.includes(searchbarValue);
   })
 
   return (

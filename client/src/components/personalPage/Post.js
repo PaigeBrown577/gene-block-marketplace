@@ -53,7 +53,8 @@ const Post = forwardRef(
           <div className="post__header">
             <div className="post__headerText">
               <h3>
-                #{tag} {" "}
+                <mark>#{tag}</mark>
+                {" "}
                 <span className="post__headerSpecial">
                   Posted by {displayName} on {date}
                 </span>
