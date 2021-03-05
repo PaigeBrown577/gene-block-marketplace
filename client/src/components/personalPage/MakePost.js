@@ -4,9 +4,11 @@ import "../../styles/MakePost.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
+import { useHistory } from "react-router-dom"; 
+
 import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
 
-function MakePost() {
+function MakePost({ posts, setPosts }) {
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
@@ -18,7 +20,11 @@ function MakePost() {
     // this is the actual one that gets submitted to the database, after considering the user's
     // input into the dropdown menu and the other location textbox
 
-    
+
+    // for redirecting to homepage on submission
+    let history = useHistory();
+
+
 
     const handleTitleChange = (event) => {
         setTitle(event.target.value);
@@ -70,6 +76,24 @@ function MakePost() {
     // console.log(tag);
 
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        console.log("submitted")
+
+        // title, price, description, meetinglocation, tag
+        let newPost = [{displayName: "Fred", username: "fred", tag: tag, 
+        date: "3/4/2021", title: title, price: price, text: description}]
+
+        let newPostsArray = newPost.concat(posts);
+
+        setPosts(newPostsArray);
+
+        // redirects to homepage
+        history.push("/personal");
+    }
+
+
   return (
       <div className="makepost">
         <h1>Make a New Post</h1>
@@ -81,7 +105,7 @@ function MakePost() {
 
 
         <div className="makepostForm">
-            <Form >
+            <Form onSubmit={handleSubmit} >
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Title</Form.Label>
                     <Form.Control type="text" placeholder="Title" value={title} onChange={handleTitleChange} />
