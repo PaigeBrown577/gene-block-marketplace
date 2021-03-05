@@ -40,7 +40,6 @@ function MakePost() {
                     <Form.Control as="select">
                     <option>Powell</option>
                     <option>Boelter Hall</option>
-                    <option>Powell</option>
                     <option>Royce</option>
                     <option>Other</option>
                     </Form.Control>
