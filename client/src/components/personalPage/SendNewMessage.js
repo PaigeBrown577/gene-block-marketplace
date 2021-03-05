@@ -21,17 +21,22 @@ function SendNewMessage() {
 
             <p></p>
 
+
             <Form>
                 <Form.Group controlId="recipient">
                     <Form.Label>To:</Form.Label>
-                    <Form.Control type="text" placeholder="Recipient" />
+                    <Form.Control type="text" />
                     <Form.Text className="text-muted">
                         Please enter their username.
                     </Form.Text>
                 </Form.Group>
+                <Form.Group controlId="messageTitle">
+                    <Form.Label>Title</Form.Label>
+                    <Form.Control type="text" />
+                </Form.Group>
                 <Form.Group controlId="messageContent">
                     <Form.Label>Message</Form.Label>
-                    <Form.Control as="textarea" rows={5} />
+                    <Form.Control as="textarea" rows={7} />
                 </Form.Group>
                 <Button variant="primary" type="submit">Send message</Button>
                 <Button variant="primary" type="submit">Cancel</Button>
