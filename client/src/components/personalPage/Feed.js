@@ -27,6 +27,16 @@ function Feed() {
 
   // console.log(searchbarValue);
 
+  let filteredPosts = posts.filter((post) => {
+    let lowercaseName = post.displayName.toLowerCase();
+    let lowercaseText = post.text.toLowerCase();
+    let search = searchbarValue.toLowerCase();
+
+    return lowercaseName.includes(search) || lowercaseText.includes(search);
+
+    // return post.displayName.includes(searchbarValue) || post.text.includes(searchbarValue);
+  })
+
   return (
     <div className="feed">
       {/* <div className="feed__header">
@@ -36,13 +46,13 @@ function Feed() {
       <div className="searchBar">
           <SearchIcon className="widgets__searchIcon" />
           <input placeholder="Search" type="text" value={searchbarValue} onChange={handleSearchbarChange} />
-          {shouldDisplayClearButton && <button onClick={handleClearClick}>clear</button>}
+          {shouldDisplayClearButton && <button onClick={handleClearClick}>clear</button>} 
       </div>
 
       <hr/>
 
       <FlipMove>
-        {posts.map((post) => (
+        {filteredPosts.map((post) => (
           <Post
             key={post.text}
             displayName={post.displayName}
@@ -52,6 +62,8 @@ function Feed() {
             image={post.image}
           />
         ))}
+
+
       </FlipMove>
     </div>
   );
