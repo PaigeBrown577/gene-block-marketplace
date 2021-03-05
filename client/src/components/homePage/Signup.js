@@ -6,6 +6,7 @@ import "../../styles/Login.css";
 function Signup() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
   
     function validateForm() {
       return email.length > 0 && password.length > 0;
@@ -40,8 +41,8 @@ function Signup() {
             <Form.Label>Confirm Password</Form.Label>
             <Form.Control
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </Form.Group>
           <Button block size="lg" type="submit" disabled={!validateForm()}>
