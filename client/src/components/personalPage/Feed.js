@@ -28,11 +28,17 @@ function Feed() {
   // console.log(searchbarValue);
 
   let filteredPosts = posts.filter((post) => {
-    let lowercaseName = post.displayName.toLowerCase();
-    let lowercaseText = post.text.toLowerCase();
     let search = searchbarValue.toLowerCase();
 
-    return lowercaseName.includes(search) || lowercaseText.includes(search);
+    let lowercaseName = post.displayName.toLowerCase();
+    let lowercaseTag = post.tag.toLowerCase();
+    let lowercaseTitle = post.title.toLowerCase();
+    let lowercaseText = post.text.toLowerCase();
+
+    return lowercaseName.includes(search) || lowercaseTag.includes(search)
+     || lowercaseTitle.includes(search) || lowercaseText.includes(search);
+
+    // filters by displayName, tag, title, text
 
     // return post.displayName.includes(searchbarValue) || post.text.includes(searchbarValue);
   })
