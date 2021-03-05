@@ -66,7 +66,7 @@ function MakePost() {
                     name="tags"
                     />
                 </Form.Group> */}
-                <Button variant="primary" type="submit">Post</Button>
+                <Button onClick={handleChangeInputTitle} variant="primary" type="submit">Post</Button>
             </Form>
         </div>
       </div>

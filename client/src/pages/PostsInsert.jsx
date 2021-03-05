@@ -41,6 +41,7 @@ class PostsInsert extends Component {
 
         this.state = {
             id: this.props.match.params.id,
+            title: '',
             price: '',
             description: '',
             meeting_location: '',
