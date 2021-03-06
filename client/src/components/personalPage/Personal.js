@@ -8,6 +8,7 @@ import Explore from "./Explore";
 import Messages from "./Messages";
 import Settings from "./Settings";
 import MakePost from "./MakePost";
+import api from "../../api"
 
 import {
   BrowserRouter as Router,
@@ -29,9 +30,15 @@ function Personal() {
   {displayName: "Big John", username: "Rohit", tag: "swipes", date: "3/4/2021", title: "job vacancy", price: "10", text: "Ghosh Enterprises hiring now", avatar: "https://www.unilad.co.uk/wp-content/uploads/2018/08/big-john1.jpg", image: "https://s3-media0.fl.yelpcdn.com/bphoto/9Lis6zeVaaSm9RcmR2rT9A/348s.jpg"},
   ]);
 
+  const getPosts = (event) =>{
+    api.getAllPosts().then(posts => {
+      // console.log(posts.data.data)
+      setPosts(posts.data.data)
+    })
+  }
+
   return (
     <div className="personal">
-
         <Sidebar />
 
         <Switch>
@@ -46,7 +53,7 @@ function Personal() {
             <Messages />
           </Route>
           <Route path="/personal/makePost">
-            <MakePost posts={posts} setPosts={setPosts} />
+            <MakePost posts={posts} setPosts={setPosts} onChange={getPosts} />
           </Route>
           <Route path="/personal/settings">
             <Settings />

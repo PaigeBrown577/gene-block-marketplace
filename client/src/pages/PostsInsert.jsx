@@ -49,7 +49,7 @@ class PostsInsert extends Component {
         }
     }
 
-    handleChangeInputTitle = async event => {;
+    handleChangeInputTitle = async event => {
         const title = event.target.value
         this.setState({ title })
     }
@@ -72,22 +72,6 @@ class PostsInsert extends Component {
     handleChangeTag = async event => {
         const tag = event.target.value
         this.setState({ tag })
-    }
-
-    handleIncludePost = async () => {
-        const { id, title, price, description, meeting_location, tag } = this.state
-        const payload = {title, price, description, meeting_location, tag }
-
-        await api.insertPost(payload).then(res => {
-            window.alert(`Post inserted successfully`)
-            this.setState({
-                title: '',
-                price: '',
-                description: '',
-                meeting_location: '',
-                tag: '',
-            })
-        })
     }
 
     // render() {

@@ -25,7 +25,7 @@ function Feed({ posts, setPosts }) {
     let lowercaseName = post.displayName.toLowerCase();
     let lowercaseTag = post.tag.toLowerCase();
     let lowercaseTitle = post.title.toLowerCase();
-    let lowercaseText = post.text.toLowerCase();
+    let lowercaseText = (post.text) ? post.text.toLowerCase() : "";
 
     return lowercaseName.includes(search) || lowercaseTag.includes(search)
      || lowercaseTitle.includes(search) || lowercaseText.includes(search);

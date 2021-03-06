@@ -50,10 +50,14 @@ updatePost = async (req, res) => {
                 message: 'Post not found!',
             })
         }
-        post.title = body.title
-        post.price = body.price
-        post.description = body.description
-        post.meeting_location = body.meeting_location
+        post.displayName = body.displayName;
+        post.username = body.username;
+        post.tag = body.tag;
+        post.date = body.date;
+        post.title = body.title;
+        post.price = body.price;
+        post.text = body.text;
+        // post.meeting_location = body.meeting_location
         post
             .save()
             .then(() => {

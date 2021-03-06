@@ -3,18 +3,23 @@ import "../../styles/MakePost.css";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import api from "../../api"
 
 import { useHistory } from "react-router-dom";
 
 import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
 
 function MakePost({ posts, setPosts }) {
+    const[displayName, setDisplayName] = useState("");
+    const[username, setUsername] = useState("");
+    const [tag, setTag] = useState("Books");
+    const [date, setDate] = useState("");
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
     const [dropdownMeetingLocation, setDropdownMeetingLocation] = useState("Powell");
     const [otherMeetingLocation, setOtherMeetingLocation] = useState("");
-    const [tag, setTag] = useState("Books");
+
 
     const [finalMeetingLocation, setFinalMeetingLocation] = useState("");
     // this is the actual one that gets submitted to the database, after considering the user's
@@ -23,8 +28,6 @@ function MakePost({ posts, setPosts }) {
 
     // for redirecting to homepage on submission
     let history = useHistory();
-
-
 
     const handleTitleChange = (event) => {
         setTitle(event.target.value);
@@ -60,10 +63,8 @@ function MakePost({ posts, setPosts }) {
         setTag(event.target.value);
     }
 
+
     // don't know how to deal with uploaded images yet
-
-
-
 
 
 
@@ -82,12 +83,21 @@ function MakePost({ posts, setPosts }) {
         console.log("submitted")
 
         // title, price, description, meetinglocation, tag
-        let newPost = [{displayName: "Fred", username: "fred", tag: tag, 
+        let newPost = [{displayName: "Fred", username: "fred", tag: tag,
         date: "3/4/2021", title: title, price: price, text: description}]
 
         let newPostsArray = newPost.concat(posts);
 
         setPosts(newPostsArray);
+
+        setDate(new Date().toLocaleDateString());
+        console.log(date);
+        const payload = {displayName, username, tag, date, title, price, description};
+
+        api.insertPost(payload).then(res => {
+            window.alert(`Post inserted successfully`)
+        })
+        
 
         // redirects to homepage
         history.push("/personal");
@@ -151,7 +161,7 @@ function MakePost({ posts, setPosts }) {
                     name="tags"
                     />
                 </Form.Group> */}
-                <Button onClick={handleChangeInputTitle} variant="primary" type="submit">Post</Button>
+                <Button variant="primary" type="submit">Post</Button>
             </Form>
         </div>
       </div>
