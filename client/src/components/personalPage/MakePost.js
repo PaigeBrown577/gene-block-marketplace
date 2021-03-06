@@ -13,7 +13,7 @@ function MakePost({ posts, setPosts }) {
     const[displayName, setDisplayName] = useState("");
     const[username, setUsername] = useState("");
     const [tag, setTag] = useState("Books");
-    const [date, setDate] = useState("");
+    const [date, setDate] = useState(new Date().toLocaleDateString());
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
@@ -83,21 +83,18 @@ function MakePost({ posts, setPosts }) {
         console.log("submitted")
 
         // title, price, description, meetinglocation, tag
-        let newPost = [{displayName: "Fred", username: "fred", tag: tag,
-        date: "3/4/2021", title: title, price: price, text: description}]
+        let newPost = [{displayName: "Fred", username: "fred", tag: tag, title: title, date: date, price: price, text: description}]
 
         let newPostsArray = newPost.concat(posts);
 
         setPosts(newPostsArray);
-
-        setDate(new Date().toLocaleDateString());
-        console.log(date);
+        console.log(date)
         const payload = {displayName, username, tag, date, title, price, description};
 
         api.insertPost(payload).then(res => {
             window.alert(`Post inserted successfully`)
         })
-        
+
 
         // redirects to homepage
         history.push("/personal");
