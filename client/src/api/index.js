@@ -10,12 +10,24 @@ export const updatePostById = (id, payload) => api.put(`/post/${id}`, payload)
 export const deletePostById = id => api.delete(`/post/${id}`)
 export const getPostById = id => api.get(`/post/${id}`)
 
+export const insertUser = payload => api.post(`/user`, payload)
+export const getAllUsers = () => api.get(`/users`)
+export const updateUserById = (id, payload) => api.put(`/user/${id}`, payload)
+export const deleteUserById = id => api.delete(`/user/${id}`)
+export const getUserById = id => api.get(`/user/${id}`)
+
 const apis = {
     insertPost,
     getAllPosts,
     updatePostById,
     deletePostById,
     getPostById,
+
+    insertUser,
+    getAllUsers,
+    updateUserById,
+    deleteUserById,
+    getUserById,
 }
 
 export default apis
