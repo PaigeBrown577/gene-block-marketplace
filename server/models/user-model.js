@@ -5,11 +5,11 @@ const User = new Schema(
     {
             email: {type: String, required: true},
             password: {type: String, required: true},
-            name: {type: String, required: true},
-            year: {type: String, required: true},
-            birthday: {type: String, required: true},
-            address: {type: String, required: true},
-            phone: {type: String, required: true},
+            name: {type: String, required: false},
+            year: {type: String, required: false},
+            birthday: {type: String, required: false},
+            address: {type: String, required: false},
+            phone: {type: String, required: false},
 
     },
     { timestamps: true },

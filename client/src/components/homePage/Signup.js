@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import api from "../../api"
 import "../../styles/Login.css";
 
 function Signup() {
@@ -14,6 +15,17 @@ function Signup() {
   
     function handleSubmit(event) {
       event.preventDefault();
+
+      const payload = {email, password};
+      console.log(payload);
+
+      if(password === confirmPassword){
+        api.insertUser(payload).then(res => {
+          window.alert(`User inserted successfully`)
+        })
+      } else {
+        window.alert(`Passwwords don't match, try again`)
+      }
     }
   
     return (

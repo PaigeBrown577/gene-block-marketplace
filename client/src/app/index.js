@@ -14,6 +14,8 @@ import {
 import {Login, Signup, NavigationBar, Personal} from "../components";
 
 function App() {
+  let user_name = "";
+
   return (
     <Router>
 

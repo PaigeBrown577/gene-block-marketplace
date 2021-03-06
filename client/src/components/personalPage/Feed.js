@@ -4,10 +4,22 @@ import Post from "./Post";
 import "../../styles/Feed.css";
 import FlipMove from "react-flip-move";
 import SearchIcon from "@material-ui/icons/Search";
+import api from "../../api"
 
 
 function Feed({ posts, setPosts }) {
   const [searchbarValue, setSearchbarValue] = useState("");
+
+
+  const getPosts = async () => {
+    await api.getAllPosts().then(post => {
+      console.log(post.data.data)
+      // if(post.data.data !== posts)
+        setPosts(post.data.data)
+    })
+  }
+
+  useEffect(getPosts, []);
 
   const handleSearchbarChange = (event) => {
     setSearchbarValue(event.target.value);

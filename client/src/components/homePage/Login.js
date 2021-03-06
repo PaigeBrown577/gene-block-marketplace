@@ -10,11 +10,11 @@ function Login() {
     function validateForm() {
       return email.length > 0 && password.length > 0;
     }
-  
+
     function handleSubmit(event) {
       event.preventDefault();
     }
-  
+
     return (
       <div className="Login">
         <Form onSubmit={handleSubmit}>
@@ -37,7 +37,6 @@ function Login() {
           </Form.Group>
           <Button block size="lg" type="submit" disabled={!validateForm()}>
             <a href="/personal" style={{color:"white"}}>Login </a>
-            
           </Button>
         </Form>
       </div>

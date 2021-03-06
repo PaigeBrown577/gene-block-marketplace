@@ -97,7 +97,7 @@ function MakePost({ posts, setPosts }) {
 
 
         // redirects to homepage
-        history.push("/personal");
+        history.push("/personal/colbert");
     }
 
 

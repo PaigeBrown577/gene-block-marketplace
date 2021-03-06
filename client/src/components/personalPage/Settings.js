@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import "../../styles/Settings.css";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import api from "../../api"
 
 import Container from "react-bootstrap/Container";
 import Row from 'react-bootstrap/Row';
@@ -11,6 +12,25 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl'
 
 function Settings() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [name, setName] = useState("");
+    const [year, setYear] = useState("");
+    const [birthday, setBirthday] = useState("");
+    const [address, setAddress] = useState("");
+    const [phone, setPhone] = useState("");
+
+    function handleSubmit(event) {
+        event.preventDefault();
+  
+        const payload = {email, password, name, year, birthday, address, phone};
+        console.log(payload);
+  
+        api.updateUserById(payload).then(res => {
+            window.alert(`User updated successfully`)
+        })
+      }
+
   return (
       <div className="settings">
         <h1>Settings</h1>
