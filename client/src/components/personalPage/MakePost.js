@@ -10,7 +10,7 @@ function MakePost() {
 
   return (
       <div className="makepost">
-        <h1>Make a New Post</h1>
+        <h1 className="makepost">Make a New Post</h1>
 
         {/* <DropdownMultiselect
         options={["Australia", "Canada", "USA", "Poland", "Spain", "France"]}
