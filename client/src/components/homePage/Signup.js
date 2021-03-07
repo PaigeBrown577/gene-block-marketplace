@@ -44,14 +44,10 @@ function Signup({ userID, setUserID }) {
       } else {
         window.alert(`Passwords don't match, try again`)
       }
-
-      // get the user ID from the database, and call setUserID on it
-      // hard coding a value for now
-      let dummyUserID = "111222333"
-      setUserID(dummyUserID);
+      setUserID(userID);
 
       // redirects to personal page
-      history.push(`/personal/home/${dummyUserID}`);
+      history.push(`/personal/home/${userID}`);
     }
 
 
@@ -98,7 +94,7 @@ function Signup({ userID, setUserID }) {
             <Form.Label>Email</Form.Label>
             <Form.Control
               autoFocus
-              type="email"
+              type="email" required
               value={email}
               onChange={handleEmailChange}
             />
@@ -106,7 +102,7 @@ function Signup({ userID, setUserID }) {
           <Form.Group size="lg" controlId="password">
             <Form.Label>Password</Form.Label>
             <Form.Control
-              type="password"
+              type="password" minLength="8" required
               value={password}
               onChange={handlePasswordChange}
             />
@@ -114,14 +110,14 @@ function Signup({ userID, setUserID }) {
           <Form.Group size="lg" controlId="password">
             <Form.Label>Confirm Password</Form.Label>
             <Form.Control
-              type="password"
+              type="password" required
               value={confirmPassword}
               onChange={handleConfirmPasswordChange}
             />
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" placeholder="name" value={name} onChange={handleNameChange} />
+              <Form.Control type="text" placeholder="name" value={name} onChange={handleNameChange} required/>
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlSelect1">
               <Form.Label>Year</Form.Label>
@@ -134,7 +130,7 @@ function Signup({ userID, setUserID }) {
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label>Birthday</Form.Label>
-              <Form.Control type="text" placeholder="mm/dd/yyyy" value={birthday} onChange={handleBirthdayChange} />
+              <Form.Control type="date" min="1940-07-04" max="2021-12-31" required />
           </Form.Group>
           {/* <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label>Address</Form.Label>
@@ -142,9 +138,10 @@ function Signup({ userID, setUserID }) {
           </Form.Group> */}
           <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label>Phone Number</Form.Label>
-              <Form.Control type="text" placeholder="13101234567" value={phone} onChange={handlePhoneChange} />
+              <Form.Control type="tel"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
+          
               <Form.Text className="text-muted">
-                  Please enter number without parentheses or spaces or dashes.
+                  Format: 123-456-7890
               </Form.Text>
           </Form.Group>
 

@@ -17,6 +17,14 @@ function Login({ userID, setUserID }) {
       return email.length > 0 && password.length > 0;
     }
 
+    const handleChangeEmail = (event) => {
+        setEmail(event.target.value);
+    }
+
+    const handleChangePassword = (event) => {
+      setPassword(event.target.value);
+    }
+
     function handleSubmit(event) {
       event.preventDefault();
 
@@ -47,7 +55,7 @@ function Login({ userID, setUserID }) {
               autoFocus
               type="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={handleChangeEmail}
             />
           </Form.Group>
           <Form.Group size="lg" controlId="password">
@@ -55,7 +63,7 @@ function Login({ userID, setUserID }) {
             <Form.Control
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handleChangePassword}
             />
           </Form.Group>
           <Button block size="lg" variant="primary" type="submit" disabled={!validateForm()}>Login</Button>

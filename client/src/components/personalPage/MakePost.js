@@ -122,7 +122,7 @@ function MakePost({ posts, setPosts, userID, setUserID }) {
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Price ($)</Form.Label>
-                    <Form.Control type="text" placeholder="Price" value={price} onChange={handlePriceChange} />
+                    <Form.Control type="number" placeholder="Price" min="0.00" step="0.01" value={price} onChange={handlePriceChange} />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Description</Form.Label>
