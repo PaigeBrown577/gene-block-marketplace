@@ -13,7 +13,7 @@ import FormControl from 'react-bootstrap/FormControl'
 function Settings() {
   return (
       <div className="settings">
-        <h1>Settings</h1>
+        <h1 className="settings">Settings</h1>
 
         <div className="settingsForm">
             <Form>
@@ -110,6 +110,7 @@ function Settings() {
                 </Form.Group>
 
                 <Button variant="primary" type="submit">Save changes</Button>
+                <div className="divider"/>
                 <Button variant="primary" type="submit">cancel</Button>
             </Form>
         </div>
