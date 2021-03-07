@@ -17,9 +17,9 @@ function Signup({ userID, setUserID }) {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [name, setName] = useState("");
-    const [year, setYear] = useState("");
+    const [year, setYear] = useState("Freshman");
     const [birthday, setBirthday] = useState("");
-    const [address, setAddress] = useState("");
+    // const [address, setAddress] = useState("");
     const [phone, setPhone] = useState("");
 
     // for redirecting to personal page on submission
@@ -34,7 +34,7 @@ function Signup({ userID, setUserID }) {
     function handleSubmit(event) {
       event.preventDefault();
 
-      const payload = {email, password};
+      const payload = {email, password, name, year, birthday, phone};
       console.log(payload);
 
       if(password === confirmPassword){
@@ -81,9 +81,9 @@ function Signup({ userID, setUserID }) {
       // rohit said he will provide date validation 
   }
 
-  const handleAddressChange = (event) => {
-      setAddress(event.target.value);
-  }
+  // const handleAddressChange = (event) => {
+  //     setAddress(event.target.value);
+  // }
 
   const handlePhoneChange = (event) => {
       setPhone(event.target.value);
@@ -136,10 +136,10 @@ function Signup({ userID, setUserID }) {
               <Form.Label>Birthday</Form.Label>
               <Form.Control type="text" placeholder="mm/dd/yyyy" value={birthday} onChange={handleBirthdayChange} />
           </Form.Group>
-          <Form.Group controlId="exampleForm.ControlInput1">
+          {/* <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label>Address</Form.Label>
               <Form.Control type="text" placeholder="currentUserAddress" value={address} onChange={handleAddressChange} />
-          </Form.Group>
+          </Form.Group> */}
           <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label>Phone Number</Form.Label>
               <Form.Control type="text" placeholder="13101234567" value={phone} onChange={handlePhoneChange} />

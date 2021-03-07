@@ -8,7 +8,6 @@ const User = new Schema(
             name: {type: String, required: false},
             year: {type: String, required: false},
             birthday: {type: String, required: false},
-            address: {type: String, required: false},
             phone: {type: String, required: false},
 
     },

@@ -3,13 +3,20 @@ import "../../styles/MakePost.css";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import api from "../../api"
+import api, {getPostById, getUserByID } from "../../api"
 
 import { useHistory } from "react-router-dom";
 
 import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
 
-function MakePost({ posts, setPosts }) {
+function MakePost({ posts, setPosts, userID, setUserID }) {
+
+    const user = api.getUserById("60437fd6c431fe7acfea2341");
+    user.then((value) => {
+        user = value.data.data;
+    });
+
+
     const[displayName, setDisplayName] = useState("");
     const[username, setUsername] = useState("");
     const [tag, setTag] = useState("Books");
@@ -79,7 +86,6 @@ function MakePost({ posts, setPosts }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
         console.log("submitted")
 
         // title, price, description, meetinglocation, tag

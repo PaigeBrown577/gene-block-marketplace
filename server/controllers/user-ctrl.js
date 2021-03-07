@@ -50,12 +50,11 @@ updateUser = async (req, res) => {
                 message: 'User not found!',
             })
         }
-        user.email = body.email;
-        user.password = body.password;
+        user.email = body.email ? body.email : "";
+        user.password = body.password ? body.password : "";
         user.name = body.name ? body.name : "";
         user.year = body.year ? body.year : "";
         user.birthday = body.birthday ? body.birthday : "";
-        user.address = body.address ? body.address : "";
         user.phone = body.phone ? body.phone : "";
 
         user

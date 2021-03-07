@@ -53,7 +53,7 @@ function Personal({ userID, setUserID }) {
             <Messages />
           </Route>
           <Route path="/personal/makePost">
-            <MakePost posts={posts} setPosts={setPosts} />
+            <MakePost posts={posts} setPosts={setPosts} userID={userID} setUserID={setUserID}/>
           </Route>
           <Route path="/personal/settings">
             <Settings />
