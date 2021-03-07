@@ -10,6 +10,8 @@ import Settings from "./Settings";
 import MakePost from "./MakePost";
 import api from "../../api"
 
+import SetUserID from "../homePage/SetUserID";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,7 +20,7 @@ import {
 } from "react-router-dom";
 
 
-function Personal() {
+function Personal({ userID, setUserID }) {
 
   console.log("render");
   // personal only renders once
@@ -31,15 +33,16 @@ function Personal() {
   // {displayName: "Big John", username: "Rohit", tag: "swipes", date: "3/4/2021", title: "job vacancy", price: "10", text: "Ghosh Enterprises hiring now", avatar: "https://www.unilad.co.uk/wp-content/uploads/2018/08/big-john1.jpg", image: "https://s3-media0.fl.yelpcdn.com/bphoto/9Lis6zeVaaSm9RcmR2rT9A/348s.jpg"},
   );
 
+
   console.log("hello colbert");
 
 
   return (
     <div className="personal">
-        <Sidebar />
+        <Sidebar userID={userID} setUserID={setUserID} />
 
         <Switch>
-          <Route exact path="/personal">
+          <Route path="/personal/home">
             <Feed posts={posts} setPosts={setPosts}/>
             <Widgets />
           </Route>
@@ -55,7 +58,10 @@ function Personal() {
           <Route path="/personal/settings">
             <Settings />
           </Route>
-          <Route path = "/personal/:username">"hello world"</Route>
+          <Route path="/personal/setuserid">
+            <SetUserID userID={userID} setUserID={setUserID} />
+          </Route>
+          {/* <Route path = "/personal/:username">"hello world"</Route> */}
         </Switch>
     </div>
   );
