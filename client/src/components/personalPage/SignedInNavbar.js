@@ -11,10 +11,11 @@ function SignedInNavbar({ userID, setUserID }) {
     const user = api.getUserById(userID);
 
     user.then((value) => {
-        const username = value.data.data.name;
-        setName(username);
+        if(value !== null){
+            const username = value.data.data.name;
+            setName(username);
+        }
     });
-
 
     // for redirecting to home page
     let history = useHistory();

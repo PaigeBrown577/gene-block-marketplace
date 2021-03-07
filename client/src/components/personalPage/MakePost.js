@@ -20,6 +20,7 @@ function MakePost({ posts, setPosts, userID, setUserID }) {
     const [description, setDescription] = useState("");
     const [dropdownMeetingLocation, setDropdownMeetingLocation] = useState("Powell");
     const [otherMeetingLocation, setOtherMeetingLocation] = useState("");
+    const [image, setImage] = useState("");
 
     const [finalMeetingLocation, setFinalMeetingLocation] = useState("");
     // this is the actual one that gets submitted to the database, after considering the user's
@@ -39,6 +40,17 @@ function MakePost({ posts, setPosts, userID, setUserID }) {
 
     const handleDescriptionChange = (event) => {
         setDescription(event.target.value);
+    }
+
+    const handleImageChange = (event) => {
+        var input = document.getElementById(event.target.value);
+        var fReader = new FileReader();
+        console.log(input);
+        fReader.readAsDataURL(input.files[0]);
+        fReader.onloadend = function(event){
+            var img = document.getElementById("exampleFormControlFile1");
+            img.src = event.target.result;
+        }
     }
 
     const handleDropdownLocationChange = (event) => {
@@ -86,11 +98,12 @@ function MakePost({ posts, setPosts, userID, setUserID }) {
             const name = value.data.data.name;
             setDisplayName(name);
 
-            let newPost = [{displayName: name, tag: tag, title: title, date: date, price: price, text: description, meeting_location: finalMeetingLocation}]
+            console.log(image);
+            let newPost = [{displayName: name, tag: tag, title: title, date: date, price: price, text: description, meeting_location: finalMeetingLocation, image: image}]
             let newPostsArray = newPost.concat(posts);
 
             setPosts(newPostsArray);
-            const payload = {name, tag, date, title, price, description, finalMeetingLocation};
+            const payload = {name, tag, date, title, price, description, finalMeetingLocation, image};
 
             api.insertPost(payload).then(res => {
                 window.alert(`Post inserted successfully`)
@@ -129,7 +142,7 @@ function MakePost({ posts, setPosts, userID, setUserID }) {
                     <Form.Control as="textarea" rows={5} value={description} onChange={handleDescriptionChange} />
                 </Form.Group>
                 <Form.Group>
-                    <Form.File id="exampleFormControlFile1" label="(optional) Upload images" />
+                    <Form.File id="exampleFormControlFile1" label="(optional) Upload images" type="file" onChange={(e) => setImage(e.target.files[0].name)}/>
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect1">
                     <Form.Label>Meeting Location</Form.Label>
