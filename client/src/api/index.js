@@ -15,6 +15,7 @@ export const getAllUsers = () => api.get(`/users`)
 export const updateUserById = (id, payload) => api.put(`/user/${id}`, payload)
 export const deleteUserById = id => api.delete(`/user/${id}`)
 export const getUserById = id => api.get(`/user/${id}`)
+export const getUserByEmail = email => api.get(`/userEmail/${email}`)
 
 const apis = {
     insertPost,
@@ -28,6 +29,7 @@ const apis = {
     updateUserById,
     deleteUserById,
     getUserById,
+    getUserByEmail,
 }
 
 export default apis
