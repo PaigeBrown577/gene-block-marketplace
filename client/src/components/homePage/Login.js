@@ -28,7 +28,7 @@ function Login({ userID, setUserID }) {
             setUserID(value.data.data._id);
             console.log(value.data.data._id);
             // redirects to homepage
-            history.push(`/personal/${userID}`);
+            history.push(`/personal/home/${value.data.data._id}`);
           } else {
             window.alert("Not valid password, try again");
           }
