@@ -30,20 +30,20 @@ function Login({ userID, setUserID }) {
 
       const user = api.getUserByEmail(email);
 
-      user.then((value) => {
-        if(value.data.data != null) {
-            if(password === value.data.data.password){
-            setUserID(value.data.data._id);
-            console.log(value.data.data._id);
-            // redirects to homepage
-            history.push(`/personal/home/${value.data.data._id}`);
+        user.then((value) => {
+          if(value.data.data != null) {
+              if(password === value.data.data.password){
+              setUserID(value.data.data._id);
+              console.log(value.data.data._id);
+              // redirects to homepage
+              history.push(`/personal/home/${value.data.data._id}`);
+            } else {
+              window.alert("Not valid password, try again");
+            }
           } else {
-            window.alert("Not valid password, try again");
+            window.alert("Not valid username, try again");
           }
-        } else {
-          window.alert("Not valid username, try again");
-        }
-    });
+      });
     }
 
     return (

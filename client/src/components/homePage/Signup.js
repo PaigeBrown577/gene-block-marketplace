@@ -37,17 +37,30 @@ function Signup({ userID, setUserID }) {
       const payload = {email, password, name, year, birthday, phone};
       console.log(payload);
 
-      if(password === confirmPassword){
-        api.insertUser(payload).then(res => {
-          window.alert(`User inserted successfully`)
-        })
-      } else {
-        window.alert(`Passwords don't match, try again`)
-      }
-      setUserID(userID);
+      let user = api.getUserByEmail(email);
+      let emailInUse = false;
+      user.then((value) => {
+        if(value.data.data !== null) {
+          window.alert("Email already in use, try different email");
+          return;
+        }
 
-      // redirects to personal page
-      history.push(`/personal/home/${userID}`);
+        if(password === confirmPassword){
+          api.insertUser(payload).then(res => {
+            window.alert(`User inserted successfully`)
+          })
+        } else {
+          window.alert(`Passwords don't match, try again`)
+        }
+
+        user = api.getUserByEmail(email);
+        user.then((value) => {
+          const id = value.data.data._id;
+          setUserID(id);
+          // redirects to personal page
+          history.push(`/personal/home/${id}`);
+        });
+      });
     }
 
 
@@ -102,7 +115,7 @@ function Signup({ userID, setUserID }) {
           <Form.Group size="lg" controlId="password">
             <Form.Label>Password</Form.Label>
             <Form.Control
-              type="password" minLength="8" required
+              type="password" required
               value={password}
               onChange={handlePasswordChange}
             />
