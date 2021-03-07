@@ -16,7 +16,7 @@ import {
 
 function SendNewMessage() {
     return (
-        <Popup trigger={<Button variant="primary" type="submit">Send new message</Button>} modal>
+        <Popup trigger={<Button variant="primary">Send new message</Button>} modal>
             <div className="header"> <b>New message</b> </div>
 
             <p></p>

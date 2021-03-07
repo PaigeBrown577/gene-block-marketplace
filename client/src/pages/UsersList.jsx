@@ -19,11 +19,11 @@ const Delete = styled.div`
     color: #ff0000;
     cursor: pointer;
 `
-class PostsList extends Component {
+class UsersList extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            posts: [],
+            users: [],
             columns: [],
             isLoading: false,
         }
@@ -32,57 +32,57 @@ class PostsList extends Component {
     componentDidMount = async () => {
         this.setState({ isLoading: true })
 
-        await api.getAllPosts().then(posts => {
+        await api.getAllUsers().then(users => {
             this.setState({
-                posts: posts.data.data,
+                users: users.data.data,
                 isLoading: false,
             })
         })
     }
 
     render() {
-        const { posts, isLoading } = this.state
+        const { users, isLoading } = this.state
 
         const columns = [
             {
-                Header: 'Display Name',
-                accessor: 'displayName',
+                Header: 'Email',
+                accessor: 'email',
                 filterable: true,
             },
             {
-                Header: 'Username',
-                accessor: 'username',
+                Header: 'Password',
+                accessor: 'password',
                 filterable: true,
             },
             {
-                Header: 'Tag',
-                accessor: 'tag',
+                Header: 'Name',
+                accessor: 'name',
                 filterable: true,
             },
             {
-                Header: 'Date',
-                accessor: 'date',
+                Header: 'Year',
+                accessor: 'year',
                 filterable: true,
             },
             {
-                Header: 'Title',
-                accessor: 'title',
+                Header: 'Birthday',
+                accessor: 'birthday',
                 filterable: true,
             },
             {
-                Header: 'Price',
-                accessor: 'price',
+                Header: 'Address',
+                accessor: 'address',
                 filterable: true,
             },
             {
-                Header: 'Text',
-                accessor: 'text',
+                Header: 'Phone',
+                accessor: 'phone',
                 filterable: true,
             },
         ]
 
         let showTable = true
-        if (!posts.length) {
+        if (!users.length) {
             showTable = false
         }
 
@@ -93,7 +93,7 @@ class PostsList extends Component {
                 </div> */}
                 {showTable && (
                     <ReactTable
-                        data={posts}
+                        data={users}
                         columns={columns}
                         loading={isLoading}
                         defaultPageSize={10}
@@ -106,4 +106,4 @@ class PostsList extends Component {
     }
 }
 
-export default PostsList
+export default UsersList
