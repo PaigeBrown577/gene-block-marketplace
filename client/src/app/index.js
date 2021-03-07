@@ -1,9 +1,9 @@
 import logo from '../logo.svg';
 import '../styles/App.css';
 
-import {PostsList} from '../pages';
+import {PostsList, UsersList} from '../pages';
 
-import React from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,30 +11,40 @@ import {
   Link
 } from "react-router-dom";
 
-import {Login, Signup, NavigationBar, Personal} from "../components";
+import {Login, Signup, NavigationBar, Personal } from "../components";
+
+import SetUserID from "../components/homePage/SetUserID";
+
+import SignedInNavbar from "../components/personalPage/SignedInNavbar";
 
 function App() {
+
+  const [userID, setUserID] = useState("");
+
   return (
     <Router>
 
     <div className="App">
-      <NavigationBar />
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/login">
+            <NavigationBar />
             <header className="App-header">
-              <Login />
+              <Login userID={userID} setUserID={setUserID} />
             </header>
           </Route>
           <Route path="/signup">
+            <NavigationBar />
             <header className="App-header">
-              <Signup />
+              <Signup userID={userID} setUserID={setUserID} />
             </header>
           </Route>
           <Route path="/posts/list" exact component={PostsList} />
+          <Route path="/users/list" exact component={UsersList} />
           <Route path="/" exact>
+            <NavigationBar />
             <header className="App-header">
               <Home />
             </header>
@@ -44,7 +54,8 @@ function App() {
 
       <Switch>
         <Route path="/personal">
-          <Personal />
+          <SignedInNavbar userID={userID} setUserID={setUserID} />
+          <Personal userID={userID} setUserID={setUserID} />
         </Route>
       </Switch>
 

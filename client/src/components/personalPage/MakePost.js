@@ -1,20 +1,25 @@
-import React, { useState } from "react";
+import React, { Component , useState} from "react";
 import "../../styles/MakePost.css";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import api, {getPostById, getUserByID } from "../../api"
 
-import { useHistory } from "react-router-dom"; 
+import { useHistory } from "react-router-dom";
 
 import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
 
-function MakePost({ posts, setPosts }) {
+function MakePost({ posts, setPosts, userID, setUserID }) {
+
+    const[displayName, setDisplayName] = useState("");
+    // const[username, setUsername] = useState("");
+    const [tag, setTag] = useState("Books");
+    const [date, setDate] = useState(new Date().toLocaleDateString());
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
     const [dropdownMeetingLocation, setDropdownMeetingLocation] = useState("Powell");
     const [otherMeetingLocation, setOtherMeetingLocation] = useState("");
-    const [tag, setTag] = useState("Books");
 
     const [finalMeetingLocation, setFinalMeetingLocation] = useState("");
     // this is the actual one that gets submitted to the database, after considering the user's
@@ -23,8 +28,6 @@ function MakePost({ posts, setPosts }) {
 
     // for redirecting to homepage on submission
     let history = useHistory();
-
-
 
     const handleTitleChange = (event) => {
         setTitle(event.target.value);
@@ -60,10 +63,8 @@ function MakePost({ posts, setPosts }) {
         setTag(event.target.value);
     }
 
+
     // don't know how to deal with uploaded images yet
-
-
-
 
 
 
@@ -78,19 +79,28 @@ function MakePost({ posts, setPosts }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log(userID);
+        const user = api.getUserById(userID);
 
-        console.log("submitted")
+        user.then((value) => {
+            const name = value.data.data.name;
+            setDisplayName(name);
 
-        // title, price, description, meetinglocation, tag
-        let newPost = [{displayName: "Fred", username: "fred", tag: tag, 
-        date: "3/4/2021", title: title, price: price, text: description}]
+            let newPost = [{displayName: name, tag: tag, title: title, date: date, price: price, text: description}]
+            let newPostsArray = newPost.concat(posts);
 
-        let newPostsArray = newPost.concat(posts);
+            setPosts(newPostsArray);
+            const payload = {name, tag, date, title, price, description};
 
-        setPosts(newPostsArray);
+            api.insertPost(payload).then(res => {
+                window.alert(`Post inserted successfully`)
+            })
 
-        // redirects to homepage
-        history.push("/personal");
+            // redirects to homepage
+            history.push(`/personal/${userID}`);
+        });
+
+
     }
 
 
@@ -154,8 +164,6 @@ function MakePost({ posts, setPosts }) {
                 <Button variant="primary" type="submit">Post</Button>
             </Form>
         </div>
-
-        
       </div>
   );
 }

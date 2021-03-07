@@ -17,7 +17,7 @@ import {
   Link
 } from "react-router-dom";
 
-function Sidebar() {
+function Sidebar({ userID, setUserID }) {
   return (
     // <div className="sidebar">
     // <SidebarOption active IconName="home" text="Home" />
@@ -33,23 +33,23 @@ function Sidebar() {
     <div className="sidebar">
       {/* <SidebarOption Icon={PermIdentityIcon} text="Profile" /> */}
 
-      <Link to="/personal">
+      <Link to={`/personal/home/${userID}`}>
         <SidebarOption active Icon={HomeIcon} text="Home" />
       </Link>
 
-      <Link to="/personal/explore">
+      <Link to={`/personal/explore/${userID}`}>
         <SidebarOption Icon={SearchIcon} text="Explore" />
       </Link>
 
-      <Link to="/personal/messages">
+      <Link to={`/personal/messages/${userID}`}>
         <SidebarOption Icon={MailOutlineIcon} text="Messages" />
       </Link>
 
-      <Link to="/personal/makePost">
+      <Link to={`/personal/makePost/${userID}`}>
         <SidebarOption Icon={SettingsIcon} text="Make A New Post" />
       </Link>
 
-      <Link to="/personal/settings">
+      <Link to={`/personal/settings/${userID}`}>
         <SidebarOption Icon={SettingsIcon} text="Settings" />
       </Link>
 

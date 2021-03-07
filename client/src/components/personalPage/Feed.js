@@ -4,10 +4,22 @@ import Post from "./Post";
 import "../../styles/Feed.css";
 import FlipMove from "react-flip-move";
 import SearchIcon from "@material-ui/icons/Search";
+import api from "../../api"
 
 
 function Feed({ posts, setPosts }) {
   const [searchbarValue, setSearchbarValue] = useState("");
+
+
+  const getPosts = async () => {
+    await api.getAllPosts().then(post => {
+      console.log(post.data.data)
+      // if(post.data.data !== posts)
+        setPosts(post.data.data)
+    })
+  }
+
+  useEffect(getPosts, []);
 
   const handleSearchbarChange = (event) => {
     setSearchbarValue(event.target.value);
@@ -22,10 +34,10 @@ function Feed({ posts, setPosts }) {
   let filteredPosts = posts.filter((post) => {
     let search = searchbarValue.toLowerCase();
 
-    let lowercaseName = post.displayName.toLowerCase();
+    let lowercaseName = post.displayName ? post.displayName.toLowerCase() : "";
     let lowercaseTag = post.tag.toLowerCase();
     let lowercaseTitle = post.title.toLowerCase();
-    let lowercaseText = post.text.toLowerCase();
+    let lowercaseText = (post.text) ? post.text.toLowerCase() : "";
 
     return lowercaseName.includes(search) || lowercaseTag.includes(search)
      || lowercaseTitle.includes(search) || lowercaseText.includes(search);
