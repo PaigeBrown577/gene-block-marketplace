@@ -28,6 +28,13 @@ function Messages() {
     {/* set this up so that for each user in the database, they have a "chat history."
     whenever someone chats something else, that adds to both user's chat histories, and then
     here we loop through the user's chat history and display each one as a message*/}
+
+    {/*
+      let userName = access-database-messages -> find username
+      let userMessage = access-database-messages -> find message thread
+      let  
+    */}
+
       <br/>
       <hr/>
       <p>message1</p>
