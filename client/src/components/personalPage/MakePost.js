@@ -22,22 +22,22 @@ function MakePost() {
             <Form>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Title</Form.Label>
-                    <Form.Control type="text" placeholder="Title" />
+                    <Form.Control type="text" className="inputBoxes" />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Price ($)</Form.Label>
-                    <Form.Control type="text" placeholder="Price" />
+                    <Form.Control type="text" className="inputBoxes"/>
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Description</Form.Label>
-                    <Form.Control as="textarea" rows={5} />
+                    <Form.Control as="textarea" rows={5} className="inputBoxes"/>
                 </Form.Group>
                 <Form.Group>
-                    <Form.File id="exampleFormControlFile1" label="(optional) Upload images" />
+                    <Form.File id="exampleFormControlFile1" label="Upload images(optional)" />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect1">
                     <Form.Label>Meeting Location</Form.Label>
-                    <Form.Control as="select">
+                    <Form.Control as="select" className="inputBoxes">
                     <option>Powell</option>
                     <option>Boelter Hall</option>
                     <option>Powell</option>
@@ -46,15 +46,16 @@ function MakePost() {
                     </Form.Control>
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
-                    <Form.Label>(optional) If selected other meeting location, please specify:</Form.Label>
-                    <Form.Control type="text" placeholder="Other location" />
+                    <Form.Label>If selected other meeting location, please specify:</Form.Label>
+                    <Form.Control type="text" className="inputBoxes" />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect1">
                     <Form.Label>Tag</Form.Label>
-                    <Form.Control as="select">
+                    <Form.Control as="select" className="inputBoxes">
                     <option>Books</option>
                     <option>Furniture</option>
                     <option>Swipes</option>
+                    <option>Other</option>
                     </Form.Control>
                 </Form.Group>
                 {/* <Form.Group controlId="exampleForm.ControlInput1">

@@ -15,3 +15,7 @@
     height: auto;
     display: inline-block;
 }
+
+.inputBoxes {
+    border: 2px solid black;
+}

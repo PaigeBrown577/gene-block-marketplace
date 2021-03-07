@@ -19,19 +19,19 @@ function Settings() {
             <Form>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="text" placeholder="add user's current email here as a default" />
+                    <Form.Control type="text" placeholder="add user's current email here as a default"  className="inputBoxes"/>
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="" />
+                    <Form.Control type="password" placeholder="" className="inputBoxes" />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" placeholder="name" />
+                    <Form.Control type="text" placeholder="name" className="inputBoxes"/>
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect1">
                     <Form.Label>Year</Form.Label>
-                    <Form.Control as="select">
+                    <Form.Control as="select" className="inputBoxes">
                     <option>Freshman</option>
                     <option>Sophomore</option>
                     <option>Junior</option>
@@ -42,7 +42,7 @@ function Settings() {
                     <Form.Label>Birthday</Form.Label>
                     <Form.Row className="align-items-center">
                         <Col sm={4} className="my-1">
-                            <Form.Control as="select">
+                            <Form.Control as="select" className="inputBoxes">
                             <option>January</option>
                             <option>February</option>
                             <option>March</option>
@@ -58,7 +58,7 @@ function Settings() {
                             </Form.Control>
                         </Col>
                         <Col sm={3} className="my-1">
-                            <Form.Control as="select">
+                            <Form.Control as="select" className="inputBoxes">
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -93,17 +93,17 @@ function Settings() {
                             </Form.Control>
                         </Col>
                         <Col sm={3} className="my-1"> 
-                            <Form.Control type="text" placeholder="year" />
+                            <Form.Control type="text" placeholder="year" className="inputBoxes"/>
                         </Col>
                     </Form.Row>
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Address</Form.Label>
-                    <Form.Control type="text" placeholder="currentUserAddress" />
+                    <Form.Control type="text" placeholder="currentUserAddress" className="inputBoxes"/>
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Phone Number</Form.Label>
-                    <Form.Control type="text" placeholder="currentUserPhoneNumber" />
+                    <Form.Control type="text" placeholder="currentUserPhoneNumber" className="inputBoxes" />
                 </Form.Group>
                 <Form.Group>
                     <Form.File id="exampleFormControlFile1" label="Change profile picture" />
@@ -111,7 +111,7 @@ function Settings() {
 
                 <Button variant="primary" type="submit">Save changes</Button>
                 <div className="divider"/>
-                <Button variant="primary" type="submit">cancel</Button>
+                <Button variant="primary" type="submit">Cancel</Button>
             </Form>
         </div>
 

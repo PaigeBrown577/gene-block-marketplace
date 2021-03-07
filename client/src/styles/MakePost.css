@@ -9,3 +9,8 @@
     justify-content: flex-start;
     padding-left: 20px;
 }
+
+/* puts a border around the input text boxes */
+.inputBoxes {
+    border: 2px solid black;
+}
