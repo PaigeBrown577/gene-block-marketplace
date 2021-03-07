@@ -112,6 +112,9 @@ function Signup({ userID, setUserID }) {
               value={password}
               onChange={handlePasswordChange}
             />
+            <Form.Text className="text-muted">
+                Minimum 8 characters
+            </Form.Text>
           </Form.Group>
           <Form.Group size="lg" controlId="password">
             <Form.Label>Confirm Password</Form.Label>
@@ -145,7 +148,6 @@ function Signup({ userID, setUserID }) {
           <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label>Phone Number</Form.Label>
               <Form.Control type="tel"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onChange={handlePhoneChange} required/>
-          
               <Form.Text className="text-muted">
                   Format: 123-456-7890
               </Form.Text>
