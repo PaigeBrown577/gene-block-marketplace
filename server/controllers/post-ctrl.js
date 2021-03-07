@@ -1,7 +1,8 @@
 const Post = require('../models/post-model')
 
 createPost = (req, res) => {
-    const body = req.body
+    const body = req.body;
+    body.displayName = body.name;
 
     if (!body) {
         return res.status(400).json({

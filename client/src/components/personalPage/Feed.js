@@ -34,7 +34,7 @@ function Feed({ posts, setPosts }) {
   let filteredPosts = posts.filter((post) => {
     let search = searchbarValue.toLowerCase();
 
-    let lowercaseName = post.displayName.toLowerCase();
+    let lowercaseName = post.displayName ? post.displayName.toLowerCase() : "";
     let lowercaseTag = post.tag.toLowerCase();
     let lowercaseTitle = post.title.toLowerCase();
     let lowercaseText = (post.text) ? post.text.toLowerCase() : "";

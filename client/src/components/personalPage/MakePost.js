@@ -11,14 +11,8 @@ import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
 
 function MakePost({ posts, setPosts, userID, setUserID }) {
 
-    const user = api.getUserById("60437fd6c431fe7acfea2341");
-    user.then((value) => {
-        user = value.data.data;
-    });
-
-
     const[displayName, setDisplayName] = useState("");
-    const[username, setUsername] = useState("");
+    // const[username, setUsername] = useState("");
     const [tag, setTag] = useState("Books");
     const [date, setDate] = useState(new Date().toLocaleDateString());
     const [title, setTitle] = useState("");
@@ -26,7 +20,6 @@ function MakePost({ posts, setPosts, userID, setUserID }) {
     const [description, setDescription] = useState("");
     const [dropdownMeetingLocation, setDropdownMeetingLocation] = useState("Powell");
     const [otherMeetingLocation, setOtherMeetingLocation] = useState("");
-
 
     const [finalMeetingLocation, setFinalMeetingLocation] = useState("");
     // this is the actual one that gets submitted to the database, after considering the user's
@@ -86,24 +79,28 @@ function MakePost({ posts, setPosts, userID, setUserID }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("submitted")
+        console.log(userID);
+        const user = api.getUserById(userID);
 
-        // title, price, description, meetinglocation, tag
-        let newPost = [{displayName: "Fred", username: "fred", tag: tag, title: title, date: date, price: price, text: description}]
+        user.then((value) => {
+            const name = value.data.data.name;
+            setDisplayName(name);
 
-        let newPostsArray = newPost.concat(posts);
+            let newPost = [{displayName: name, tag: tag, title: title, date: date, price: price, text: description}]
+            let newPostsArray = newPost.concat(posts);
 
-        setPosts(newPostsArray);
-        console.log(date)
-        const payload = {displayName, username, tag, date, title, price, description};
+            setPosts(newPostsArray);
+            const payload = {name, tag, date, title, price, description};
 
-        api.insertPost(payload).then(res => {
-            window.alert(`Post inserted successfully`)
-        })
+            api.insertPost(payload).then(res => {
+                window.alert(`Post inserted successfully`)
+            })
+
+            // redirects to homepage
+            history.push(`/personal/${userID}`);
+        });
 
 
-        // redirects to homepage
-        history.push("/personal/colbert");
     }
 
 

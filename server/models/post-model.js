@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const Post = new Schema(
     {
-            displayName: {type: String, required: false},
+            displayName: {type: String, required: true},
             username: { type: String, required: false},
             tag: {type : String, require: true},
             date: {type: String, require: false},
