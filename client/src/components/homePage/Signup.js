@@ -26,9 +26,7 @@ function Signup({ userID, setUserID }) {
     let history = useHistory();
   
     function validateForm() {
-      return email.length > 0 && password.length > 0;
-
-      // rohit said he will validate the form
+      return email.length > 0 && password.length > 0 && confirmPassword.length > 0 && name.length > 0 && phone.length > 0;
     }
   
     function handleSubmit(event) {
@@ -38,7 +36,6 @@ function Signup({ userID, setUserID }) {
       console.log(payload);
 
       let user = api.getUserByEmail(email);
-      let emailInUse = false;
       user.then((value) => {
         if(value.data.data !== null) {
           window.alert("Email already in use, try different email");
@@ -86,18 +83,12 @@ function Signup({ userID, setUserID }) {
 
   const handleBirthdayChange = (event) => {
       setBirthday(event.target.value);
-
-      // rohit said he will provide date validation 
+      console.log(event.target.value);
   }
-
-  // const handleAddressChange = (event) => {
-  //     setAddress(event.target.value);
-  // }
 
   const handlePhoneChange = (event) => {
       setPhone(event.target.value);
   }
-
 
   
     return (
@@ -143,7 +134,7 @@ function Signup({ userID, setUserID }) {
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label>Birthday</Form.Label>
-              <Form.Control type="date" min="1940-07-04" max="2021-12-31" required />
+              <Form.Control type="date" min="1940-07-04" max="2021-12-31" onChange={handleBirthdayChange} required />
           </Form.Group>
           {/* <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label>Address</Form.Label>
@@ -151,7 +142,7 @@ function Signup({ userID, setUserID }) {
           </Form.Group> */}
           <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label>Phone Number</Form.Label>
-              <Form.Control type="tel"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
+              <Form.Control type="tel"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onChange={handlePhoneChange} required/>
           
               <Form.Text className="text-muted">
                   Format: 123-456-7890
