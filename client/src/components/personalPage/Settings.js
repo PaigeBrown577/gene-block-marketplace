@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import "../../styles/Settings.css";
+
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import api from "../../api"
 
 import Container from "react-bootstrap/Container";
 import Row from 'react-bootstrap/Row';
@@ -11,6 +13,57 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl'
 
 function Settings() {
+    const [email, setEmail] = useState("rohit");
+    const [password, setPassword] = useState("");
+    const [name, setName] = useState("");
+    const [year, setYear] = useState("");
+    const [birthday, setBirthday] = useState("");
+    const [address, setAddress] = useState("");
+    const [phone, setPhone] = useState("");
+
+    function handleSubmit(event) {
+        event.preventDefault();
+  
+        const payload = {email, password, name, year, birthday, address, phone};
+        console.log(payload);
+  
+        api.updateUserById(payload).then(res => {
+            window.alert(`User updated successfully`)
+        })
+      }
+
+// colbert says he stills need to handle file submission
+
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value);
+    }
+
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
+    }
+
+    const handleNameChange = (event) => {
+        setName(event.target.value);
+    }
+
+    const handleYearChange = (event) => {
+        setYear(event.target.value);
+    }
+
+    const handleBirthdayChange = (event) => {
+        setBirthday(event.target.value);
+
+        // rohit said he will provide date validation 
+    }
+
+    const handleAddressChange = (event) => {
+        setAddress(event.target.value);
+    }
+
+    const handlePhoneChange = (event) => {
+        setPhone(event.target.value);
+    }
+
   return (
       <div className="settings">
         <h1 className="settings">Settings</h1>
@@ -19,19 +72,19 @@ function Settings() {
             <Form>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="text" placeholder="add user's current email here as a default"  className="inputBoxes"/>
+                    <Form.Control className="inputBoxes" type="email" placeholder="add user's current email here as a default" value={email} onChange={handleEmailChange} />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="" className="inputBoxes" />
+                    <Form.Control className="inputBoxes" type="password" placeholder="" value={password} onChange={handlePasswordChange} />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" placeholder="name" className="inputBoxes"/>
+                    <Form.Control className="inputBoxes" type="text" placeholder="name" value={name} onChange={handleNameChange} />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect1">
                     <Form.Label>Year</Form.Label>
-                    <Form.Control as="select" className="inputBoxes">
+                    <Form.Control as="select" className="inputBoxes" value={year} onChange={handleYearChange} >
                     <option>Freshman</option>
                     <option>Sophomore</option>
                     <option>Junior</option>
@@ -40,7 +93,8 @@ function Settings() {
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Birthday</Form.Label>
-                    <Form.Row className="align-items-center">
+                    <Form.Control className="inputBoxes" type="text" placeholder="mm/dd/yyyy" value={birthday} onChange={handleBirthdayChange} />
+                    {/* <Form.Row className="align-items-center">
                         <Col sm={4} className="my-1">
                             <Form.Control as="select" className="inputBoxes">
                             <option>January</option>
@@ -95,15 +149,18 @@ function Settings() {
                         <Col sm={3} className="my-1"> 
                             <Form.Control type="text" placeholder="year" className="inputBoxes"/>
                         </Col>
-                    </Form.Row>
+                    </Form.Row> */}
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Address</Form.Label>
-                    <Form.Control type="text" placeholder="currentUserAddress" className="inputBoxes"/>
+                    <Form.Control className="inputBoxes" type="text" placeholder="currentUserAddress" value={address} onChange={handleAddressChange} />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Phone Number</Form.Label>
-                    <Form.Control type="text" placeholder="currentUserPhoneNumber" className="inputBoxes" />
+                    <Form.Control className="inputBoxes" type="text" placeholder="13101234567" value={phone} onChange={handlePhoneChange} />
+                    <Form.Text className="text-muted">
+                        Please enter number without parentheses or spaces or dashes.
+                    </Form.Text>
                 </Form.Group>
                 <Form.Group>
                     <Form.File id="exampleFormControlFile1" label="Change profile picture" />

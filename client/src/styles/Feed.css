@@ -43,5 +43,6 @@
 .searchBar > input {
     border: none;
     background-color: var(--twitter-background);
+    flex: 1;
 }
   

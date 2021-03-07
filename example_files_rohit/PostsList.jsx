@@ -45,26 +45,6 @@ class PostsList extends Component {
 
         const columns = [
             {
-                Header: 'Display Name',
-                accessor: 'displayName',
-                filterable: true,
-            },
-            {
-                Header: 'Username',
-                accessor: 'username',
-                filterable: true,
-            },
-            {
-                Header: 'Tag',
-                accessor: 'tag',
-                filterable: true,
-            },
-            {
-                Header: 'Date',
-                accessor: 'date',
-                filterable: true,
-            },
-            {
                 Header: 'Title',
                 accessor: 'title',
                 filterable: true,
@@ -75,8 +55,18 @@ class PostsList extends Component {
                 filterable: true,
             },
             {
-                Header: 'Text',
-                accessor: 'text',
+                Header: 'Description',
+                accessor: 'description',
+                filterable: true,
+            },
+            {
+                Header: 'Meeting Location',
+                accessor: 'meeting_location',
+                filterable: true,
+            },
+            {
+                Header: 'Tag',
+                accessor: 'tag',
                 filterable: true,
             },
         ]
