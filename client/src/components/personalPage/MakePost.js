@@ -86,18 +86,18 @@ function MakePost({ posts, setPosts, userID, setUserID }) {
             const name = value.data.data.name;
             setDisplayName(name);
 
-            let newPost = [{displayName: name, tag: tag, title: title, date: date, price: price, text: description}]
+            let newPost = [{displayName: name, tag: tag, title: title, date: date, price: price, text: description, meeting_location: finalMeetingLocation}]
             let newPostsArray = newPost.concat(posts);
 
             setPosts(newPostsArray);
-            const payload = {name, tag, date, title, price, description};
+            const payload = {name, tag, date, title, price, description, finalMeetingLocation};
 
             api.insertPost(payload).then(res => {
                 window.alert(`Post inserted successfully`)
             })
 
             // redirects to homepage
-            history.push(`/personal/${userID}`);
+            history.push(`/personal/home/${userID}`);
         });
 
 

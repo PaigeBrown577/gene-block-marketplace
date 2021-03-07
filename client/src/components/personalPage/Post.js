@@ -43,7 +43,7 @@ import StarOutlineIcon from '@material-ui/icons/StarOutline';
 
 
 const Post = forwardRef(
-  ({ displayName, username, text, image, avatar, date, tag, title, price }, ref) => {
+  ({ displayName, username, text, image, avatar, date, tag, title, price, meeting_location }, ref) => {
     return (
       <div className="post" ref={ref}>
         <div className="post__avatar">
@@ -65,6 +65,7 @@ const Post = forwardRef(
             </div>
             <div className="post__headerDescription">
               <p>{text}</p>
+              <p>Meeting Location: {meeting_location} </p>
             </div>
           </div>
           <img src={image} alt="" />
