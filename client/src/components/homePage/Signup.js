@@ -13,22 +13,22 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl'
 
 function Signup({ userID, setUserID }) {
-    const [email, setEmail] = useState("rohit@ucla.com");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [name, setName] = useState("");
-    const [year, setYear] = useState("Freshman");
+    const [year, setYear] = useState("");
     const [birthday, setBirthday] = useState("");
     // const [address, setAddress] = useState("");
     const [phone, setPhone] = useState("");
 
     // for redirecting to personal page on submission
     let history = useHistory();
-  
+
     function validateForm() {
       return email.length > 0 && password.length > 0 && confirmPassword.length > 0 && name.length > 0 && phone.length > 0;
     }
-  
+
     function handleSubmit(event) {
       event.preventDefault();
 
@@ -78,6 +78,7 @@ function Signup({ userID, setUserID }) {
   }
 
   const handleYearChange = (event) => {
+      console.log(event.target.value);
       setYear(event.target.value);
   }
 
@@ -99,6 +100,7 @@ function Signup({ userID, setUserID }) {
             <Form.Control
               autoFocus
               type="email" required
+              placeholder="Email"
               value={email}
               onChange={handleEmailChange}
             />
@@ -121,7 +123,7 @@ function Signup({ userID, setUserID }) {
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" placeholder="name" value={name} onChange={handleNameChange} required/>
+              <Form.Control type="text" placeholder="Name" value={name} onChange={handleNameChange} required/>
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlSelect1">
               <Form.Label>Year</Form.Label>
