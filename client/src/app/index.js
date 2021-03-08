@@ -1,7 +1,7 @@
 import logo from '../logo.svg';
 import '../styles/App.css';
 
-import {PostsList, UsersList} from '../pages';
+import {PostsList, UsersList, MessagesList} from '../pages';
 
 import React, { useState } from "react";
 import {
@@ -43,6 +43,7 @@ function App() {
           </Route>
           <Route path="/posts/list" exact component={PostsList} />
           <Route path="/users/list" exact component={UsersList} />
+          <Route path="/messages/list" exact component={MessagesList} />
           <Route path="/" exact>
             <NavigationBar />
             <header className="App-header">
