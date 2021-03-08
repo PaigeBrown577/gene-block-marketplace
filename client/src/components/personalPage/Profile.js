@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import "../../styles/Settings.css";
+import React, {useState, useEffect} from "react";
+import "../../styles/Profile.css";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -11,22 +11,38 @@ import Col from 'react-bootstrap/Col';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl'
 
-function Settings() {
-    const [email, setEmail] = useState("rohit");
+function Profile({ userID, setUserID }) {
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
     const [year, setYear] = useState("");
     const [birthday, setBirthday] = useState("");
-    const [address, setAddress] = useState("");
     const [phone, setPhone] = useState("");
+
+
+    useEffect(() => {
+        const getUser = async () => {
+            await api.getUserById(userID).then(user => {
+            console.log(user.data.data)
+                const oldInfo = user.data.data;
+                setEmail(oldInfo.email);
+                setPassword(oldInfo.password);
+                setName(oldInfo.name);
+                setYear(oldInfo.year);
+                setBirthday(oldInfo.birthday);
+                setPhone(oldInfo.phone);
+            })
+        }
+        getUser();
+    }, [])
+
 
     function handleSubmit(event) {
         event.preventDefault();
-  
-        const payload = {email, password, name, year, birthday, address, phone};
+        const payload = {email, password, name, year, birthday, phone};
         console.log(payload);
-  
-        api.updateUserById(payload).then(res => {
+
+        api.updateUserById(userID, payload).then(res => {
             window.alert(`User updated successfully`)
         })
       }
@@ -55,23 +71,19 @@ function Settings() {
         // rohit said he will provide date validation 
     }
 
-    const handleAddressChange = (event) => {
-        setAddress(event.target.value);
-    }
-
     const handlePhoneChange = (event) => {
         setPhone(event.target.value);
     }
 
   return (
-      <div className="settings">
-        <h1>Settings</h1>
+      <div className="profile">
+        <h1>Profile</h1>
 
-        <div className="settingsForm">
+        <div className="profileForm">
             <Form>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="add user's current email here as a default" value={email} onChange={handleEmailChange} />
+                    <Form.Control type="email" placeholder="" value={email} onChange={handleEmailChange} />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Password</Form.Label>
@@ -79,7 +91,7 @@ function Settings() {
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" placeholder="name" value={name} onChange={handleNameChange} />
+                    <Form.Control type="text" placeholder="" value={name} onChange={handleNameChange} />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect1">
                     <Form.Label>Year</Form.Label>
@@ -151,10 +163,6 @@ function Settings() {
                     </Form.Row> */}
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
-                    <Form.Label>Address</Form.Label>
-                    <Form.Control type="text" placeholder="currentUserAddress" value={address} onChange={handleAddressChange} />
-                </Form.Group>
-                <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Phone Number</Form.Label>
                     <Form.Control type="text" placeholder="13101234567" value={phone} onChange={handlePhoneChange} />
                     <Form.Text className="text-muted">
@@ -183,4 +191,4 @@ function Settings() {
   );
 }
 
-export default Settings;
+export default Profile;

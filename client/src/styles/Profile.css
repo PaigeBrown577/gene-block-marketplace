@@ -1,8 +1,8 @@
-.settings {
+.profile {
     flex: 0.9;
 }
 
-.settingsForm {
+.profileForm {
     display: flex;
     align-items: center;
     justify-content: center;
