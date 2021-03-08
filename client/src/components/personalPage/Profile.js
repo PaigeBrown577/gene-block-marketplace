@@ -10,23 +10,27 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl'
+import { useHistory } from "react-router-dom";
 
 function Profile({ userID, setUserID }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [name, setName] = useState("");
     const [year, setYear] = useState("");
     const [birthday, setBirthday] = useState("");
     const [phone, setPhone] = useState("");
 
+    let history = useHistory();
 
     useEffect(() => {
         const getUser = async () => {
             await api.getUserById(userID).then(user => {
-            console.log(user.data.data)
+                console.log(user.data.data)
                 const oldInfo = user.data.data;
                 setEmail(oldInfo.email);
                 setPassword(oldInfo.password);
+                setConfirmPassword(oldInfo.password);
                 setName(oldInfo.name);
                 setYear(oldInfo.year);
                 setBirthday(oldInfo.birthday);
@@ -42,9 +46,14 @@ function Profile({ userID, setUserID }) {
         const payload = {email, password, name, year, birthday, phone};
         console.log(payload);
 
-        api.updateUserById(userID, payload).then(res => {
-            window.alert(`User updated successfully`)
-        })
+        if(password === confirmPassword){
+            api.updateUserById(userID, payload).then(res => {
+                window.alert(`User updated successfully`);
+                history.push(`/personal/home/${userID}`);
+            })
+        } else {
+            window.alert("Passwords don't match, try again!");
+        }
       }
 
 // colbert says he stills need to handle file submission
@@ -67,20 +76,22 @@ function Profile({ userID, setUserID }) {
 
     const handleBirthdayChange = (event) => {
         setBirthday(event.target.value);
-
-        // rohit said he will provide date validation 
     }
 
     const handlePhoneChange = (event) => {
         setPhone(event.target.value);
     }
 
+    const handleConfirmPasswordChange = (event) => {
+        setConfirmPassword(event.target.value);
+      }
+
   return (
       <div className="profile">
         <h1>Profile</h1>
 
         <div className="profileForm">
-            <Form>
+            {/*<Form>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Email</Form.Label>
                     <Form.Control type="email" placeholder="" value={email} onChange={handleEmailChange} />
@@ -160,7 +171,7 @@ function Profile({ userID, setUserID }) {
                         <Col sm={3} className="my-1"> 
                             <Form.Control type="text" placeholder="year" />
                         </Col>
-                    </Form.Row> */}
+                    </Form.Row> 
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Phone Number</Form.Label>
@@ -176,17 +187,67 @@ function Profile({ userID, setUserID }) {
                 <Button variant="primary" type="submit">Save changes</Button>
                 <Button variant="primary" type="submit">cancel</Button>
             </Form>
+            */}
+
+        <Form onSubmit={handleSubmit}>
+          <Form.Group size="lg" controlId="email">
+            <Form.Label>Email</Form.Label>
+            <p>{email}</p>
+          </Form.Group>
+          <Form.Group size="lg" controlId="password">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password" required
+              value={password}
+              onChange={handlePasswordChange}
+            />
+            <Form.Text className="text-muted">
+                Minimum 8 characters
+            </Form.Text>
+          </Form.Group>
+          <Form.Group size="lg" controlId="password">
+            <Form.Label>Confirm New Password</Form.Label>
+            <Form.Control
+              type="password" required
+              value={confirmPassword}
+              onChange={handleConfirmPasswordChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="exampleForm.ControlInput1">
+              <Form.Label>Name</Form.Label>
+              <Form.Control type="text" placeholder="Name" value={name} onChange={handleNameChange} required/>
+          </Form.Group>
+          <Form.Group controlId="exampleForm.ControlSelect1">
+              <Form.Label>Year</Form.Label>
+              <Form.Control as="select" value={year} onChange={handleYearChange} >
+              <option>Freshman</option>
+              <option>Sophomore</option>
+              <option>Junior</option>
+              <option>Senior</option>
+              </Form.Control>
+          </Form.Group>
+          <Form.Group controlId="exampleForm.ControlInput1">
+              <Form.Label>Birthday</Form.Label>
+              <Form.Control type="date" value={birthday} min="1940-07-04" max="2021-12-31" onChange={handleBirthdayChange} required />
+          </Form.Group>
+          {/* <Form.Group controlId="exampleForm.ControlInput1">
+              <Form.Label>Address</Form.Label>
+              <Form.Control type="text" placeholder="currentUserAddress" value={address} onChange={handleAddressChange} />
+          </Form.Group> */}
+          <Form.Group controlId="exampleForm.ControlInput1">
+              <Form.Label>Phone Number</Form.Label>
+              <Form.Control type="tel" value={phone} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onChange={handlePhoneChange} required/>
+              <Form.Text className="text-muted">
+                  Format: 123-456-7890
+              </Form.Text>
+          </Form.Group>
+
+          {/* <Button block size="lg" type="submit" disabled={!validateForm()}>
+          <a href="/login" style={{color:"white"}}>Signup </a>
+          </Button> */}
+          <Button block size="lg" variant="primary" type="submit">Submit</Button>
+        </Form>
         </div>
-
-
-
-
-
-
-
-
-
-
       </div>
   );
 }
