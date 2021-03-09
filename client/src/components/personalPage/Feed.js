@@ -52,12 +52,15 @@ function Feed({ posts, setPosts }) {
       </div> */}
 
 
-      <div className="searchBar">
+      {/* <div className="searchBar">
           <SearchIcon className="widgets__searchIcon" />
           <input placeholder="Search" type="text" value={searchbarValue} onChange={handleSearchbarChange} />
           {shouldDisplayClearButton && <button onClick={handleClearClick}>clear</button>} 
       </div>
 
+      <hr/> */}
+
+      <h1>Main Feed</h1>
       <hr/>
 
       <FlipMove>

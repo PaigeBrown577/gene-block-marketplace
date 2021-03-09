@@ -47,7 +47,7 @@ function Personal({ userID, setUserID }) {
             <Widgets />
           </Route>
           <Route path="/personal/explore">
-            <Explore />
+            <Explore posts={posts} setPosts={setPosts} />
           </Route>
           <Route path="/personal/messages">
             <Messages userID={userID} setUserID={setUserID}/>

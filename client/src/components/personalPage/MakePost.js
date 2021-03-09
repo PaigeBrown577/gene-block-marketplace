@@ -22,7 +22,7 @@ function MakePost({ posts, setPosts, userID, setUserID }) {
     const [otherMeetingLocation, setOtherMeetingLocation] = useState("");
     const [image, setImage] = useState("");
 
-    const [finalMeetingLocation, setFinalMeetingLocation] = useState("");
+    const [finalMeetingLocation, setFinalMeetingLocation] = useState("Powell");
     // this is the actual one that gets submitted to the database, after considering the user's
     // input into the dropdown menu and the other location textbox
 
