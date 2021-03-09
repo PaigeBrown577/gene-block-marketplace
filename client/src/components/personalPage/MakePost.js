@@ -119,7 +119,7 @@ function MakePost({ posts, setPosts, userID, setUserID }) {
 
   return (
       <div className="makepost">
-        <h1>Make a New Post</h1>
+        <h1 className="makepost">Make a New Post</h1>
 
         {/* <DropdownMultiselect
         options={["Australia", "Canada", "USA", "Poland", "Spain", "France"]}
@@ -131,7 +131,7 @@ function MakePost({ posts, setPosts, userID, setUserID }) {
             <Form onSubmit={handleSubmit} >
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Title</Form.Label>
-                    <Form.Control type="text" placeholder="Title" value={title} onChange={handleTitleChange} />
+                    <Form.Control className="inputBoxes" type="text" placeholder="Title" value={title} onChange={handleTitleChange} />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Price ($)</Form.Label>
@@ -139,14 +139,14 @@ function MakePost({ posts, setPosts, userID, setUserID }) {
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Description</Form.Label>
-                    <Form.Control as="textarea" rows={5} value={description} onChange={handleDescriptionChange} />
+                    <Form.Control className="inputBoxes" as="textarea" rows={5} value={description} onChange={handleDescriptionChange} />
                 </Form.Group>
                 <Form.Group>
                     <Form.File id="exampleFormControlFile1" label="(optional) Upload images" type="file" onChange={(e) => setImage(e.target.files[0].name)}/>
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect1">
                     <Form.Label>Meeting Location</Form.Label>
-                    <Form.Control as="select" value={dropdownMeetingLocation} onChange={handleDropdownLocationChange} >
+                    <Form.Control className="inputBoxes" as="select" value={dropdownMeetingLocation} onChange={handleDropdownLocationChange} >
                     <option>Powell</option>
                     <option>Boelter Hall</option>
                     <option>Royce</option>
@@ -154,15 +154,16 @@ function MakePost({ posts, setPosts, userID, setUserID }) {
                     </Form.Control>
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
-                    <Form.Label>(optional) If selected other meeting location, please specify:</Form.Label>
-                    <Form.Control type="text" placeholder="Other location" value={otherMeetingLocation} onChange={handleOtherLocationChange} />
+                    <Form.Label>If selected other meeting location, please specify:</Form.Label>
+                    <Form.Control className="inputBoxes" type="text" placeholder="Other location" value={otherMeetingLocation} onChange={handleOtherLocationChange} />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect1">
                     <Form.Label>Tag</Form.Label>
-                    <Form.Control as="select" value={tag} onChange={handleTagChange} >
+                    <Form.Control className="inputBoxes" as="select" value={tag} onChange={handleTagChange} >
                     <option>Books</option>
                     <option>Furniture</option>
                     <option>Swipes</option>
+                    <option>Other</option>
                     </Form.Control>
                 </Form.Group>
                 {/* <Form.Group controlId="exampleForm.ControlInput1">

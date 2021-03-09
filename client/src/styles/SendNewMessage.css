@@ -1,0 +1,7 @@
+/* creates space between buttons on send new message pop up */
+.divider{
+    width: 10px;
+    height: auto;
+    display: inline-block;
+}
+

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import "../../styles/Profile.css";
 
+
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import api from "../../api"
@@ -98,7 +99,7 @@ function Profile({ userID, setUserID }) {
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="" value={password} onChange={handlePasswordChange} />
+                    <Form.Control className="inputBoxes" type="password" placeholder="" value={password} onChange={handlePasswordChange} />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Name</Form.Label>
@@ -106,7 +107,7 @@ function Profile({ userID, setUserID }) {
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect1">
                     <Form.Label>Year</Form.Label>
-                    <Form.Control as="select" value={year} onChange={handleYearChange} >
+                    <Form.Control as="select" className="inputBoxes" value={year} onChange={handleYearChange} >
                     <option>Freshman</option>
                     <option>Sophomore</option>
                     <option>Junior</option>
@@ -115,10 +116,11 @@ function Profile({ userID, setUserID }) {
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Birthday</Form.Label>
-                    <Form.Control type="text" placeholder="mm/dd/yyyy" value={birthday} onChange={handleBirthdayChange} />
+                    <Form.Control className="inputBoxes" type="text" placeholder="mm/dd/yyyy" value={birthday} onChange={handleBirthdayChange} />
+
                     {/* <Form.Row className="align-items-center">
                         <Col sm={4} className="my-1">
-                            <Form.Control as="select">
+                            <Form.Control as="select" className="inputBoxes">
                             <option>January</option>
                             <option>February</option>
                             <option>March</option>
@@ -134,7 +136,7 @@ function Profile({ userID, setUserID }) {
                             </Form.Control>
                         </Col>
                         <Col sm={3} className="my-1">
-                            <Form.Control as="select">
+                            <Form.Control as="select" className="inputBoxes">
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -169,13 +171,13 @@ function Profile({ userID, setUserID }) {
                             </Form.Control>
                         </Col>
                         <Col sm={3} className="my-1"> 
-                            <Form.Control type="text" placeholder="year" />
+                            <Form.Control type="text" placeholder="year" className="inputBoxes"/>
                         </Col>
                     </Form.Row> 
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Phone Number</Form.Label>
-                    <Form.Control type="text" placeholder="13101234567" value={phone} onChange={handlePhoneChange} />
+                    <Form.Control className="inputBoxes" type="text" placeholder="13101234567" value={phone} onChange={handlePhoneChange} />
                     <Form.Text className="text-muted">
                         Please enter number without parentheses or spaces or dashes.
                     </Form.Text>
@@ -185,7 +187,8 @@ function Profile({ userID, setUserID }) {
                 </Form.Group>
 
                 <Button variant="primary" type="submit">Save changes</Button>
-                <Button variant="primary" type="submit">cancel</Button>
+                <div className="divider"/>
+                <Button variant="primary" type="submit">Cancel</Button>
             </Form>
             */}
 

@@ -1,9 +1,16 @@
 .makepost {
     flex: 0.9;
+    padding: 20px;
 }
 
 .makepostForm {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-left: 20px;
+}
+
+/* puts a border around the input text boxes */
+.inputBoxes {
+    border: 2px solid black;
 }
