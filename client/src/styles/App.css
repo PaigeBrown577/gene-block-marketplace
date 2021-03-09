@@ -1,4 +1,4 @@
-.App {
+/*.App {
   text-align: center;
 }
 
@@ -35,4 +35,39 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: white;
+  min-height: 100vh;
+  min-width: 100vh;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  font-size: calc(8px + 2vmin);
+  font-weight: bold;
+  color: black;
+}
+
+.Background {
+  background: url(../ucla-img.jpg);
+  background-repeat: repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 1080px;
+ 
+}
+
+.WelcomeText {
+  color: black;
+  padding-top: 40px;
+  text-align: center;
+  align-items:center;
+  font-weight: bold;
 }
