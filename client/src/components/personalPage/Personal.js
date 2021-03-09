@@ -56,7 +56,7 @@ function Personal({ userID, setUserID }) {
             <MakePost posts={posts} setPosts={setPosts} userID={userID} setUserID={setUserID}/>
           </Route>
           <Route path="/personal/profile">
-            <Profile userID={userID} setUserID={setUserID} />
+            <Profile userID={userID} setUserID={setUserID} posts={posts} setPosts={setPosts} />
           </Route>
           <Route path="/personal/setuserid">
             <SetUserID userID={userID} setUserID={setUserID} />
