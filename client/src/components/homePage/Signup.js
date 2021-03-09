@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import api from "../../api"
-import "../../styles/Login.css";
+import "../../styles/Signup.css";
 
 import { useHistory } from "react-router-dom";
 
@@ -92,67 +92,76 @@ function Signup({ userID, setUserID }) {
 
   
     return (
-      <div className="Signup">
-        <Form onSubmit={handleSubmit}>
-          <Form.Group size="lg" controlId="email">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              autoFocus
-              type="email"
-              value={email}
-              onChange={handleEmailChange}
-            />
-          </Form.Group>
-          <Form.Group size="lg" controlId="password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-          </Form.Group>
-          <Form.Group size="lg" controlId="password">
-            <Form.Label>Confirm Password</Form.Label>
-            <Form.Control
-              type="password"
-              value={confirmPassword}
-              onChange={handleConfirmPasswordChange}
-            />
-          </Form.Group>
+      <div className= "everything">
+        <div className="Signup">
+          <Form onSubmit={handleSubmit}>
           <Form.Group controlId="exampleForm.ControlInput1">
-              <Form.Label>Name</Form.Label>
-              <Form.Control type="text" placeholder="name" value={name} onChange={handleNameChange} />
-          </Form.Group>
-          <Form.Group controlId="exampleForm.ControlSelect1">
-              <Form.Label>Year</Form.Label>
-              <Form.Control as="select" value={year} onChange={handleYearChange} >
-              <option>Freshman</option>
-              <option>Sophomore</option>
-              <option>Junior</option>
-              <option>Senior</option>
-              </Form.Control>
-          </Form.Group>
-          <Form.Group controlId="exampleForm.ControlInput1">
-              <Form.Label>Birthday</Form.Label>
-              <Form.Control type="text" placeholder="mm/dd/yyyy" value={birthday} onChange={handleBirthdayChange} />
-          </Form.Group>
-          {/* <Form.Group controlId="exampleForm.ControlInput1">
-              <Form.Label>Address</Form.Label>
-              <Form.Control type="text" placeholder="currentUserAddress" value={address} onChange={handleAddressChange} />
-          </Form.Group> */}
-          <Form.Group controlId="exampleForm.ControlInput1">
-              <Form.Label>Phone Number</Form.Label>
-              <Form.Control type="text" placeholder="13101234567" value={phone} onChange={handlePhoneChange} />
-              <Form.Text className="text-muted">
-                  Please enter number without parentheses or spaces or dashes.
-              </Form.Text>
-          </Form.Group>
+                <Form.Label>Hi, What is your Name?</Form.Label>
+                <Form.Control type="text" placeholder="name" value={name} onChange={handleNameChange} className="inputBox"/>
+            </Form.Group> 
+            <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>What should we call you?</Form.Label>
+                <Form.Control type="text" placeholder="username" value={name} onChange={handleNameChange} className="inputBox"/>
+            </Form.Group>                    
+            <Form.Group size="lg" controlId="email">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+              className="inputBox"
+                autoFocus
+                type="email"
+                value={email}
+                onChange={handleEmailChange}
+              />
+            </Form.Group>
+            <Form.Group size="lg" controlId="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                 className="inputBox"
+                type="password"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+            </Form.Group>
+            <Form.Group size="lg" controlId="password">
+              <Form.Label>Confirm Password</Form.Label>
+              <Form.Control
+              className="inputBox"
+                type="password"
+                value={confirmPassword}
+                onChange={handleConfirmPasswordChange}
+              />
+            </Form.Group>
+            <Form.Group controlId="exampleForm.ControlSelect1">
+                <Form.Label>Year</Form.Label>
+                <Form.Control as="select" value={year} onChange={handleYearChange}className="inputBox" >
+                <option>Freshman</option>
+                <option>Sophomore</option>
+                <option>Junior</option>
+                <option>Senior</option>
+                </Form.Control>
+            </Form.Group>
+            <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Birthday</Form.Label>
+                <Form.Control type="text" placeholder="mm/dd/yyyy" value={birthday} onChange={handleBirthdayChange} className="inputBox" />
+            </Form.Group>
+            {/* <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Address</Form.Label>
+                <Form.Control type="text" placeholder="currentUserAddress" value={address} onChange={handleAddressChange} />
+            </Form.Group> */}
+            <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Phone Number</Form.Label>
+                <Form.Control type="text" placeholder="13101234567" value={phone} onChange={handlePhoneChange} className="inputBox" />
+                <Form.Text className="text-muted">
+                    Please enter number without parentheses or spaces or dashes.
+                </Form.Text>
+            </Form.Group>
 
-          {/* <Button block size="lg" type="submit" disabled={!validateForm()}>
-          <a href="/login" style={{color:"white"}}>Signup </a>
-          </Button> */}
-          <Button block size="lg" variant="primary" type="submit" disabled={!validateForm()}>Signup</Button>
-        </Form>
+            {/* <Button block size="lg" type="submit" disabled={!validateForm()}>
+            <a href="/login" style={{color:"white"}}>Signup </a>
+            </Button> */}
+            <Button block size="lg" variant="primary" type="submit" disabled={!validateForm()}>Signup</Button>
+          </Form>
+        </div>
       </div>
     );
 

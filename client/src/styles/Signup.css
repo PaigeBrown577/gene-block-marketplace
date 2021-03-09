@@ -1,0 +1,34 @@
+/* @media all and (min-width: 480px) {
+    .Login {
+      padding: 60px 0;
+    }
+  
+    .Login form {
+      margin: 0 auto;
+      max-width: 320px;
+    }
+  } */
+
+ .inputBox{
+    border: 2px solid grey;
+    /* margin: 10px; */
+ }
+ .Signup{
+    background-color: white ;
+    padding: 20px;
+ }
+.everything{
+    background-color: rgb(227, 242, 252);
+    padding-left: 500px;
+    padding-right: 500px;
+    padding-bottom: 500px;
+
+     /* padding-left: 50%;  
+     padding-right: 50%;   */
+    /* padding-top: 30px;
+    padding-left: 1000px; */
+    /* padding-left: 411px;
+    padding-right: 411px; 
+    padding-bottom: 60px; */
+    
+}
