@@ -4,8 +4,10 @@ body {
   margin: 0;
   font-family: 'Noto Sans HK', sans-serif;
   padding-bottom: 10%;
+  height: 100vh;
 }
 
 code {
   font-family: 'Noto Sans HK', sans-serif;
 }
+

@@ -1,4 +1,5 @@
 import logo from '../logo.svg';
+import background from '../ucla-img.jpg';
 import '../styles/App.css';
 
 import {PostsList, UsersList, MessagesList} from '../pages';
@@ -12,10 +13,13 @@ import {
 } from "react-router-dom";
 
 import {Login, Signup, NavigationBar, Personal } from "../components";
+import Button from "react-bootstrap/Button";
 
 import SetUserID from "../components/homePage/SetUserID";
 
 import SignedInNavbar from "../components/personalPage/SignedInNavbar";
+
+//import background from "src/ucla-react-image.jpeg";
 
 function App() {
 
@@ -25,7 +29,6 @@ function App() {
     <Router>
 
     <div className="App">
-
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
@@ -66,21 +69,13 @@ function App() {
 
 function Home() {
   return (
-    <div>
-        <h2>Home</h2>
-
-        <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+    <div className="Background" >
+        <h1 class="WelcomeText">Welcome to Block Marketplace!</h1>
+        <p class="MessageText">Buy, Sell, and Discover textbooks, furniture, and more from the UCLA community!</p>
+        <Button variant="primary" size="lg" type="submit"><a href="/login" style={{color:"white"}}>Login </a></Button>
+        
+        <p></p>
+        <Button variant="primary" size="lg" type="submit"><a href="/signup" style={{color:"white"}}>Signup </a></Button>
     </div>
     );
 }
