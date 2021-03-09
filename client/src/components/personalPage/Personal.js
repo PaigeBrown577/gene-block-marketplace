@@ -20,9 +20,11 @@ import {
 } from "react-router-dom";
 
 
-function Personal({ userID, setUserID }) {
+function Personal({ user, setUser}) {
 
-  console.log("render");
+
+
+  // console.log("render");
   // personal only renders once
   // when you switch between pages, it doesn't re-render
 
@@ -34,32 +36,32 @@ function Personal({ userID, setUserID }) {
   );
 
 
-  console.log("hello colbert");
+  console.log(user);
 
 
   return (
     <div className="personal">
-        <Sidebar userID={userID} setUserID={setUserID} />
+        <Sidebar user={user} setUser={setUser} />
 
         <Switch>
           <Route path="/personal/home">
             <Feed posts={posts} setPosts={setPosts}/>
-            <Widgets userID={userID} setUserID={setUserID}/>
+            <Widgets userID={user}/>
           </Route>
           <Route path="/personal/explore">
             <Explore posts={posts} setPosts={setPosts} />
           </Route>
           <Route path="/personal/messages">
-            <Messages userID={userID} setUserID={setUserID}/>
+            <Messages user={user}/>
           </Route>
           <Route path="/personal/makePost">
-            <MakePost posts={posts} setPosts={setPosts} userID={userID} setUserID={setUserID}/>
+            <MakePost posts={posts} setPosts={setPosts} user={user} setUser={setUser}/>
           </Route>
           <Route path="/personal/profile">
-            <Profile userID={userID} setUserID={setUserID} posts={posts} setPosts={setPosts} />
+            <Profile user={user} setUser={setUser} posts={posts} setPosts={setPosts} />
           </Route>
           <Route path="/personal/setuserid">
-            <SetUserID userID={userID} setUserID={setUserID} />
+            <SetUserID user={user} setUser={setUser} />
           </Route>
           {/* <Route path = "/personal/:username">"hello world"</Route> */}
         </Switch>

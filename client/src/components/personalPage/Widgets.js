@@ -4,7 +4,7 @@ import SearchIcon from "@material-ui/icons/Search";
 
 import SendNewMessage from "./SendNewMessage";
 
-function Widgets({ userID, setUserID }) {
+function Widgets({ user }) {
   return (
     <div className="widgets">
 
@@ -14,7 +14,7 @@ function Widgets({ userID, setUserID }) {
       </div> */}
 
       <div className="widgets__input widgets_send_message">
-        <SendNewMessage userID={userID} setUserID={setUserID}/>
+        <SendNewMessage user={user}/>
       </div>
 
       <div className="widgets__widgetContainer">

@@ -16,21 +16,12 @@ import {
   useHistory,
 } from "react-router-dom";
 
-function SendNewMessage({userID, setUserID}) {
+function SendNewMessage({user}) {
     const [toEmail, setToEmail] = useState("");
     const [fromEmail, setFromEmail] = useState("");
     const [subject, setSubject] = useState("");
     const [text, setText] = useState("");
 
-    useEffect(() => {
-        const getUser = async () => {
-            await api.getUserById(userID).then(user => {
-              setFromEmail(user.data.data.email)
-            })
-        }
-        getUser();
-    }, [])
-    
       let history = useHistory();
     
       function validateForm() {
@@ -60,7 +51,7 @@ function SendNewMessage({userID, setUserID}) {
           window.alert(`Message inserted successfully`);
         })
     
-        history.push(`/personal/home/${userID}`);
+        history.push(`/personal/home/${user._id}`);
       }
 
 

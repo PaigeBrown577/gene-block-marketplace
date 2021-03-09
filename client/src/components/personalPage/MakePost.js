@@ -8,8 +8,9 @@ import api, {getPostById, getUserByID } from "../../api"
 import { useHistory } from "react-router-dom";
 
 import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
+import { useRadioGroup } from "@material-ui/core";
 
-function MakePost({ posts, setPosts, userID, setUserID }) {
+function MakePost({ posts, setPosts, user, setUser }) {
 
     const[displayName, setDisplayName] = useState("");
     // const[username, setUsername] = useState("");
@@ -95,11 +96,9 @@ function MakePost({ posts, setPosts, userID, setUserID }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(userID);
-        const user = api.getUserById(userID);
 
         let fileObject = fileInput.current.files;
-        console.log(fileObject);
+        // console.log(fileObject);
         // this is an object
         // it has a length property
 
@@ -107,28 +106,26 @@ function MakePost({ posts, setPosts, userID, setUserID }) {
         for (let i = 0; i < fileObject.length; i++)
         {
             let imageURL = URL.createObjectURL(fileInput.current.files[i]);
-            console.log(imageURL);
+            // console.log(imageURL);
         }
 
 
-        user.then((value) => {
-            const name = value.data.data.name;
-            setDisplayName(name);
+        const name = user.name;
+        setDisplayName(name);
 
-            console.log(image);
-            let newPost = [{displayName: name, tag: tag, title: title, date: date, price: price, text: description, meeting_location: finalMeetingLocation, image: image}]
-            let newPostsArray = newPost.concat(posts);
+        // console.log(image);
+        let newPost = [{displayName: name, tag: tag, title: title, date: date, price: price, text: description, meeting_location: finalMeetingLocation, image: image}]
+        let newPostsArray = newPost.concat(posts);
 
-            setPosts(newPostsArray);
-            const payload = {name, tag, date, title, price, description, finalMeetingLocation, image};
+        setPosts(newPostsArray);
+        const payload = {name, tag, date, title, price, description, finalMeetingLocation, image};
 
-            api.insertPost(payload).then(res => {
-                window.alert(`Post inserted successfully`)
-            })
+        api.insertPost(payload).then(res => {
+            window.alert(`Post inserted successfully`)
+        })
 
-            // redirects to homepage
-            history.push(`/personal/home/${userID}`);
-        });
+        // redirects to homepage
+        history.push(`/personal/home/${user._id}`);
 
 
     }
