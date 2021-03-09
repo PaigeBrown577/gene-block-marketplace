@@ -7,6 +7,7 @@ import RepeatIcon from "@material-ui/icons/Repeat";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import PublishIcon from "@material-ui/icons/Publish";
 import StarOutlineIcon from '@material-ui/icons/StarOutline';
+import Button from "react-bootstrap/Button";
 
 // const Post = forwardRef(
 //   ({ displayName, username, verified, text, image, avatar }, ref) => {
