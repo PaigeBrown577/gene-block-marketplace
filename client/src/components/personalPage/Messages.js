@@ -19,11 +19,12 @@ import {
 } from "react-router-dom";
 
 function Messages({userID, setUserID}) {
+  const [userEmail, setUserEmail] = useState("");
 
   useEffect(() => {
     const getUser = async () => {
         await api.getUserById(userID).then(user => {
-          setFromEmail(user.data.data.email)
+          setUserEmail(user.data.data.email)
         })
     }
     getUser();
