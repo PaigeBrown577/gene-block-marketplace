@@ -44,14 +44,16 @@ function Signup({ userID, setUserID }) {
 
         if(password === confirmPassword){
           api.insertUser(payload).then(res => {
-            window.alert(`User inserted successfully`)
+            window.alert(`User inserted successfully`);
           })
         } else {
           window.alert(`Passwords don't match, try again`)
         }
 
         user = api.getUserByEmail(email);
+        console.log(email);
         user.then((value) => {
+          console.log(value, value.data, value.data.data);
           const id = value.data.data._id;
           setUserID(id);
           // redirects to personal page
