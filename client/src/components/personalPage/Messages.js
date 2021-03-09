@@ -95,7 +95,7 @@ function Messages({userID, setUserID}) {
       </Form>
 
       <p></p>
-      <SendNewMessage />
+      <SendNewMessage userID={userID} setUserID={setUserID}/>
     </div>
   );
 }

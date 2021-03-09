@@ -44,7 +44,7 @@ function Personal({ userID, setUserID }) {
         <Switch>
           <Route path="/personal/home">
             <Feed posts={posts} setPosts={setPosts}/>
-            <Widgets />
+            <Widgets userID={userID} setUserID={setUserID}/>
           </Route>
           <Route path="/personal/explore">
             <Explore posts={posts} setPosts={setPosts} />

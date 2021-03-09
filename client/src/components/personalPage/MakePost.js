@@ -103,7 +103,6 @@ function MakePost({ posts, setPosts, userID, setUserID }) {
             let newPostsArray = newPost.concat(posts);
 
             setPosts(newPostsArray);
-            //hello
             const payload = {name, tag, date, title, price, description, finalMeetingLocation, image};
 
             api.insertPost(payload).then(res => {
