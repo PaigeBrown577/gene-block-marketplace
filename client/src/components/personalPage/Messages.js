@@ -18,6 +18,9 @@ import {
   Link
 } from "react-router-dom";
 
+// look in sendNewMessage for fields
+// hard code some stuff for now
+
 function Messages({userID, setUserID}) {
   const [userEmail, setUserEmail] = useState("");
 
