@@ -1,5 +1,6 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "../../styles/Messages.css";
+import api from "../../api"
 
 import SendNewMessage from "./SendNewMessage";
 
@@ -17,11 +18,20 @@ import {
   Link
 } from "react-router-dom";
 
-function Messages() {
+function Messages({userID, setUserID}) {
   const [toEmail, setToEmail] = useState("");
   const [fromEmail, setFromEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [text, setText] = useState("");
+
+  useEffect(() => {
+    const getUser = async () => {
+        await api.getUserById(userID).then(user => {
+          setFromEmail(user.data.data.email)
+        })
+    }
+    getUser();
+}, [])
 
   let history = useHistory();
 
@@ -41,8 +51,18 @@ function Messages() {
     setSubject(event.target.value);
   }
 
-  function handleSubmit(event){
+  const handleChangeText = (event) =>{
+    setText(event.target.value);
+  }
 
+  function handleSubmit(event){
+    const payload = {toEmail, fromEmail, subject, text};
+
+    api.insertMessage(payload).then(res => {
+      window.alert(`Message inserted successfully`);
+    })
+
+    history.push(`/personal/home/${userID}`);
   }
 
   return (
@@ -67,12 +87,15 @@ function Messages() {
           <Form.Control
             autoFocus
             type="text"
-            value={toEmail}
-            onChange={handleChangeToEmail}
+            value={text}
+            onChange={handleChangeText}
           />
         </Form.Group>
-        <Button block size="lg" variant="primary" type="submit" disabled={!validateForm()}>Login</Button>
+        <Button block size="lg" variant="primary" type="submit" disabled={!validateForm()}>Send Message</Button>
       </Form>
+
+      <p></p>
+      <SendNewMessage />
     </div>
   );
 }

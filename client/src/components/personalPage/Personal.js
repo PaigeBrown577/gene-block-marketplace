@@ -50,7 +50,7 @@ function Personal({ userID, setUserID }) {
             <Explore />
           </Route>
           <Route path="/personal/messages">
-            <Messages />
+            <Messages userID={userID} setUserID={setUserID}/>
           </Route>
           <Route path="/personal/makePost">
             <MakePost posts={posts} setPosts={setPosts} userID={userID} setUserID={setUserID}/>
