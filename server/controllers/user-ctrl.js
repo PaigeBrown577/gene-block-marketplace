@@ -101,6 +101,16 @@ getUserById = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
+getUserByEmail = async (req, res) => {
+    await User.findOne({ email: req.params.email }, (err, user) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+
+        return res.status(200).json({ success: true, data: user, email: req.params.email})
+    }).catch(err => console.log(err))
+}
+
 getUsers = async (req, res) => {
     // console.log('here');
     await User.find({}, (err, users) => {
@@ -122,4 +132,5 @@ module.exports = {
     deleteUser,
     getUsers,
     getUserById,
+    getUserByEmail,
 }

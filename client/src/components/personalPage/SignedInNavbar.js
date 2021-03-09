@@ -1,15 +1,21 @@
 import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap'
 import { LinkContainer } from "react-router-bootstrap";
+import React, { useState } from "react";
+import api from "../../api"
 
 import { useHistory } from "react-router-dom";
 
 function SignedInNavbar({ userID, setUserID }) {
+    const [name, setName] = useState("");
     // get name from database, using the userID
+    const user = api.getUserById(userID);
 
-    let dummyName = "Cade Gouldthorpe";
-    // hard coded value for now
-
-
+    user.then((value) => {
+        if(value !== null){
+            const username = value.data.data.name;
+            setName(username);
+        }
+    });
 
     // for redirecting to home page
     let history = useHistory();
@@ -34,7 +40,7 @@ function SignedInNavbar({ userID, setUserID }) {
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
             <Navbar.Text style={{color: "white", paddingRight: "10px"}} >
-                Signed in as: {dummyName}
+                Signed in as: {name}
             </Navbar.Text>
             <Nav activeKey={window.location.pathname}>
                 <Button variant="outline-light" onClick={handleClick}>Logout</Button>

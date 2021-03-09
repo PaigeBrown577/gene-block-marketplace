@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import api from "../../api"
 import "../../styles/Login.css";
 
 import { useHistory } from "react-router-dom";
@@ -16,20 +17,33 @@ function Login({ userID, setUserID }) {
       return email.length > 0 && password.length > 0;
     }
 
+    const handleChangeEmail = (event) => {
+        setEmail(event.target.value);
+    }
+
+    const handleChangePassword = (event) => {
+      setPassword(event.target.value);
+    }
+
     function handleSubmit(event) {
       event.preventDefault();
 
-      // check the database to make sure the user has provided valid login credentials
-      // if not, send an error message
-      // if yes, get the userID from the database
+      const user = api.getUserByEmail(email);
 
-      // get the user ID from the database, and call setUserID on it
-      // hard coding a value for now
-      let dummyUserID = "111222333"
-      setUserID(dummyUserID);
-
-      // redirects to personal page
-      history.push(`/personal/home/${dummyUserID}`);
+        user.then((value) => {
+          if(value.data.data != null) {
+              if(password === value.data.data.password){
+              setUserID(value.data.data._id);
+              console.log(value.data.data._id);
+              // redirects to homepage
+              history.push(`/personal/home/${value.data.data._id}`);
+            } else {
+              window.alert("Not valid password, try again");
+            }
+          } else {
+            window.alert("Not valid username, try again");
+          }
+      });
     }
 
     return (
@@ -41,7 +55,7 @@ function Login({ userID, setUserID }) {
               autoFocus
               type="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={handleChangeEmail}
             />
           </Form.Group>
           <Form.Group size="lg" controlId="password">
@@ -49,7 +63,7 @@ function Login({ userID, setUserID }) {
             <Form.Control
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handleChangePassword}
             />
           </Form.Group>
           <Button block size="lg" variant="primary" type="submit" disabled={!validateForm()}>Login</Button>
