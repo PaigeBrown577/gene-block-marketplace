@@ -66,36 +66,38 @@ function SendNewMessage({userID, setUserID}) {
 
     return (
         <Popup trigger={<Button variant="primary">Send new message</Button>} modal>
-            <div className="header"> <b>New message</b> </div>
+          {close => ( 
+          <div>
+              <div className="header"> <b>New message</b> </div>
 
-            <p></p>
+              <p></p>
 
-
-            <Form onSubmit={handleSubmit}>
-                <Form.Group controlId="recipient">
-                    <Form.Label>To:</Form.Label>
-                    <Form.Control type="text" placeholder="example@example.com" value={toEmail} onChange={handleChangeToEmail}/>
-                    <Form.Text className="text-muted">
-                        Please enter their email.
-                    </Form.Text>
-                </Form.Group>
-                <Form.Group controlId="messageTitle">
-                    <Form.Label>Subject</Form.Label>
-                    <Form.Control type="text" onChange={handleChangeSubject}/>
-                </Form.Group>
-                <Form.Group controlId="messageContent">
-                    <Form.Label>Message</Form.Label>
-                    <Form.Control as="textarea" rows={7} onChange={handleChangeText} />
-                </Form.Group>
-                <Button variant="primary" type="submit">Send message</Button>
-                <div class="divider"/>
-                <Button variant="primary" type="submit">Cancel</Button>
-                {/* <Link to="/personal">
-                    <Button variant="primary" type="button">Go to home</Button>
-                </Link> */}
-            </Form>
+              <Form onSubmit={handleSubmit}>
+                  <Form.Group controlId="recipient">
+                      <Form.Label>To:</Form.Label>
+                      <Form.Control type="text" placeholder="example@example.com" value={toEmail} onChange={handleChangeToEmail}/>
+                      <Form.Text className="text-muted">
+                          Please enter their email.
+                      </Form.Text>
+                  </Form.Group>
+                  <Form.Group controlId="messageTitle">
+                      <Form.Label>Subject</Form.Label>
+                      <Form.Control type="text" onChange={handleChangeSubject}/>
+                  </Form.Group>
+                  <Form.Group controlId="messageContent">
+                      <Form.Label>Message</Form.Label>
+                      <Form.Control as="textarea" rows={7} onChange={handleChangeText} />
+                  </Form.Group>
+                  <Button variant="primary" type="submit">Send message</Button>
+                  <div class="divider"/>
+                  <Button variant="primary" onClick={() => {close()}}>Cancel</Button>
+                  {/* <Link to="/personal">
+                      <Button variant="primary" type="button">Go to home</Button>
+                  </Link> */}
+              </Form>
+          </div>   
+          )}
       </Popup>
-
     );
 }
 
