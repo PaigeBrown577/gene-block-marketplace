@@ -112,6 +112,7 @@ function Signup({ userID, setUserID }) {
             <Form.Control
               type="password" required
               value={password}
+              minLength="8"
               onChange={handlePasswordChange}
             />
             <Form.Text className="text-muted">

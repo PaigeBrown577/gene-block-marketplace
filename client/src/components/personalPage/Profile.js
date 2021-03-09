@@ -212,6 +212,7 @@ function Profile({ userID, setUserID }) {
             <Form.Label>Confirm New Password</Form.Label>
             <Form.Control
               type="password" required
+              minLength="8"
               value={confirmPassword}
               onChange={handleConfirmPasswordChange}
             />
