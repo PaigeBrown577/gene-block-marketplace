@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import "../../styles/Settings.css";
+import React, {useState, useEffect} from "react";
+import "../../styles/Profile.css";
 
 
 import Form from "react-bootstrap/Form";
@@ -11,25 +11,50 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl'
+import { useHistory } from "react-router-dom";
 
-function Settings() {
-    const [email, setEmail] = useState("rohit");
+function Profile({ userID, setUserID }) {
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [name, setName] = useState("");
     const [year, setYear] = useState("");
     const [birthday, setBirthday] = useState("");
-    const [address, setAddress] = useState("");
     const [phone, setPhone] = useState("");
+
+    let history = useHistory();
+
+    useEffect(() => {
+        const getUser = async () => {
+            await api.getUserById(userID).then(user => {
+                console.log(user.data.data)
+                const oldInfo = user.data.data;
+                setEmail(oldInfo.email);
+                setPassword(oldInfo.password);
+                setConfirmPassword(oldInfo.password);
+                setName(oldInfo.name);
+                setYear(oldInfo.year);
+                setBirthday(oldInfo.birthday);
+                setPhone(oldInfo.phone);
+            })
+        }
+        getUser();
+    }, [])
+
 
     function handleSubmit(event) {
         event.preventDefault();
-  
-        const payload = {email, password, name, year, birthday, address, phone};
+        const payload = {email, password, name, year, birthday, phone};
         console.log(payload);
-  
-        api.updateUserById(payload).then(res => {
-            window.alert(`User updated successfully`)
-        })
+
+        if(password === confirmPassword){
+            api.updateUserById(userID, payload).then(res => {
+                window.alert(`User updated successfully`);
+                history.push(`/personal/home/${userID}`);
+            })
+        } else {
+            window.alert("Passwords don't match, try again!");
+        }
       }
 
 // colbert says he stills need to handle file submission
@@ -52,27 +77,25 @@ function Settings() {
 
     const handleBirthdayChange = (event) => {
         setBirthday(event.target.value);
-
-        // rohit said he will provide date validation 
-    }
-
-    const handleAddressChange = (event) => {
-        setAddress(event.target.value);
     }
 
     const handlePhoneChange = (event) => {
         setPhone(event.target.value);
     }
 
-  return (
-      <div className="settings">
-        <h1 className="settings">Settings</h1>
+    const handleConfirmPasswordChange = (event) => {
+        setConfirmPassword(event.target.value);
+      }
 
-        <div className="settingsForm">
-            <Form>
+  return (
+      <div className="profile">
+        <h1>Profile</h1>
+
+        <div className="profileForm">
+            {/*<Form>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control className="inputBoxes" type="email" placeholder="add user's current email here as a default" value={email} onChange={handleEmailChange} />
+                    <Form.Control type="email" placeholder="" value={email} onChange={handleEmailChange} />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Password</Form.Label>
@@ -80,7 +103,7 @@ function Settings() {
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Name</Form.Label>
-                    <Form.Control className="inputBoxes" type="text" placeholder="name" value={name} onChange={handleNameChange} />
+                    <Form.Control type="text" placeholder="" value={name} onChange={handleNameChange} />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect1">
                     <Form.Label>Year</Form.Label>
@@ -150,11 +173,7 @@ function Settings() {
                         <Col sm={3} className="my-1"> 
                             <Form.Control type="text" placeholder="year" className="inputBoxes"/>
                         </Col>
-                    </Form.Row> */}
-                </Form.Group>
-                <Form.Group controlId="exampleForm.ControlInput1">
-                    <Form.Label>Address</Form.Label>
-                    <Form.Control className="inputBoxes" type="text" placeholder="currentUserAddress" value={address} onChange={handleAddressChange} />
+                    </Form.Row> 
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Phone Number</Form.Label>
@@ -171,10 +190,69 @@ function Settings() {
                 <div className="divider"/>
                 <Button variant="primary" type="submit">Cancel</Button>
             </Form>
-        </div>
+            */}
 
+        <Form onSubmit={handleSubmit}>
+          <Form.Group size="lg" controlId="email">
+            <Form.Label>Email</Form.Label>
+            <p>{email}</p>
+          </Form.Group>
+          <Form.Group size="lg" controlId="password">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password" required
+              value={password}
+              onChange={handlePasswordChange}
+            />
+            <Form.Text className="text-muted">
+                Minimum 8 characters
+            </Form.Text>
+          </Form.Group>
+          <Form.Group size="lg" controlId="password">
+            <Form.Label>Confirm New Password</Form.Label>
+            <Form.Control
+              type="password" required
+              value={confirmPassword}
+              onChange={handleConfirmPasswordChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="exampleForm.ControlInput1">
+              <Form.Label>Name</Form.Label>
+              <Form.Control type="text" placeholder="Name" value={name} onChange={handleNameChange} required/>
+          </Form.Group>
+          <Form.Group controlId="exampleForm.ControlSelect1">
+              <Form.Label>Year</Form.Label>
+              <Form.Control as="select" value={year} onChange={handleYearChange} >
+              <option>Freshman</option>
+              <option>Sophomore</option>
+              <option>Junior</option>
+              <option>Senior</option>
+              </Form.Control>
+          </Form.Group>
+          <Form.Group controlId="exampleForm.ControlInput1">
+              <Form.Label>Birthday</Form.Label>
+              <Form.Control type="date" value={birthday} min="1940-07-04" max="2021-12-31" onChange={handleBirthdayChange} required />
+          </Form.Group>
+          {/* <Form.Group controlId="exampleForm.ControlInput1">
+              <Form.Label>Address</Form.Label>
+              <Form.Control type="text" placeholder="currentUserAddress" value={address} onChange={handleAddressChange} />
+          </Form.Group> */}
+          <Form.Group controlId="exampleForm.ControlInput1">
+              <Form.Label>Phone Number</Form.Label>
+              <Form.Control type="tel" value={phone} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onChange={handlePhoneChange} required/>
+              <Form.Text className="text-muted">
+                  Format: 123-456-7890
+              </Form.Text>
+          </Form.Group>
+
+          {/* <Button block size="lg" type="submit" disabled={!validateForm()}>
+          <a href="/login" style={{color:"white"}}>Signup </a>
+          </Button> */}
+          <Button block size="lg" variant="primary" type="submit">Submit</Button>
+        </Form>
+        </div>
       </div>
   );
 }
 
-export default Settings;
+export default Profile;

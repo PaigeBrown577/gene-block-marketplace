@@ -1,9 +1,9 @@
-.settings {
+.profile {
     flex: 0.9;
     padding: 20px;
 }
 
-.settingsForm {
+.profileForm {
     display: flex;
     align-items: center;
     justify-content: flex-start;

@@ -1,6 +1,5 @@
 import Login from './homePage/Login'
 import NavigationBar from './homePage/NavigationBar'
-import Profile from './homePage/Profile'
 import Signup from './homePage/Signup'
 import Explore from './personalPage/Explore'
 import Feed from './personalPage/Feed'
@@ -9,10 +8,10 @@ import Messages from './personalPage/Messages'
 import Personal from './personalPage/Personal'
 import Post from './personalPage/Post'
 import SendNewMessage from './personalPage/SendNewMessage'
-import Settings from './personalPage/Settings'
 import Sidebar from './personalPage/Sidebar'
 import SidebarOption from './personalPage/SidebarOption'
 import TweetBox from './personalPage/TweetBox'
 import Widgets from './personalPage/Widgets'
+import Profile from './personalPage/Profile'
 
-export { Login, NavigationBar, Profile, Signup, Explore, Feed, MakePost, Messages, Personal, Post, SendNewMessage, Settings, Sidebar, SidebarOption, TweetBox, Widgets}
+export { Login, NavigationBar, Profile, Signup, Explore, Feed, MakePost, Messages, Personal, Post, SendNewMessage, Sidebar, SidebarOption, TweetBox, Widgets}

@@ -6,7 +6,7 @@ import "../../styles/Personal.css";
 
 import Explore from "./Explore";
 import Messages from "./Messages";
-import Settings from "./Settings";
+import Profile from "./Profile";
 import MakePost from "./MakePost";
 import api from "../../api"
 
@@ -50,13 +50,13 @@ function Personal({ userID, setUserID }) {
             <Explore />
           </Route>
           <Route path="/personal/messages">
-            <Messages />
+            <Messages userID={userID} setUserID={setUserID}/>
           </Route>
           <Route path="/personal/makePost">
             <MakePost posts={posts} setPosts={setPosts} userID={userID} setUserID={setUserID}/>
           </Route>
-          <Route path="/personal/settings">
-            <Settings />
+          <Route path="/personal/profile">
+            <Profile userID={userID} setUserID={setUserID} />
           </Route>
           <Route path="/personal/setuserid">
             <SetUserID userID={userID} setUserID={setUserID} />

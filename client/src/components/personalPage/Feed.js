@@ -73,6 +73,7 @@ function Feed({ posts, setPosts }) {
             text={post.text}
             avatar={post.avatar}
             image={post.image}
+            meeting_location = {post.meeting_location}
           />
         ))}
 
