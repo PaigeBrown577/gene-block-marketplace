@@ -39,6 +39,7 @@ function SendNewMessage() {
                     <Form.Control as="textarea" rows={7} />
                 </Form.Group>
                 <Button variant="primary" type="submit">Send message</Button>
+                <div class="divider"/>
                 <Button variant="primary" type="submit">Cancel</Button>
                 {/* <Link to="/personal">
                     <Button variant="primary" type="button">Go to home</Button>

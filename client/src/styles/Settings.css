@@ -1,9 +1,21 @@
 .settings {
     flex: 0.9;
+    padding: 20px;
 }
 
 .settingsForm {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-left: 20px;
+}
+
+.divider{
+    width: 10px;
+    height: auto;
+    display: inline-block;
+}
+
+.inputBoxes {
+    border: 2px solid black;
 }
