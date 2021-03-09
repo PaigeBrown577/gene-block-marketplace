@@ -70,7 +70,7 @@ function Home() {
   return (
     <div className="Background" >
         <h1 class="WelcomeText">Welcome to Block Marketplace!</h1>
-        <p color="black">Buy, Sell, and Discover textbooks, furniture, and more from the UCLA community!</p>
+        <p class="MessageText">Buy, Sell, and Discover textbooks, furniture, and more from the UCLA community!</p>
         <Button variant="primary" size="lg" type="submit"><a href="/login" style={{color:"white"}}>Login </a></Button>
         
         <p></p>
