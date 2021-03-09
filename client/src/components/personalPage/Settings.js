@@ -94,6 +94,7 @@ function Settings() {
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Birthday</Form.Label>
                     <Form.Control className="inputBoxes" type="text" placeholder="mm/dd/yyyy" value={birthday} onChange={handleBirthdayChange} />
+
                     {/* <Form.Row className="align-items-center">
                         <Col sm={4} className="my-1">
                             <Form.Control as="select" className="inputBoxes">
@@ -171,15 +172,6 @@ function Settings() {
                 <Button variant="primary" type="submit">Cancel</Button>
             </Form>
         </div>
-
-
-
-
-
-
-
-
-
 
       </div>
   );
