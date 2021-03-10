@@ -39,6 +39,7 @@ function Messages({userID, setUserID}) {
 
   return (
     <div className="Messages">
+      <h1>Messages</h1>
 
 
       <p></p>

@@ -8,9 +8,12 @@ import Explore from "./Explore";
 import Messages from "./Messages";
 import Profile from "./Profile";
 import MakePost from "./MakePost";
+import PostHistory from "./PostHistory";
 import api from "../../api"
 
 import SetUserID from "../homePage/SetUserID";
+
+
 
 import {
   BrowserRouter as Router,
@@ -51,6 +54,9 @@ function Personal({ userID, setUserID }) {
           </Route>
           <Route path="/personal/messages">
             <Messages userID={userID} setUserID={setUserID}/>
+          </Route>
+          <Route path="/personal/postHistory">
+            <PostHistory posts={posts} setPosts={setPosts} userID={userID} setUserID={setUserID}/>
           </Route>
           <Route path="/personal/makePost">
             <MakePost posts={posts} setPosts={setPosts} userID={userID} setUserID={setUserID}/>
