@@ -1,5 +1,4 @@
 import React, { forwardRef } from "react";
-import {View, Image} from 'react-native';
 import "../../styles/Post.css";
 import { Avatar } from "@material-ui/core";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
