@@ -40,6 +40,10 @@ function Feed({ posts, setPosts, user }) {
     setSearchbarValue(event.target.value);
   }
 
+  const deletePost = (event) => {
+    setSearchbarValue(event.target.value);
+  }
+
   const handleClearClick = () => {
     setSearchbarValue("");
   }
@@ -92,7 +96,6 @@ function Feed({ posts, setPosts, user }) {
             avatar={post.avatar}
             image={post.image}
             meeting_location = {post.meeting_location}
-            userID = {post.userID}
             displayDeleteButton = {post.displayDeleteButton}
           />
         ))}

@@ -102,8 +102,7 @@ function MakePost({ posts, setPosts, user, setUser }) {
         // this is an object
         // it has a length property
 
-        // let imageArray = []
-        let imageArray = "";
+        let imageArray = []
         // for loop to make sure we get all the files
         for (let i = 0; i < fileObject.length; i++)
         {
@@ -125,6 +124,7 @@ function MakePost({ posts, setPosts, user, setUser }) {
         const userID = user._id;
         const payload = {name, tag, date, title, price, description, finalMeetingLocation, userID, imageArray};
 
+        console.log("hello?");
         api.insertPost(payload).then(res => {
             window.alert(`Post inserted successfully`)
         })

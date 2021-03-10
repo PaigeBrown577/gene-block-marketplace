@@ -1,4 +1,5 @@
 import React, { forwardRef } from "react";
+import {View, Image} from 'react-native';
 import "../../styles/Post.css";
 import { Avatar } from "@material-ui/core";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
@@ -8,6 +9,7 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import PublishIcon from "@material-ui/icons/Publish";
 import StarOutlineIcon from '@material-ui/icons/StarOutline';
 import Button from "react-bootstrap/Button";
+import api from "../../api";
 
 // const Post = forwardRef(
 //   ({ displayName, username, verified, text, image, avatar }, ref) => {
@@ -43,8 +45,10 @@ import Button from "react-bootstrap/Button";
 // );
 
 
+
 const Post = forwardRef(
-  ({ displayName, username, text, image, avatar, date, tag, title, price, meeting_location, userID, displayDeleteButton }, ref) => {
+  ({ displayName, username, text, image, avatar, date, tag, title, price, meeting_location, displayDeleteButton, deletePost, _id }, ref) => {
+
     return (
       <div className="post" ref={ref}>
         <div className="post__avatar">
@@ -73,7 +77,7 @@ const Post = forwardRef(
           <div className="post__footer">
             <ChatBubbleOutlineIcon fontSize="small" />
             <StarOutlineIcon fontSize="small" />
-            {displayDeleteButton && <button>Delete</button>}
+            {displayDeleteButton && <button onClick={deletePost}>Delete</button>}
           </div>
         </div>
       </div>
