@@ -14,7 +14,7 @@ function Widgets({ userID, setUserID }) {
       </div> */}
 
       <div className="widgets__input widgets_send_message">
-        <SendNewMessage userID={userID} setUserID={setUserID}/>
+        <SendNewMessage userID={userID} setUserID={setUserID} />
       </div>
 
       <div className="widgets__widgetContainer">
