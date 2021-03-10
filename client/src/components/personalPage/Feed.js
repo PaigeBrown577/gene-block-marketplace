@@ -7,7 +7,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import api from "../../api"
 
 
-function Feed({ posts, setPosts }) {
+function Feed({ posts, setPosts, userID, setUserID }) {
   const [searchbarValue, setSearchbarValue] = useState("");
 
 
@@ -77,6 +77,8 @@ function Feed({ posts, setPosts }) {
             avatar={post.avatar}
             image={post.image}
             meeting_location = {post.meeting_location}
+            userID={userID}
+            setUserID={setUserID}
           />
         ))}
 

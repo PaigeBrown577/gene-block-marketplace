@@ -8,6 +8,8 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import PublishIcon from "@material-ui/icons/Publish";
 import StarOutlineIcon from '@material-ui/icons/StarOutline';
 
+import SendNewMessage from "./SendNewMessage";
+
 // const Post = forwardRef(
 //   ({ displayName, username, verified, text, image, avatar }, ref) => {
 //     return (
@@ -43,7 +45,7 @@ import StarOutlineIcon from '@material-ui/icons/StarOutline';
 
 
 const Post = forwardRef(
-  ({ displayName, username, text, image, avatar, date, tag, title, price, meeting_location }, ref) => {
+  ({ displayName, username, text, image, avatar, date, tag, title, price, meeting_location, userID, setUserID }, ref) => {
     return (
       <div className="post" ref={ref}>
         <div className="post__avatar">
@@ -70,8 +72,10 @@ const Post = forwardRef(
           </div>
           <img src={image} alt="" />
           <div className="post__footer">
-            <ChatBubbleOutlineIcon fontSize="small" />
-            <StarOutlineIcon fontSize="small" />
+            {/* <ChatBubbleOutlineIcon fontSize="small" /> */}
+            <SendNewMessage userID={userID} setUserID={setUserID} buttonMessage="Message now" replyTo={displayName} />
+
+            {/* <StarOutlineIcon fontSize="small" /> */}
           </div>
         </div>
       </div>
