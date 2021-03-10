@@ -50,8 +50,8 @@ const rows = [
     createData("looking for husband", "RohitGouldthorpe@ucla.com", "hackathon time"),
     createData("1", "RyanRosenthal@ucla.com", "11"),
     createData("2", "AmritaChew@ucla.com", "12"),
-    createData("3", "VarshiniFengel@ucla.com", "13"),
-    createData("4", "PallaviDaruwala@ucla.com", "14"),
+    createData("3", "OliveSatoor@ucla.com", "13"),
+    createData("4", "VarshiniFengel@ucla.com", "14"),
 ];
 
 const useStyles = makeStyles({
