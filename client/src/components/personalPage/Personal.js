@@ -49,7 +49,7 @@ function Personal({ user, setUser}) {
         <Switch>
           <Route path="/personal/home">
             <Feed posts={posts} setPosts={setPosts} user={user}/>
-            <Widgets userID={user}/>
+            <Widgets user={user}/>
           </Route>
           <Route path="/personal/explore">
             <Explore posts={posts} setPosts={setPosts} />
@@ -58,7 +58,7 @@ function Personal({ user, setUser}) {
             <Messages user={user}/>
           </Route>
           <Route path="/personal/postHistory">
-            <PostHistory posts={posts} setPosts={setPosts} userID={userID} setUserID={setUserID}/>
+            <PostHistory posts={posts} setPosts={setPosts} user={user}/>
           </Route>
           <Route path="/personal/makePost">
             <MakePost posts={posts} setPosts={setPosts} user={user} setUser={setUser}/>

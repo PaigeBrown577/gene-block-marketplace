@@ -37,7 +37,7 @@ function Messages({user}) {
 
       <p></p>
 
-      <MessagesTable userID={userID} setUserID={setUserID} />
+      <MessagesTable user={user} />
 
 
     </div>

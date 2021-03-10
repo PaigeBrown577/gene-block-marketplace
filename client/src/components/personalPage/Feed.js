@@ -97,6 +97,7 @@ function Feed({ posts, setPosts, user }) {
             image={post.image}
             meeting_location = {post.meeting_location}
             displayDeleteButton = {post.displayDeleteButton}
+            user = {user}
           />
         ))}
 

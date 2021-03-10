@@ -102,12 +102,14 @@ function MakePost({ posts, setPosts, user, setUser }) {
         // this is an object
         // it has a length property
 
+        let reader = new FileReader();
+
         let imageArray = []
         // for loop to make sure we get all the files
         for (let i = 0; i < fileObject.length; i++)
         {
-            let imageURL = URL.createObjectURL(fileInput.current.files[i]);
-            imageArray = imageURL;
+            // let imageURL = URL.createObjectURL(fileInput.current.files[i]);
+            // imageArray = imageURL;
             // imageArray.push(imageURL);
         }
 

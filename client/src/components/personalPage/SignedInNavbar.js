@@ -12,7 +12,7 @@ function SignedInNavbar({ user, setUser }) {
         if(user){
             setName(user.name);
         }
-    }, [])
+    }, [user])
 
 
     // for redirecting to home page

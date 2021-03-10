@@ -26,7 +26,7 @@ function App() {
 
   // const [userID, setUserID] = useState("");
 
-  const [user, setUser] = useState()
+  const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("sessionUser")) || "");
   const [userID, setUserID] = useState(sessionStorage.getItem("sessionUserID") || "");
 
   useEffect(() => {
@@ -34,15 +34,15 @@ function App() {
 
     const getUser = async () => {
       if(userID !== ""){
-        await api.getUserById(userID).then(user => {
-          setUser(user.data.data)
-        })
+          await api.getUserById(userID).then(user => {
+            setUser(user.data.data);
+          })
+        }
       }
-    }
 
     getUser();
-
-  }, [userID]);
+    sessionStorage.setItem("sessionUser", JSON.stringify(user))
+  }, [user, userID]);
 
 
   return (

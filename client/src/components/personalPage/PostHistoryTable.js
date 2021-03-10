@@ -49,7 +49,7 @@ const useStyles = makeStyles({
   },
 });
 
-function ViewMorePopup ({title, tag, price, text, image, date, meeting_location, userID, setUserID}) {
+function ViewMorePopup ({title, tag, price, text, image, date, meeting_location, user}) {
     return (
         <Popup trigger={<Button variant="primary">View more</Button>} modal>
           {close => ( 
@@ -77,7 +77,7 @@ function ViewMorePopup ({title, tag, price, text, image, date, meeting_location,
 }
 
 
-export default function PostHistoryTable({userID, setUserID, posts, setPosts}) {
+export default function PostHistoryTable({user, posts, setPosts}) {
   const classes = useStyles();
 
   const [searchbarValue, setSearchbarValue] = useState("");
@@ -137,7 +137,7 @@ export default function PostHistoryTable({userID, setUserID, posts, setPosts}) {
                 {post.title}
               </StyledTableCell>
               <StyledTableCell align="right">{post.tag}</StyledTableCell>
-              <StyledTableCell align="right"> <ViewMorePopup title={post.title} tag={post.tag} price={post.price} text={post.text} image={post.image} date={post.date} meeting_location={post.meeting_location} userID={userID} setUserID={setUserID} /> </StyledTableCell>
+              <StyledTableCell align="right"> <ViewMorePopup title={post.title} tag={post.tag} price={post.price} text={post.text} image={post.image} date={post.date} meeting_location={post.meeting_location} user={user} /> </StyledTableCell>
               <StyledTableCell align="right"><Button variant="primary" onClick={handleDeleteClick}>DELETE POST</Button></StyledTableCell>
             </StyledTableRow>
           ))}

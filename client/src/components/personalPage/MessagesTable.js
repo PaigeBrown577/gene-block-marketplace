@@ -73,7 +73,7 @@ const handleReadClick = () => {
 
 }
 
-function ViewMorePopup ({subject, fromEmail, text, userID, setUserID}) {
+function ViewMorePopup ({subject, fromEmail, text, user}) {
     return (
         <Popup trigger={<Button variant="primary" >View more</Button>} modal>
           {close => ( 
@@ -87,7 +87,7 @@ function ViewMorePopup ({subject, fromEmail, text, userID, setUserID}) {
 
               <p></p>
 
-              <SendNewMessage userID={userID} setUserID={setUserID} replyTo={fromEmail} buttonMessage="Reply" />
+              <SendNewMessage user={user} replyTo={fromEmail} buttonMessage="Reply" />
               <Button variant="primary" onClick={handleReadClick}>Mark as read</Button>
               <Button variant="primary" onClick={() => {close()}}>Close</Button>
 
@@ -98,7 +98,7 @@ function ViewMorePopup ({subject, fromEmail, text, userID, setUserID}) {
 }
 
 
-export default function MessagesTable({userID, setUserID}) {
+export default function MessagesTable({user}) {
   const classes = useStyles();
 
   const [searchbarValue, setSearchbarValue] = useState("");
@@ -151,7 +151,7 @@ export default function MessagesTable({userID, setUserID}) {
                 {row.subject}
               </StyledTableCell>
               <StyledTableCell align="right">{row.fromEmail}</StyledTableCell>
-              <StyledTableCell align="right"> <ViewMorePopup subject={row.subject} fromEmail={row.fromEmail} text={row.text} userID={userID} setUserID={setUserID} /> </StyledTableCell>
+              <StyledTableCell align="right"> <ViewMorePopup subject={row.subject} fromEmail={row.fromEmail} text={row.text} user={user} /> </StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
