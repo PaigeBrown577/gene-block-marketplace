@@ -27,7 +27,6 @@ function Login({ user, setUser }) {
 
     function handleSubmit(event) {
       event.preventDefault();
-
       const user = api.getUserByEmail(email);
 
         user.then((value) => {

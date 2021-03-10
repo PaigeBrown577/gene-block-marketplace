@@ -78,7 +78,7 @@ function App() {
 
       <Switch>
         <Route path="/personal">
-          <SignedInNavbar user={user} setUser={setUser  } />
+          <SignedInNavbar user={user} setUser={setUser} />
           <Personal user={user} setUser={setUser}/>
         </Route>
       </Switch>

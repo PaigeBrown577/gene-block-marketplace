@@ -53,7 +53,7 @@ updatePost = async (req, res) => {
             })
         }
         post.displayName = body.displayName;
-        post.username = body.username;
+        post.userID = body.userID;
         post.tag = body.tag;
         post.date = body.date;
         post.title = body.title;

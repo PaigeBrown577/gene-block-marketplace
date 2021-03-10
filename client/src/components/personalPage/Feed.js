@@ -4,18 +4,33 @@ import Post from "./Post";
 import "../../styles/Feed.css";
 import FlipMove from "react-flip-move";
 import SearchIcon from "@material-ui/icons/Search";
-import api from "../../api"
+import api, { getAllPosts } from "../../api"
 
 
-function Feed({ posts, setPosts }) {
+function Feed({ posts, setPosts, user }) {
   const [searchbarValue, setSearchbarValue] = useState("");
 
 
   const getPosts = async () => {
-    await api.getAllPosts().then(post => {
+    await api.getAllPosts().then(posts => {
       // console.log(post.data.data)
       // if(post.data.data !== posts)
-        setPosts(post.data.data)
+
+      let postArray = posts.data.data;
+
+      console.log("is this even called?");
+        for(let i = 0; i < postArray.length; i++){
+          console.log(postArray[i].userID, user._id);
+
+          if(postArray[i].userID === user._id){
+            postArray[i].displayDeleteButton = true;
+
+          }
+        }
+
+        setPosts(postArray);
+
+        <button onClick={handleClearClick}>clear</button>
     })
   }
 
@@ -77,6 +92,8 @@ function Feed({ posts, setPosts }) {
             avatar={post.avatar}
             image={post.image}
             meeting_location = {post.meeting_location}
+            userID = {post.userID}
+            displayDeleteButton = {post.displayDeleteButton}
           />
         ))}
 

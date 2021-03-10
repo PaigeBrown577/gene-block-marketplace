@@ -44,7 +44,7 @@ import Button from "react-bootstrap/Button";
 
 
 const Post = forwardRef(
-  ({ displayName, username, text, image, avatar, date, tag, title, price, meeting_location }, ref) => {
+  ({ displayName, username, text, image, avatar, date, tag, title, price, meeting_location, userID, displayDeleteButton }, ref) => {
     return (
       <div className="post" ref={ref}>
         <div className="post__avatar">
@@ -73,6 +73,7 @@ const Post = forwardRef(
           <div className="post__footer">
             <ChatBubbleOutlineIcon fontSize="small" />
             <StarOutlineIcon fontSize="small" />
+            {displayDeleteButton && <button>Delete</button>}
           </div>
         </div>
       </div>

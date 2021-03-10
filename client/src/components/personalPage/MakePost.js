@@ -114,11 +114,12 @@ function MakePost({ posts, setPosts, user, setUser }) {
         setDisplayName(name);
 
         // console.log(image);
-        let newPost = [{displayName: name, tag: tag, title: title, date: date, price: price, text: description, meeting_location: finalMeetingLocation, image: image}]
-        let newPostsArray = newPost.concat(posts);
+        // let newPost = [{displayName: name, tag: tag, title: title, date: date, price: price, text: description, meeting_location: finalMeetingLocation, image: image, displayDeleteButton: true}]
+        // let newPostsArray = newPost.concat(posts);
 
-        setPosts(newPostsArray);
-        const payload = {name, tag, date, title, price, description, finalMeetingLocation, image};
+        // setPosts(newPostsArray);
+        const userID = user._id;
+        const payload = {name, tag, date, title, price, description, finalMeetingLocation, userID, image};
 
         api.insertPost(payload).then(res => {
             window.alert(`Post inserted successfully`)
