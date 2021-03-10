@@ -45,6 +45,10 @@ function Sidebar({ user, setUser }) {
         <SidebarOption Icon={MailOutlineIcon} text="Messages" />
       </Link>
 
+      <Link to={`/personal/postHistory/${user._id}`}>
+        <SidebarOption Icon={SettingsIcon} text="Your Posts" />
+      </Link>
+
       <Link to={`/personal/makePost/${user._id}`}>
         <SidebarOption Icon={SettingsIcon} text="Make A New Post" />
       </Link>

@@ -16,8 +16,8 @@ import {
   useHistory,
 } from "react-router-dom";
 
-function SendNewMessage({user}) {
-    const [toEmail, setToEmail] = useState("");
+function SendNewMessage({user, replyTo, buttonMessage}) {
+    const [toEmail, setToEmail] = useState(replyTo || "");
     const [fromEmail, setFromEmail] = useState("");
     const [subject, setSubject] = useState("");
     const [text, setText] = useState("");
@@ -56,7 +56,7 @@ function SendNewMessage({user}) {
 
 
     return (
-        <Popup trigger={<Button variant="primary">Send new message</Button>} modal>
+        <Popup trigger={<Button variant="primary">{buttonMessage || "Send new message"}</Button>} modal>
           {close => ( 
           <div>
               <div className="header"> <b>New message</b> </div>

@@ -11,6 +11,8 @@ import { useHistory } from "react-router-dom";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
+import MessagesTable from "./MessagesTable";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -27,10 +29,17 @@ function Messages({user}) {
 
   return (
     <div className="Messages">
+      <h1>Messages</h1>
 
 
       <p></p>
       <SendNewMessage user={user}/>
+
+      <p></p>
+
+      <MessagesTable userID={userID} setUserID={setUserID} />
+
+
     </div>
   );
 }

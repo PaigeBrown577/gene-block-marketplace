@@ -10,39 +10,7 @@ import StarOutlineIcon from '@material-ui/icons/StarOutline';
 import Button from "react-bootstrap/Button";
 import api from "../../api";
 
-// const Post = forwardRef(
-//   ({ displayName, username, verified, text, image, avatar }, ref) => {
-//     return (
-//       <div className="post" ref={ref}>
-//         <div className="post__avatar">
-//           <Avatar src={avatar} />
-//         </div>
-//         <div className="post__body">
-//           <div className="post__header">
-//             <div className="post__headerText">
-//               <h3>
-//                 {displayName}{" "}
-//                 <span className="post__headerSpecial">
-//                   {verified && <VerifiedUserIcon className="post__badge" />} @
-//                   {username}
-//                 </span>
-//               </h3>
-//             </div>
-//             <div className="post__headerDescription">
-//               <p>{text}</p>
-//             </div>
-//           </div>
-//           <img src={image} alt="" />
-//           <div className="post__footer">
-//             <ChatBubbleOutlineIcon fontSize="small" />
-//             <StarOutlineIcon fontSize="small" />
-//           </div>
-//         </div>
-//       </div>
-//     );
-//   }
-// );
-
+import SendNewMessage from "./SendNewMessage";
 
 
 const Post = forwardRef(
@@ -74,9 +42,11 @@ const Post = forwardRef(
           </div>
           <img src={image} alt="" />
           <div className="post__footer">
-            <ChatBubbleOutlineIcon fontSize="small" />
-            <StarOutlineIcon fontSize="small" />
             {displayDeleteButton && <button onClick={deletePost}>Delete</button>}
+            {/* <ChatBubbleOutlineIcon fontSize="small" /> */}
+            <SendNewMessage userID={userID} setUserID={setUserID} buttonMessage="Message now" replyTo={displayName} />
+
+            {/* <StarOutlineIcon fontSize="small" /> */}
           </div>
         </div>
       </div>
