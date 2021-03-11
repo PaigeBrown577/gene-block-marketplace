@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import api from "../../api"
+import swal from 'sweetalert';
 // import "../colored_seal.jpeg";
 // import logo from "../../styles/colored_seal.jpeg";
 
@@ -40,10 +41,10 @@ function Login({ user, setUser }) {
               // redirects to homepage
               history.push(`/personal/home/${value.data.data._id}`);
             } else {
-              window.alert("Not valid password, try again");
+              swal("Incorrect password, try again!", "", "error");
             }
           } else {
-            window.alert("Not valid username, try again");
+            swal("Not a valid username, try again!", "", "error");
           }
       });
     }

@@ -5,6 +5,7 @@ import "../../styles/Profile.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import api from "../../api"
+import swal from 'sweetalert';
 
 import Container from "react-bootstrap/Container";
 import Row from 'react-bootstrap/Row';
@@ -44,18 +45,15 @@ function Profile({ user, setUser, posts, setPosts }) {
         const payload = {email, password, name, year, birthday, phone};
         // console.log(payload);
 
-        let fileObject = fileInput.current.files[0];
-        // console.log(fileObject);
-        let imageURL = URL.createObjectURL(fileInput.current.files[0]);
         // console.log(imageURL);
 
         if(password === confirmPassword){
             api.updateUserById(user._id, payload).then(res => {
-                window.alert(`User updated successfully`);
+               swal("Profile updated!", "", "success");
                 history.push(`/personal/home/${user._id}`);
             })
         } else {
-            window.alert("Passwords don't match, try again!");
+            swal("Passwords don't match, try again!", "", "error");
         }
       }
 
@@ -152,9 +150,6 @@ function Profile({ user, setUser, posts, setPosts }) {
               <Form.Text className="text-muted">
                   Format: 123-456-7890
               </Form.Text>
-          </Form.Group>
-          <Form.Group>
-                <Form.File id="exampleFormControlFile1" label="Change Profile Picture" ref={fileInput} />
           </Form.Group>
 
           {/* <Button block size="lg" type="submit" disabled={!validateForm()}>

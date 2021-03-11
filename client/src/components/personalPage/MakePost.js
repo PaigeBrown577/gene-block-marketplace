@@ -3,6 +3,8 @@ import "../../styles/MakePost.css";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import swal from 'sweetalert';
+
 import api, {getPostById, getUserByID } from "../../api"
 
 import { useHistory } from "react-router-dom";
@@ -117,13 +119,13 @@ function MakePost({ posts, setPosts, user, setUser }) {
         const userID = user._id;
         const email = user.email;
         const payload = {name, tag, date, title, price, description, finalMeetingLocation, userID, email};
-        
+
         api.insertPost(payload).then(res => {
-            window.alert(`Post inserted successfully`)
+            swal("Post uploaded successfully!", "", "success");
         })
 
         // redirects to homepage
-        history.push(`/personal/home/${user._id}`);
+        // history.push(`/personal/home/${user._id}`);
 
 
     }

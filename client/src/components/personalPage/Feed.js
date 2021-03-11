@@ -18,9 +18,9 @@ function Feed({ posts, setPosts, user }) {
 
       let postArray = posts.data.data;
 
-      console.log("is this even called?");
+      // console.log("is this even called?");
         for(let i = 0; i < postArray.length; i++){
-          console.log(postArray[i].userID, user._id);
+          // console.log(postArray[i].userID, user._id);
 
           if(postArray[i].userID === user._id){
             postArray[i].displayDeleteButton = true;

@@ -4,6 +4,7 @@ import "../../styles/SendNewMessage.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import api from "../../api"
+import swal from 'sweetalert';
 
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
@@ -18,7 +19,7 @@ import {
 
 function SendNewMessage({user, replyTo, buttonMessage}) {
     const [toEmail, setToEmail] = useState(replyTo || "");
-    const [fromEmail, setFromEmail] = useState(user ? user.email : "hello");
+    const [fromEmail, setFromEmail] = useState(user ? user.email : "");
     const [subject, setSubject] = useState("");
     const [text, setText] = useState("");
     // console.log("what");
@@ -52,14 +53,19 @@ function SendNewMessage({user, replyTo, buttonMessage}) {
       }
     
       function handleSubmit(event){
+        event.preventDefault();
         const payload = {toEmail, fromEmail, subject, text};
-        console.log(payload);
         api.insertMessage(payload).then(res => {
-          console.log(user);
-          window.alert(`Message inserted successfully`);
+          // console.log("message sent");
+          swal("Message sent!", "" ,"success");
+          // window.alert("here");
         })
     
         history.push(`/personal/home/${user._id}`);
+      }
+
+      function validateForm() {
+        return toEmail.length > 0 && subject.length > 0 && text.length > 0;
       }
 
 
@@ -74,20 +80,20 @@ function SendNewMessage({user, replyTo, buttonMessage}) {
               <Form onSubmit={handleSubmit}>
                   <Form.Group controlId="recipient">
                       <Form.Label>To:</Form.Label>
-                      <Form.Control type="text" placeholder="example@example.com" value={toEmail} onChange={handleChangeToEmail}/>
+                      <Form.Control type="email" placeholder="example@example.com" value={toEmail} onChange={handleChangeToEmail} required/>
                       <Form.Text className="text-muted">
                           Please enter their email.
                       </Form.Text>
                   </Form.Group>
                   <Form.Group controlId="messageTitle">
                       <Form.Label>Subject</Form.Label>
-                      <Form.Control type="text" onChange={handleChangeSubject}/>
+                      <Form.Control type="text" onChange={handleChangeSubject} required/>
                   </Form.Group>
                   <Form.Group controlId="messageContent">
                       <Form.Label>Message</Form.Label>
-                      <Form.Control as="textarea" rows={7} onChange={handleChangeText} />
+                      <Form.Control as="textarea" rows={7} onChange={handleChangeText} required />
                   </Form.Group>
-                  <Button variant="primary" type="submit">Send message</Button>
+                  <Button variant="primary" type="submit" disabled={!validateForm()}>Send message</Button>
                   <div class="divider"/>
                   <Button variant="primary" type="button" onClick={() => {close()}}>Cancel</Button>
                   {/* <Link to="/personal">

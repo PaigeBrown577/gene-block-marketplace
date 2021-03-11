@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import api from "../../api"
 import "../../styles/Signup.css";
+import swal from 'sweetalert';
 
 import { useHistory } from "react-router-dom";
 
@@ -38,16 +39,16 @@ function Signup({ user, setUser }) {
       let user = api.getUserByEmail(email);
       user.then((value) => {
         if(value.data.data !== null) {
-          window.alert("Email already in use, try different email");
+          swal("Email already in use, try different email", "", "error");
           return;
         }
 
         if(password === confirmPassword){
           api.insertUser(payload).then(res => {
-            window.alert(`User inserted successfully`);
+            swal("Welcome to Block Marketplace!", "", "success");
           })
         } else {
-          window.alert(`Passwords don't match, try again`)
+          swal("Passwords don't match, try again", "", "error");
         }
 
         user = api.getUserByEmail(email);

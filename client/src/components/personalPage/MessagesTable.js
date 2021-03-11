@@ -77,8 +77,8 @@ const handleReadClick = () => {
     // couldn't get it to run automatically when you press view more
     // it's ugly but it works
 
-    console.log("message read");
-    alert("Message marked as read");
+    // console.log("message read");
+    // alert("Message marked as read");
 
 }
 
@@ -123,11 +123,11 @@ export default function MessagesTable({user}) {
         setMessages(message.data.data)
 
       rows = [];
-      console.log(messageData);
+      // console.log(messageData);
       for (let i  = 0; i < messageData.length; i++){
         rows.push(createData(messageData[i].subject, messageData[i].fromEmail, messageData[i].text));
       }
-      console.log(rows);
+      // console.log(rows);
     })
     }
 
