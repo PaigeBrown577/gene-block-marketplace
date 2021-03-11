@@ -8,9 +8,12 @@ import Explore from "./Explore";
 import Messages from "./Messages";
 import Profile from "./Profile";
 import MakePost from "./MakePost";
+import PostHistory from "./PostHistory";
 import api from "../../api"
 
 import SetUserID from "../homePage/SetUserID";
+
+
 
 import {
   BrowserRouter as Router,
@@ -43,20 +46,23 @@ function Personal({ userID, setUserID }) {
 
         <Switch>
           <Route path="/personal/home">
-            <Feed posts={posts} setPosts={setPosts}/>
-            <Widgets />
+            <Feed posts={posts} setPosts={setPosts} userID={userID} setUserID={setUserID} />
+            <Widgets userID={userID} setUserID={setUserID}/>
           </Route>
           <Route path="/personal/explore">
-            <Explore />
+            <Explore posts={posts} setPosts={setPosts} />
           </Route>
           <Route path="/personal/messages">
             <Messages userID={userID} setUserID={setUserID}/>
+          </Route>
+          <Route path="/personal/postHistory">
+            <PostHistory posts={posts} setPosts={setPosts} userID={userID} setUserID={setUserID}/>
           </Route>
           <Route path="/personal/makePost">
             <MakePost posts={posts} setPosts={setPosts} userID={userID} setUserID={setUserID}/>
           </Route>
           <Route path="/personal/profile">
-            <Profile userID={userID} setUserID={setUserID} />
+            <Profile userID={userID} setUserID={setUserID} posts={posts} setPosts={setPosts} />
           </Route>
           <Route path="/personal/setuserid">
             <SetUserID userID={userID} setUserID={setUserID} />
