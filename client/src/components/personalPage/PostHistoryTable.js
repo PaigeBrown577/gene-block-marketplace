@@ -9,6 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Image from 'react';
 import api from '../../api';
+import swal from 'sweetalert';
 
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
@@ -96,7 +97,7 @@ function PostHistoryTable({user, posts, setPosts}) {
   function handleDeleteClick(id) {
     console.log("hello", id);
     api.deletePostById(id);
-    alert("Deleted post");
+    swal("Deleted post!");
 
     // redirect back to this pages
     // history.push(`/personal/postHistory/${user._id}`);
