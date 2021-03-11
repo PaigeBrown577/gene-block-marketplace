@@ -10,7 +10,7 @@ import api from "../../api"
 
 import { useHistory } from "react-router-dom";
 
-function Login({ userID, setUserID }) {
+function Login({ user, setUser }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -31,14 +31,12 @@ function Login({ userID, setUserID }) {
 
     function handleSubmit(event) {
       event.preventDefault();
-
       const user = api.getUserByEmail(email);
 
         user.then((value) => {
           if(value.data.data != null) {
               if(password === value.data.data.password){
-              setUserID(value.data.data._id);
-              console.log(value.data.data._id);
+              setUser(value.data.data);
               // redirects to homepage
               history.push(`/personal/home/${value.data.data._id}`);
             } else {

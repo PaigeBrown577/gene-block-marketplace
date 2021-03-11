@@ -16,21 +16,19 @@ import {
   useHistory,
 } from "react-router-dom";
 
-function SendNewMessage({userID, setUserID, replyTo, buttonMessage}) {
+function SendNewMessage({user, replyTo, buttonMessage}) {
     const [toEmail, setToEmail] = useState(replyTo || "");
-    const [fromEmail, setFromEmail] = useState("");
+    const [fromEmail, setFromEmail] = useState(user ? user.email : "hello");
     const [subject, setSubject] = useState("");
     const [text, setText] = useState("");
+    // console.log("what");
 
     useEffect(() => {
-        const getUser = async () => {
-            await api.getUserById(userID).then(user => {
-              setFromEmail(user.data.data.email)
-            })
-        }
-        getUser();
-    }, [])
-    
+      // console.log(user);
+      if(user)
+        setFromEmail(user.email);
+    }, []);
+
       let history = useHistory();
     
       function validateForm() {
@@ -55,17 +53,18 @@ function SendNewMessage({userID, setUserID, replyTo, buttonMessage}) {
     
       function handleSubmit(event){
         const payload = {toEmail, fromEmail, subject, text};
-    
+        console.log(payload);
         api.insertMessage(payload).then(res => {
+          console.log(user);
           window.alert(`Message inserted successfully`);
         })
     
-        history.push(`/personal/home/${userID}`);
+        history.push(`/personal/home/${user._id}`);
       }
 
 
     return (
-        <Popup trigger={<Button variant="primary">{buttonMessage || "Send new message"}</Button>} modal>
+        <Popup trigger={<Button variant="primary" type="button">{buttonMessage || "Send new message"}</Button>} modal>
           {close => ( 
           <div>
               <div className="header"> <b>New message</b> </div>
@@ -90,7 +89,7 @@ function SendNewMessage({userID, setUserID, replyTo, buttonMessage}) {
                   </Form.Group>
                   <Button variant="primary" type="submit">Send message</Button>
                   <div class="divider"/>
-                  <Button variant="primary" onClick={() => {close()}}>Cancel</Button>
+                  <Button variant="primary" type="button" onClick={() => {close()}}>Cancel</Button>
                   {/* <Link to="/personal">
                       <Button variant="primary" type="button">Go to home</Button>
                   </Link> */}

@@ -13,7 +13,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl'
 import { useHistory } from "react-router-dom";
 
-function Profile({ userID, setUserID, posts, setPosts }) {
+function Profile({ user, setUser, posts, setPosts }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -28,20 +28,13 @@ function Profile({ userID, setUserID, posts, setPosts }) {
     let history = useHistory();
 
     useEffect(() => {
-        const getUser = async () => {
-            await api.getUserById(userID).then(user => {
-                console.log(user.data.data)
-                const oldInfo = user.data.data;
-                setEmail(oldInfo.email);
-                setPassword(oldInfo.password);
-                setConfirmPassword(oldInfo.password);
-                setName(oldInfo.name);
-                setYear(oldInfo.year);
-                setBirthday(oldInfo.birthday);
-                setPhone(oldInfo.phone);
-            })
-        }
-        getUser();
+        setEmail(user.email);
+        setPassword(user.password);
+        setConfirmPassword(user.password);
+        setName(user.name);
+        setYear(user.year);
+        setBirthday(user.birthday);
+        setPhone(user.phone);
     }, [])
 
 
@@ -49,17 +42,17 @@ function Profile({ userID, setUserID, posts, setPosts }) {
     function handleSubmit(event) {
         event.preventDefault();
         const payload = {email, password, name, year, birthday, phone};
-        console.log(payload);
+        // console.log(payload);
 
         let fileObject = fileInput.current.files[0];
-        console.log(fileObject);
+        // console.log(fileObject);
         let imageURL = URL.createObjectURL(fileInput.current.files[0]);
-        console.log(imageURL);
+        // console.log(imageURL);
 
         if(password === confirmPassword){
-            api.updateUserById(userID, payload).then(res => {
+            api.updateUserById(user._id, payload).then(res => {
                 window.alert(`User updated successfully`);
-                history.push(`/personal/home/${userID}`);
+                history.push(`/personal/home/${user._id}`);
             })
         } else {
             window.alert("Passwords don't match, try again!");

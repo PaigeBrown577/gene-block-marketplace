@@ -17,7 +17,7 @@ import {
   Link
 } from "react-router-dom";
 
-function Sidebar({ userID, setUserID }) {
+function Sidebar({ user, setUser }) {
   return (
     // <div className="sidebar">
     // <SidebarOption active IconName="home" text="Home" />
@@ -33,27 +33,27 @@ function Sidebar({ userID, setUserID }) {
     <div className="sidebar">
       {/* <SidebarOption Icon={PermIdentityIcon} text="Profile" /> */}
 
-      <Link to={`/personal/home/${userID}`}>
+      <Link to={`/personal/home/${user._id}`}>
         <SidebarOption active Icon={HomeIcon} text="Home" />
       </Link>
 
-      <Link to={`/personal/explore/${userID}`}>
+      <Link to={`/personal/explore/${user._id}`}>
         <SidebarOption Icon={SearchIcon} text="Explore" />
       </Link>
 
-      <Link to={`/personal/messages/${userID}`}>
+      <Link to={`/personal/messages/${user._id}`}>
         <SidebarOption Icon={MailOutlineIcon} text="Messages" />
       </Link>
 
-      <Link to={`/personal/postHistory/${userID}`}>
+      <Link to={`/personal/postHistory/${user._id}`}>
         <SidebarOption Icon={SettingsIcon} text="Your Posts" />
       </Link>
 
-      <Link to={`/personal/makePost/${userID}`}>
+      <Link to={`/personal/makePost/${user_.id}`}>
         <SidebarOption Icon={SettingsIcon} text="Create New Listing" />
       </Link>
 
-      <Link to={`/personal/profile/${userID}`}>
+      <Link to={`/personal/profile/${user._id}`}>
         <SidebarOption Icon={SettingsIcon} text="Profile" />
       </Link>
 

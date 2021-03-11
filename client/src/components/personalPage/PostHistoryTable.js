@@ -51,7 +51,7 @@ const useStyles = makeStyles({
   },
 });
 
-function ViewMorePopup ({title, tag, price, text, image, date, meeting_location, userID, setUserID}) {
+function ViewMorePopup ({title, tag, price, text, image, date, meeting_location, user}) {
     return (
         <Popup trigger={<Button variant="primary">View more</Button>} modal>
           {close => ( 
@@ -72,14 +72,14 @@ function ViewMorePopup ({title, tag, price, text, image, date, meeting_location,
               <div className="divider"></div>
               <Button variant="primary" onClick={() => {close()}}>Close</Button>
 
-          </div>   
+          </div>
           )}
       </Popup>
     );
 }
 
 
-export default function PostHistoryTable({userID, setUserID, posts, setPosts}) {
+export default function PostHistoryTable({user, posts, setPosts}) {
   const classes = useStyles();
 
   const [searchbarValue, setSearchbarValue] = useState("");
@@ -96,8 +96,11 @@ export default function PostHistoryTable({userID, setUserID, posts, setPosts}) {
 
   // need to filter out posts, only get the ones written by the current user
   let filteredPosts = posts;
-  // CODE GOES HERE ROHIT, just assign filteredPosts to the correct thing
-  
+
+  filteredPosts = posts.filter((post) => {
+  //   console.log(post.email, user.email);
+    return post.email === user.email;
+  })
 
   let searchFilteredPosts = filteredPosts.filter((post) => {
     let search = searchbarValue.toLowerCase();
@@ -139,7 +142,7 @@ export default function PostHistoryTable({userID, setUserID, posts, setPosts}) {
                 {post.title}
               </StyledTableCell>
               <StyledTableCell align="left" class="td">{post.tag}</StyledTableCell>
-              <StyledTableCell align="center" class="td"> <ViewMorePopup title={post.title} tag={post.tag} price={post.price} text={post.text} image={post.image} date={post.date} meeting_location={post.meeting_location} userID={userID} setUserID={setUserID} /> </StyledTableCell>
+              <StyledTableCell align="center" class="td"> <ViewMorePopup title={post.title} tag={post.tag} price={post.price} text={post.text} image={post.image} date={post.date} meeting_location={post.meeting_location} user={user}/> </StyledTableCell>
               <StyledTableCell align="center" class="td"><Button variant="primary" onClick={handleDeleteClick}> Delete</Button></StyledTableCell> 
             
             </StyledTableRow>

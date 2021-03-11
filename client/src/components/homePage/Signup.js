@@ -12,7 +12,7 @@ import Col from 'react-bootstrap/Col';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl'
 
-function Signup({ userID, setUserID }) {
+function Signup({ user, setUser }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -33,7 +33,7 @@ function Signup({ userID, setUserID }) {
       event.preventDefault();
 
       const payload = {email, password, name, year, birthday, phone};
-      console.log(payload);
+      // console.log(payload);
 
       let user = api.getUserByEmail(email);
       user.then((value) => {
@@ -51,13 +51,11 @@ function Signup({ userID, setUserID }) {
         }
 
         user = api.getUserByEmail(email);
-        console.log(email);
+        // console.log(email);
         user.then((value) => {
-          console.log(value, value.data, value.data.data);
-          const id = value.data.data._id;
-          setUserID(id);
+          setUser(value.data.data);
           // redirects to personal page
-          history.push(`/personal/home/${id}`);
+          history.push(`/personal/home/${value.data.data._id}`);
         });
       });
     }
@@ -80,13 +78,13 @@ function Signup({ userID, setUserID }) {
   }
 
   const handleYearChange = (event) => {
-      console.log(event.target.value);
+      // console.log(event.target.value);
       setYear(event.target.value);
   }
 
   const handleBirthdayChange = (event) => {
       setBirthday(event.target.value);
-      console.log(event.target.value);
+      // console.log(event.target.value);
   }
 
   const handlePhoneChange = (event) => {
