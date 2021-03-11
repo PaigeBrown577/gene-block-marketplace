@@ -55,12 +55,12 @@ function createData(subject, fromEmail, text) {
 
 
 let rows = [
-    // createData("u up ;)", "CadeMeraz@ucla.com", "Rohit wake up"),
-    // createData("looking for husband", "RohitGouldthorpe@ucla.com", "hackathon time"),
-    // createData("1", "RyanRosenthal@ucla.com", "11"),
-    // createData("2", "AmritaChew@ucla.com", "12"),
-    // createData("3", "OliveSatoor@ucla.com", "13"),
-    // createData("4", "VarshiniFengel@ucla.com", "14"),
+    createData("u up ;)", "CadeMeraz@ucla.com", "Rohit wake up"),
+    createData("looking for husband", "RohitGouldthorpe@ucla.com", "hackathon time"),
+    createData("1", "RyanRosenthal@ucla.com", "11"),
+    createData("2", "AmritaChew@ucla.com", "12"),
+    createData("3", "OliveSatoor@ucla.com", "13"),
+    createData("4", "VarshiniFengel@ucla.com", "14"),
 ];
 
 const useStyles = makeStyles({
@@ -119,10 +119,8 @@ export default function MessagesTable({user}) {
     let messageData = [];
     const getMessages = async () => {
       await api.getAllMessages().then(message => {
-        console.log(message.data.data);
         messageData = message.data.data;
-        console.log(messageData);
-          setMessages(message.data.data)
+        setMessages(message.data.data)
 
       rows = [];
       console.log(messageData);
