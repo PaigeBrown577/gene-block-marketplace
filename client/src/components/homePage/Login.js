@@ -74,7 +74,7 @@ function Login({ user, setUser }) {
           </Form>
         <p>
         Don't have an account yet? <br />
-            <a href="/signup">Click here !</a>
+            <a href="/signup">Click here!</a>
           </p>
     </div>
     </div>

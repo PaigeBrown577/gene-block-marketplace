@@ -87,14 +87,12 @@ function Feed({ posts, setPosts, user }) {
           <Post
             key={index}
             displayName={post.displayName}
-            username={post.username}
             tag={post.tag}
             date={post.date}
             title={post.title}
             price={post.price}
             text={post.text}
             avatar={post.avatar}
-            image={post.image}
             meeting_location = {post.meeting_location}
             displayDeleteButton = {post.displayDeleteButton}
             email = {post.email}

@@ -131,7 +131,6 @@ function Explore({posts, setPosts}) {
                 <Post
                     key={index}
                     displayName={post.displayName}
-                    username={post.username}
                     tag={post.tag}
                     date={post.date}
                     title={post.title}

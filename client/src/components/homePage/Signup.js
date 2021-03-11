@@ -101,10 +101,6 @@ function Signup({ user, setUser }) {
               <Form.Label>Hi, What is Your Name?</Form.Label>
               <Form.Control type="text" placeholder="Name" value={name} onChange={handleNameChange} required/>
           </Form.Group>
-          <Form.Group controlId="exampleForm.ControlInput1" className = "box">
-              <Form.Label>And What Should We Call You?</Form.Label>
-              <Form.Control type="text" placeholder="Enter a username" value={name} onChange={handleNameChange} required/>
-          </Form.Group>
           <Form.Group size="lg" controlId="email" className = "box">
             <Form.Label>Email</Form.Label>
             <Form.Control
