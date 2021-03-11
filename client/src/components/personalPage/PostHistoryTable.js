@@ -70,7 +70,7 @@ function ViewMorePopup ({title, tag, price, text, image, date, meeting_location,
 
               <Button variant="primary" onClick={() => {close()}}>Close</Button>
 
-          </div>   
+          </div>
           )}
       </Popup>
     );
@@ -94,8 +94,11 @@ export default function PostHistoryTable({user, posts, setPosts}) {
 
   // need to filter out posts, only get the ones written by the current user
   let filteredPosts = posts;
-  // CODE GOES HERE ROHIT, just assign filteredPosts to the correct thing
-  
+
+  filteredPosts = posts.filter((post) => {
+    console.log(post.email, user.email);
+    return post.email === user.email;
+  })
 
   let searchFilteredPosts = filteredPosts.filter((post) => {
     let search = searchbarValue.toLowerCase();
