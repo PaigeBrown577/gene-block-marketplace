@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -21,6 +21,7 @@ import "../../styles/PostHistoryTable.css"
 import FlipMove from "react-flip-move";
 
 import SendNewMessage from "./SendNewMessage";
+import { useHistory } from 'react-router-dom';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -41,11 +42,7 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 
 
-// need to delete from the database
-function handleDeleteClick(_id) {
-  console.log("hello", _id);
-  //  api.deletePostById(_id);
-}
+
 
 const useStyles = makeStyles({
   table: {
@@ -71,7 +68,7 @@ function ViewMorePopup ({title, tag, price, text, image, date, meeting_location,
 
               <p></p>
 
-              <Button color="#1DA1F2" variant="primary" onClick={() => handleDeleteClick(_id)}>Delete Post</Button>
+              {/* <Button color="#1DA1F2" variant="primary" onClick={() => handleDeleteClick(_id)}>Delete Post</Button> */}
               <div className="divider"></div>
               <Button variant="primary" onClick={() => {close()}}>Close</Button>
 
@@ -82,10 +79,48 @@ function ViewMorePopup ({title, tag, price, text, image, date, meeting_location,
 }
 
 
-export default function PostHistoryTable({user, posts, setPosts}) {
+function PostHistoryTable({user, posts, setPosts}) {
   const classes = useStyles();
 
   const [searchbarValue, setSearchbarValue] = useState("");
+  const [filteredPosts, setFilteredPosts] = useState([]);
+
+  let history = useHistory();
+
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
+
+  // need to delete from the database
+  function handleDeleteClick(id) {
+    console.log("hello", id);
+    api.deletePostById(id);
+    alert("Deleted post");
+
+    // redirect back to this pages
+    // history.push(`/personal/postHistory/${user._id}`);
+
+    refreshPage();
+  }
+
+
+
+  const getPosts = async () => {
+    await api.getAllPosts().then(post => {
+      // console.log(post.data.data)
+      // if(post.data.data !== posts)
+        setPosts(post.data.data)
+    })
+  }
+
+  useEffect(getPosts, []);
+
+  let tempFilteredPosts = posts.filter((post) => {
+    //   console.log(post.email, user.email);
+      return post.email === user.email;
+    })
+
 
   const handleSearchbarChange = (event) => {
     setSearchbarValue(event.target.value);
@@ -98,14 +133,14 @@ export default function PostHistoryTable({user, posts, setPosts}) {
   const shouldDisplayClearButton = searchbarValue.length > 0;
 
   // need to filter out posts, only get the ones written by the current user
-  let filteredPosts = posts;
+  // let filteredPosts = posts;
 
-  filteredPosts = posts.filter((post) => {
-  //   console.log(post.email, user.email);
-    return post.email === user.email;
-  })
+  // console.log(posts.length);
+  // console.log(tempFilteredPosts.length);
+  // console.log(filteredPosts.length);
 
-  let searchFilteredPosts = filteredPosts.filter((post) => {
+
+  let searchFilteredPosts = tempFilteredPosts.filter((post) => {
     let search = searchbarValue.toLowerCase();
 
     let lowercaseTag = post.tag.toLowerCase();
@@ -146,7 +181,7 @@ export default function PostHistoryTable({user, posts, setPosts}) {
               </StyledTableCell>
               <StyledTableCell align="left" class="td">{post.tag}</StyledTableCell>
               <StyledTableCell align="center" class="td"> <ViewMorePopup title={post.title} tag={post.tag} price={post.price} text={post.text} image={post.image} date={post.date} meeting_location={post.meeting_location} user={user} _id={post._id}/> </StyledTableCell>
-              <StyledTableCell align="center" class="td"><Button variant="primary" onClick={handleDeleteClick}> Delete</Button></StyledTableCell> 
+              <StyledTableCell align="center" class="td"><Button variant="primary" onClick={() => handleDeleteClick(post._id)}> Delete</Button></StyledTableCell> 
             </StyledTableRow>
           ))}
         </TableBody>
@@ -155,3 +190,6 @@ export default function PostHistoryTable({user, posts, setPosts}) {
     </div> 
   );
 }
+
+
+export default PostHistoryTable;
