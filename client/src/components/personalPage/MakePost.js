@@ -22,13 +22,17 @@ function MakePost({ posts, setPosts, userID, setUserID }) {
     const [otherMeetingLocation, setOtherMeetingLocation] = useState("");
     const [image, setImage] = useState("");
 
-    const [finalMeetingLocation, setFinalMeetingLocation] = useState("");
+    const [finalMeetingLocation, setFinalMeetingLocation] = useState("Powell");
     // this is the actual one that gets submitted to the database, after considering the user's
     // input into the dropdown menu and the other location textbox
 
 
     // for redirecting to homepage on submission
     let history = useHistory();
+
+
+    let fileInput = React.createRef();
+
 
     const handleTitleChange = (event) => {
         setTitle(event.target.value);
@@ -94,6 +98,19 @@ function MakePost({ posts, setPosts, userID, setUserID }) {
         console.log(userID);
         const user = api.getUserById(userID);
 
+        let fileObject = fileInput.current.files;
+        console.log(fileObject);
+        // this is an object
+        // it has a length property
+
+        // for loop to make sure we get all the files
+        for (let i = 0; i < fileObject.length; i++)
+        {
+            let imageURL = URL.createObjectURL(fileInput.current.files[i]);
+            console.log(imageURL);
+        }
+
+
         user.then((value) => {
             const name = value.data.data.name;
             setDisplayName(name);
@@ -142,7 +159,7 @@ function MakePost({ posts, setPosts, userID, setUserID }) {
                     <Form.Control className="inputBoxes" as="textarea" rows={5} value={description} onChange={handleDescriptionChange} />
                 </Form.Group>
                 <Form.Group>
-                    <Form.File id="exampleFormControlFile1" label="(optional) Upload images" type="file" onChange={(e) => setImage(e.target.files[0].name)}/>
+                    <Form.File id="exampleFormControlFile1" label="(optional) Upload images" type="file" multiple ref={fileInput} />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect1">
                     <Form.Label>Meeting Location</Form.Label>

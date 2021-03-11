@@ -13,7 +13,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl'
 import { useHistory } from "react-router-dom";
 
-function Profile({ userID, setUserID }) {
+function Profile({ userID, setUserID, posts, setPosts }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -21,6 +21,9 @@ function Profile({ userID, setUserID }) {
     const [year, setYear] = useState("");
     const [birthday, setBirthday] = useState("");
     const [phone, setPhone] = useState("");
+
+    let fileInput = React.createRef();
+
 
     let history = useHistory();
 
@@ -42,10 +45,16 @@ function Profile({ userID, setUserID }) {
     }, [])
 
 
+
     function handleSubmit(event) {
         event.preventDefault();
         const payload = {email, password, name, year, birthday, phone};
         console.log(payload);
+
+        let fileObject = fileInput.current.files[0];
+        console.log(fileObject);
+        let imageURL = URL.createObjectURL(fileInput.current.files[0]);
+        console.log(imageURL);
 
         if(password === confirmPassword){
             api.updateUserById(userID, payload).then(res => {
@@ -87,110 +96,14 @@ function Profile({ userID, setUserID }) {
         setConfirmPassword(event.target.value);
       }
 
+
+
+
   return (
       <div className="profile">
         <h1 className="profile">Profile</h1>
 
         <div className="profileForm">
-            {/*<Form>
-                <Form.Group controlId="exampleForm.ControlInput1">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="" value={email} onChange={handleEmailChange} />
-                </Form.Group>
-                <Form.Group controlId="exampleForm.ControlInput1">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control className="inputBoxes" type="password" placeholder="" value={password} onChange={handlePasswordChange} />
-                </Form.Group>
-                <Form.Group controlId="exampleForm.ControlInput1">
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" placeholder="" value={name} onChange={handleNameChange} />
-                </Form.Group>
-                <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label>Year</Form.Label>
-                    <Form.Control as="select" className="inputBoxes" value={year} onChange={handleYearChange} >
-                    <option>Freshman</option>
-                    <option>Sophomore</option>
-                    <option>Junior</option>
-                    <option>Senior</option>
-                    </Form.Control>
-                </Form.Group>
-                <Form.Group controlId="exampleForm.ControlInput1">
-                    <Form.Label>Birthday</Form.Label>
-                    <Form.Control className="inputBoxes" type="text" placeholder="mm/dd/yyyy" value={birthday} onChange={handleBirthdayChange} />
-
-                    {/* <Form.Row className="align-items-center">
-                        <Col sm={4} className="my-1">
-                            <Form.Control as="select" className="inputBoxes">
-                            <option>January</option>
-                            <option>February</option>
-                            <option>March</option>
-                            <option>April</option>
-                            <option>May</option>
-                            <option>June</option>
-                            <option>July</option>
-                            <option>August</option>
-                            <option>September</option>
-                            <option>October</option>
-                            <option>November</option>
-                            <option>December</option>
-                            </Form.Control>
-                        </Col>
-                        <Col sm={3} className="my-1">
-                            <Form.Control as="select" className="inputBoxes">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                                <option>11</option>
-                                <option>12</option>
-                                <option>13</option>
-                                <option>14</option>
-                                <option>15</option>
-                                <option>16</option>
-                                <option>17</option>
-                                <option>18</option>
-                                <option>19</option>
-                                <option>20</option>
-                                <option>21</option>
-                                <option>22</option>
-                                <option>23</option>
-                                <option>24</option>
-                                <option>25</option>
-                                <option>26</option>
-                                <option>27</option>
-                                <option>28</option>
-                                <option>29</option>
-                                <option>30</option>
-                                <option>31</option>
-                            </Form.Control>
-                        </Col>
-                        <Col sm={3} className="my-1"> 
-                            <Form.Control type="text" placeholder="year" className="inputBoxes"/>
-                        </Col>
-                    </Form.Row> 
-                </Form.Group>
-                <Form.Group controlId="exampleForm.ControlInput1">
-                    <Form.Label>Phone Number</Form.Label>
-                    <Form.Control className="inputBoxes" type="text" placeholder="13101234567" value={phone} onChange={handlePhoneChange} />
-                    <Form.Text className="text-muted">
-                        Please enter number without parentheses or spaces or dashes.
-                    </Form.Text>
-                </Form.Group>
-                <Form.Group>
-                    <Form.File id="exampleFormControlFile1" label="Change profile picture" />
-                </Form.Group>
-
-                <Button variant="primary" type="submit">Save changes</Button>
-                <div className="divider"/>
-                <Button variant="primary" type="submit">Cancel</Button>
-            </Form>
-            */}
 
         <Form onSubmit={handleSubmit}>
           <Form.Group size="lg" controlId="email">
@@ -214,6 +127,7 @@ function Profile({ userID, setUserID }) {
             <Form.Control
               className="inputBoxes"
               type="password" required
+              minLength="8"
               value={confirmPassword}
               onChange={handleConfirmPasswordChange}
             />
@@ -246,6 +160,9 @@ function Profile({ userID, setUserID }) {
                   Format: 123-456-7890
               </Form.Text>
           </Form.Group>
+          <Form.Group>
+                <Form.File id="exampleFormControlFile1" label="Change Profile Picture" ref={fileInput} />
+          </Form.Group>
 
           {/* <Button block size="lg" type="submit" disabled={!validateForm()}>
           <a href="/login" style={{color:"white"}}>Signup </a>
@@ -258,3 +175,106 @@ function Profile({ userID, setUserID }) {
 }
 
 export default Profile;
+
+
+
+
+{/*<Form>
+    <Form.Group controlId="exampleForm.ControlInput1">
+        <Form.Label>Email</Form.Label>
+        <Form.Control type="email" placeholder="" value={email} onChange={handleEmailChange} />
+    </Form.Group>
+    <Form.Group controlId="exampleForm.ControlInput1">
+        <Form.Label>Password</Form.Label>
+        <Form.Control className="inputBoxes" type="password" placeholder="" value={password} onChange={handlePasswordChange} />
+    </Form.Group>
+    <Form.Group controlId="exampleForm.ControlInput1">
+        <Form.Label>Name</Form.Label>
+        <Form.Control type="text" placeholder="" value={name} onChange={handleNameChange} />
+    </Form.Group>
+    <Form.Group controlId="exampleForm.ControlSelect1">
+        <Form.Label>Year</Form.Label>
+        <Form.Control as="select" className="inputBoxes" value={year} onChange={handleYearChange} >
+        <option>Freshman</option>
+        <option>Sophomore</option>
+        <option>Junior</option>
+        <option>Senior</option>
+        </Form.Control>
+    </Form.Group>
+    <Form.Group controlId="exampleForm.ControlInput1">
+        <Form.Label>Birthday</Form.Label>
+        <Form.Control className="inputBoxes" type="text" placeholder="mm/dd/yyyy" value={birthday} onChange={handleBirthdayChange} />
+
+        {/* <Form.Row className="align-items-center">
+            <Col sm={4} className="my-1">
+                <Form.Control as="select" className="inputBoxes">
+                <option>January</option>
+                <option>February</option>
+                <option>March</option>
+                <option>April</option>
+                <option>May</option>
+                <option>June</option>
+                <option>July</option>
+                <option>August</option>
+                <option>September</option>
+                <option>October</option>
+                <option>November</option>
+                <option>December</option>
+                </Form.Control>
+            </Col>
+            <Col sm={3} className="my-1">
+                <Form.Control as="select" className="inputBoxes">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    <option>17</option>
+                    <option>18</option>
+                    <option>19</option>
+                    <option>20</option>
+                    <option>21</option>
+                    <option>22</option>
+                    <option>23</option>
+                    <option>24</option>
+                    <option>25</option>
+                    <option>26</option>
+                    <option>27</option>
+                    <option>28</option>
+                    <option>29</option>
+                    <option>30</option>
+                    <option>31</option>
+                </Form.Control>
+            </Col>
+            <Col sm={3} className="my-1"> 
+                <Form.Control type="text" placeholder="year" className="inputBoxes"/>
+            </Col>
+        </Form.Row> 
+    </Form.Group>
+    <Form.Group controlId="exampleForm.ControlInput1">
+        <Form.Label>Phone Number</Form.Label>
+        <Form.Control className="inputBoxes" type="text" placeholder="13101234567" value={phone} onChange={handlePhoneChange} />
+        <Form.Text className="text-muted">
+            Please enter number without parentheses or spaces or dashes.
+        </Form.Text>
+    </Form.Group>
+    <Form.Group>
+        <Form.File id="exampleFormControlFile1" label="Change profile picture" />
+    </Form.Group>
+
+    <Button variant="primary" type="submit">Save changes</Button>
+    <div className="divider"/>
+    <Button variant="primary" type="submit">Cancel</Button>
+</Form>
+*/}

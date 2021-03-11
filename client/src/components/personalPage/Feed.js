@@ -7,7 +7,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import api from "../../api"
 
 
-function Feed({ posts, setPosts }) {
+function Feed({ posts, setPosts, userID, setUserID }) {
   const [searchbarValue, setSearchbarValue] = useState("");
 
 
@@ -52,12 +52,15 @@ function Feed({ posts, setPosts }) {
       </div> */}
 
 
-      <div className="searchBar">
+      {/* <div className="searchBar">
           <SearchIcon className="widgets__searchIcon" />
           <input placeholder="Search" type="text" value={searchbarValue} onChange={handleSearchbarChange} />
           {shouldDisplayClearButton && <button onClick={handleClearClick}>clear</button>} 
       </div>
 
+      <hr/> */}
+
+      <h1>Main Feed</h1>
       <hr/>
 
       <FlipMove>
@@ -74,6 +77,8 @@ function Feed({ posts, setPosts }) {
             avatar={post.avatar}
             image={post.image}
             meeting_location = {post.meeting_location}
+            userID={userID}
+            setUserID={setUserID}
           />
         ))}
 

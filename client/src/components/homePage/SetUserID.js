@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 function SetUserID({ userID, setUserID }) {
 
     useEffect(() => {
-        let dummyUserID = "60443c81ea08502f6daf2b48"
+        let dummyUserID = "604544ee29ab881613ad43b1"
         setUserID(dummyUserID);
     }, [])
 
