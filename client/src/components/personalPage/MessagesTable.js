@@ -102,7 +102,7 @@ function ViewMorePopup ({subject, fromEmail, text, user}) {
               <div className="divider"></div>
               <Button variant="primary" onClick={() => {close()}}>Close</Button>
 
-          </div>   
+          </div>
           )}
       </Popup>
     );
@@ -125,7 +125,7 @@ export default function MessagesTable({user}) {
       rows = [];
       console.log(messageData);
       for (let i  = 0; i < messageData.length; i++){
-        rows.push(createData(messageData[i].subject, messageData[i].toEmail, messageData[i].text));
+        rows.push(createData(messageData[i].subject, messageData[i].fromEmail, messageData[i].text));
       }
       console.log(rows);
     })

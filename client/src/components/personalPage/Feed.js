@@ -99,6 +99,7 @@ function Feed({ posts, setPosts, user }) {
             displayDeleteButton = {post.displayDeleteButton}
             email = {post.email}
             user = {user}
+            _id = {post._id}
           />
         ))}
 

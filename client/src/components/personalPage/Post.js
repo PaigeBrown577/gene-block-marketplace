@@ -14,7 +14,7 @@ import SendNewMessage from "./SendNewMessage";
 
 
 const Post = forwardRef(
-  ({ displayName, username, text, image, avatar, date, tag, title, price, meeting_location, displayDeleteButton, deletePost, user, email}, ref) => {
+  ({ displayName, username, text, image, avatar, date, tag, title, price, meeting_location, displayDeleteButton, deletePost, user, email, _id}, ref) => {
 
     return (
       <div className="post" ref={ref}>

@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
+var path = require('path');
+var dotenv = require('dotenv');
+dotenv.config();
 
-// var dotenv = require('dotenv');
-// dotenv.config();
-
-// const url = process.env.MONGO_URI;
+// const url = process.env.MONGO_URL;
 const uri = 'mongodb+srv://rghosh:bmarket@block-marketplace.0z7u0.mongodb.net/bmarket_db?retryWrites=true&w=majority';
 
 mongoose

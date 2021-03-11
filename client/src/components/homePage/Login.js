@@ -71,7 +71,7 @@ function Login({ user, setUser }) {
               />
             </Form.Group>
             <Button block size="lg" variant="primary" type="submit" disabled={!validateForm()}>Login</Button>
-          </Form> 
+          </Form>
         <p>
         Don't have an account yet? <br />
             <a href="/signup">Click here !</a>

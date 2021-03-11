@@ -8,6 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Image from 'react';
+import api from '../../api';
 
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
@@ -41,8 +42,9 @@ const StyledTableRow = withStyles((theme) => ({
 
 
 // need to delete from the database
-const handleDeleteClick = () => {
-    console.log("Deleted post");
+function handleDeleteClick(_id) {
+  console.log("hello", _id);
+  //  api.deletePostById(_id);
 }
 
 const useStyles = makeStyles({
@@ -51,10 +53,11 @@ const useStyles = makeStyles({
   },
 });
 
-function ViewMorePopup ({title, tag, price, text, image, date, meeting_location, user}) {
+function ViewMorePopup ({title, tag, price, text, image, date, meeting_location, user, _id}) {
+  console.log(_id);
     return (
         <Popup trigger={<Button variant="primary">View more</Button>} modal>
-          {close => ( 
+          {close => (
           <div>
               <div className="header" className="popUpText"> <b>{title}</b> </div>
               <div>Tag: {tag}</div>
@@ -68,7 +71,7 @@ function ViewMorePopup ({title, tag, price, text, image, date, meeting_location,
 
               <p></p>
 
-              <Button color="#1DA1F2" variant="primary" onClick={handleDeleteClick}>Delete Post</Button>
+              <Button color="#1DA1F2" variant="primary" onClick={() => handleDeleteClick(_id)}>Delete Post</Button>
               <div className="divider"></div>
               <Button variant="primary" onClick={() => {close()}}>Close</Button>
 
@@ -142,9 +145,8 @@ export default function PostHistoryTable({user, posts, setPosts}) {
                 {post.title}
               </StyledTableCell>
               <StyledTableCell align="left" class="td">{post.tag}</StyledTableCell>
-              <StyledTableCell align="center" class="td"> <ViewMorePopup title={post.title} tag={post.tag} price={post.price} text={post.text} image={post.image} date={post.date} meeting_location={post.meeting_location} user={user}/> </StyledTableCell>
+              <StyledTableCell align="center" class="td"> <ViewMorePopup title={post.title} tag={post.tag} price={post.price} text={post.text} image={post.image} date={post.date} meeting_location={post.meeting_location} user={user} _id={post._id}/> </StyledTableCell>
               <StyledTableCell align="center" class="td"><Button variant="primary" onClick={handleDeleteClick}> Delete</Button></StyledTableCell> 
-            
             </StyledTableRow>
           ))}
         </TableBody>

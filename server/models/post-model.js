@@ -10,7 +10,10 @@ const Post = new Schema(
             title: { type: String, required: true },
             price: { type: Number, required: true },
             text: { type: String, required: false },
-            image: {type: [String], required: false },
+            image: {
+                data: Buffer,
+                contentType: String
+            },
             meeting_location: {type : String, require: true},
             email: {type: String, require: true},
     },

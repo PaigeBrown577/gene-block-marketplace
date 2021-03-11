@@ -126,8 +126,7 @@ function MakePost({ posts, setPosts, user, setUser }) {
         const userID = user._id;
         const email = user.email;
         const payload = {name, tag, date, title, price, description, finalMeetingLocation, userID, imageArray, email};
-
-        console.log("hello?");
+        
         api.insertPost(payload).then(res => {
             window.alert(`Post inserted successfully`)
         })
