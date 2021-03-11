@@ -46,7 +46,7 @@ function Sidebar({ userID, setUserID }) {
       </Link>
 
       <Link to={`/personal/makePost/${userID}`}>
-        <SidebarOption Icon={SettingsIcon} text="Make A New Post" />
+        <SidebarOption Icon={SettingsIcon} text="Create New Listing" />
       </Link>
 
       <Link to={`/personal/profile/${userID}`}>

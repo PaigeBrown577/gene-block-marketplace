@@ -119,7 +119,7 @@ function MakePost({ posts, setPosts, userID, setUserID }) {
 
   return (
       <div className="makepost">
-        <h1 className="makepost">Make a New Post</h1>
+        <h1 className="makepost">Create New Listing</h1>
 
         {/* <DropdownMultiselect
         options={["Australia", "Canada", "USA", "Poland", "Spain", "France"]}
