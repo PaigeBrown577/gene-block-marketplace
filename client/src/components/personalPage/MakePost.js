@@ -3,6 +3,8 @@ import "../../styles/MakePost.css";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import swal from 'sweetalert';
+
 import api, {getPostById, getUserByID } from "../../api"
 
 import { useHistory } from "react-router-dom";
@@ -21,7 +23,6 @@ function MakePost({ posts, setPosts, user, setUser }) {
     const [description, setDescription] = useState("");
     const [dropdownMeetingLocation, setDropdownMeetingLocation] = useState("Powell");
     const [otherMeetingLocation, setOtherMeetingLocation] = useState("");
-    const [image, setImage] = useState("");
 
     const [finalMeetingLocation, setFinalMeetingLocation] = useState("Powell");
     // this is the actual one that gets submitted to the database, after considering the user's
@@ -48,14 +49,14 @@ function MakePost({ posts, setPosts, user, setUser }) {
     }
 
     const handleImageChange = (event) => {
-        var input = document.getElementById(event.target.value);
-        var fReader = new FileReader();
-        console.log(input);
-        fReader.readAsDataURL(input.files[0]);
-        fReader.onloadend = function(event){
-            var img = document.getElementById("exampleFormControlFile1");
-            img.src = event.target.result;
-        }
+        // var input = document.getElementById(event.target.value);
+        // var fReader = new FileReader();
+        // console.log(input);
+        // fReader.readAsDataURL(input.files[0]);
+        // fReader.onloadend = function(event){
+        //     var img = document.getElementById("exampleFormControlFile1");
+        //     img.src = event.target.result;
+        // }
     }
 
     const handleDropdownLocationChange = (event) => {
@@ -80,6 +81,11 @@ function MakePost({ posts, setPosts, user, setUser }) {
         setTag(event.target.value);
     }
 
+    function validateForm() {
+        return title.length > 0 && price.length > 0;
+      }
+  
+
 
     // don't know how to deal with uploaded images yet
 
@@ -97,23 +103,10 @@ function MakePost({ posts, setPosts, user, setUser }) {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        let fileObject = fileInput.current.files;
         // console.log(fileObject);
         // this is an object
         // it has a length property
 
-        let reader = new FileReader();
-
-        let imageArray = []
-        // for loop to make sure we get all the files
-        for (let i = 0; i < fileObject.length; i++)
-        {
-            // let imageURL = URL.createObjectURL(fileInput.current.files[i]);
-            // imageArray = imageURL;
-            // imageArray.push(imageURL);
-        }
-
-        setImage(imageArray);
         const name = user.name;
         setDisplayName(name);
 
@@ -125,10 +118,10 @@ function MakePost({ posts, setPosts, user, setUser }) {
         // imageArray = imageArray[0];
         const userID = user._id;
         const email = user.email;
-        const payload = {name, tag, date, title, price, description, finalMeetingLocation, userID, imageArray, email};
-        
+        const payload = {name, tag, date, title, price, description, finalMeetingLocation, userID, email};
+
         api.insertPost(payload).then(res => {
-            window.alert(`Post inserted successfully`)
+            swal("Post uploaded successfully!", "", "success");
         })
 
         // redirects to homepage
@@ -152,18 +145,15 @@ function MakePost({ posts, setPosts, user, setUser }) {
             <Form onSubmit={handleSubmit} >
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Title</Form.Label>
-                    <Form.Control className="inputBoxes" type="text" placeholder="Title" value={title} onChange={handleTitleChange} />
+                    <Form.Control className="inputBoxes" type="text" placeholder="Title" value={title} onChange={handleTitleChange} required />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Price ($)</Form.Label>
-                    <Form.Control className="inputBoxes" type="number" placeholder="Price" min="0.00" step="0.01" value={price} onChange={handlePriceChange} />
+                    <Form.Control className="inputBoxes" type="number" placeholder="Price" min="0.00" step="0.01" value={price} onChange={handlePriceChange} required/>
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Description</Form.Label>
                     <Form.Control className="inputBoxes" as="textarea" rows={5} value={description} onChange={handleDescriptionChange} />
-                </Form.Group>
-                <Form.Group>
-                    <Form.File id="exampleFormControlFile1" label="(optional) Upload images" type="file" multiple ref={fileInput} />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect1">
                     <Form.Label>Meeting Location</Form.Label>
@@ -196,7 +186,7 @@ function MakePost({ posts, setPosts, user, setUser }) {
                     name="tags"
                     />
                 </Form.Group> */}
-                <Button variant="primary" type="submit">Post</Button>
+                <Button variant="primary" type="submit" disabled={!validateForm()}>Post</Button>
             </Form>
         </div>
       </div>

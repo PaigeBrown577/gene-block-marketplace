@@ -18,9 +18,9 @@ function Feed({ posts, setPosts, user }) {
 
       let postArray = posts.data.data;
 
-      console.log("is this even called?");
+      // console.log("is this even called?");
         for(let i = 0; i < postArray.length; i++){
-          console.log(postArray[i].userID, user._id);
+          // console.log(postArray[i].userID, user._id);
 
           if(postArray[i].userID === user._id){
             postArray[i].displayDeleteButton = true;
@@ -87,14 +87,12 @@ function Feed({ posts, setPosts, user }) {
           <Post
             key={index}
             displayName={post.displayName}
-            username={post.username}
             tag={post.tag}
             date={post.date}
             title={post.title}
             price={post.price}
             text={post.text}
             avatar={post.avatar}
-            image={post.image}
             meeting_location = {post.meeting_location}
             displayDeleteButton = {post.displayDeleteButton}
             email = {post.email}

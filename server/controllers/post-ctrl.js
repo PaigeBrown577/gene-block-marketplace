@@ -4,7 +4,6 @@ createPost = (req, res) => {
     const body = req.body;
     body.displayName = body.name;
     body.meeting_location = body.finalMeetingLocation;
-    body.image = body.imageArray;
 
     if (!body) {
         return res.status(400).json({
@@ -61,7 +60,6 @@ updatePost = async (req, res) => {
         post.price = body.price;
         post.text = body.text;
         post.meeting_location = body.meeting_location;
-        post.image = body.image;
         post.email = body.email;
         post
             .save()

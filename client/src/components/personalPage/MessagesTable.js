@@ -77,8 +77,8 @@ const handleReadClick = () => {
     // couldn't get it to run automatically when you press view more
     // it's ugly but it works
 
-    console.log("message read");
-    alert("Message marked as read");
+    // console.log("message read");
+    // alert("Message marked as read");
 
 }
 

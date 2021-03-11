@@ -31,7 +31,7 @@ function Messages({user}) {
     <div className="messages">
       <h1 className="messages">Messages</h1>
       <div className="sendNewMessage"> 
-      <SendNewMessage userID={user}/>
+      <SendNewMessage user={user}/>
       </div>
       <p></p>
       <MessagesTable user={user} className="table"/>
