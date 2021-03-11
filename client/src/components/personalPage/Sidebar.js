@@ -49,7 +49,7 @@ function Sidebar({ user, setUser }) {
         <SidebarOption Icon={SettingsIcon} text="Your Posts" />
       </Link>
 
-      <Link to={`/personal/makePost/${user_.id}`}>
+      <Link to={`/personal/makePost/${user._id}`}>
         <SidebarOption Icon={SettingsIcon} text="Create New Listing" />
       </Link>
 

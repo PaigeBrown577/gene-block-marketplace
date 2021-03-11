@@ -51,7 +51,6 @@ function Login({ user, setUser }) {
     return (
     <div className="background"> 
     <div className="Login"> 
-      <form>
         <h1>Login</h1>
           <Form onSubmit={handleSubmit}>
             <Form.Group className = "box" size="lg" controlId="email" >
@@ -73,7 +72,6 @@ function Login({ user, setUser }) {
             </Form.Group>
             <Button block size="lg" variant="primary" type="submit" disabled={!validateForm()}>Login</Button>
           </Form> 
-      </form>
         <p>
         Don't have an account yet? <br />
             <a href="/signup">Click here !</a>
