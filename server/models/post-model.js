@@ -12,7 +12,7 @@ const Post = new Schema(
             text: { type: String, required: false },
             image: {type: [String], required: false },
             meeting_location: {type : String, require: true},
-
+            email: {type: String, require: true},
     },
     { timestamps: true },
 )

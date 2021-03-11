@@ -62,6 +62,7 @@ updatePost = async (req, res) => {
         post.text = body.text;
         post.meeting_location = body.meeting_location;
         post.image = body.image;
+        post.email = body.email;
         post
             .save()
             .then(() => {

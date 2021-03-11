@@ -14,7 +14,7 @@ import SendNewMessage from "./SendNewMessage";
 
 
 const Post = forwardRef(
-  ({ displayName, username, text, image, avatar, date, tag, title, price, meeting_location, displayDeleteButton, deletePost, user }, ref) => {
+  ({ displayName, username, text, image, avatar, date, tag, title, price, meeting_location, displayDeleteButton, deletePost, user, email}, ref) => {
 
     return (
       <div className="post" ref={ref}>
@@ -44,7 +44,7 @@ const Post = forwardRef(
           <div className="post__footer">
             {displayDeleteButton && <button onClick={deletePost}>Delete</button>}
             {/* <ChatBubbleOutlineIcon fontSize="small" /> */}
-            <SendNewMessage user={user} buttonMessage="Message now" replyTo={displayName} />
+            <SendNewMessage user={user} buttonMessage="Message now" replyTo={email} />
 
             {/* <StarOutlineIcon fontSize="small" /> */}
           </div>
