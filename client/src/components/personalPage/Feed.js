@@ -60,7 +60,7 @@ function Feed({ posts, setPosts, userID, setUserID }) {
 
       <hr/> */}
 
-      <h1>Main Feed</h1>
+      <h1 style={{paddingLeft:20, paddingTop:20}}>Main Feed</h1>
       <hr/>
 
       <FlipMove>
