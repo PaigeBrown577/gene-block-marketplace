@@ -141,7 +141,7 @@ function MakePost({ posts, setPosts, user, setUser }) {
 
   return (
       <div className="makepost">
-        <h1 className="makepost">Make a New Post</h1>
+        <h1 className="makepost">Create New Listing</h1>
 
         {/* <DropdownMultiselect
         options={["Australia", "Canada", "USA", "Poland", "Spain", "France"]}
@@ -157,7 +157,7 @@ function MakePost({ posts, setPosts, user, setUser }) {
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Price ($)</Form.Label>
-                    <Form.Control type="number" placeholder="Price" min="0.00" step="0.01" value={price} onChange={handlePriceChange} />
+                    <Form.Control className="inputBoxes" type="number" placeholder="Price" min="0.00" step="0.01" value={price} onChange={handlePriceChange} />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Description</Form.Label>

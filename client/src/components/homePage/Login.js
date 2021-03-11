@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import api from "../../api"
-import "../../styles/Login.css";
+// import "../colored_seal.jpeg";
+// import logo from "../../styles/colored_seal.jpeg";
+
+ import  "../../styles/Login.css";
+
 
 import { useHistory } from "react-router-dom";
 
@@ -45,28 +49,38 @@ function Login({ user, setUser }) {
     }
 
     return (
-      <div className="Login">
-        <Form onSubmit={handleSubmit}>
-          <Form.Group size="lg" controlId="email">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              autoFocus
-              type="email"
-              value={email}
-              onChange={handleChangeEmail}
-            />
-          </Form.Group>
-          <Form.Group size="lg" controlId="password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              value={password}
-              onChange={handleChangePassword}
-            />
-          </Form.Group>
-          <Button block size="lg" variant="primary" type="submit" disabled={!validateForm()}>Login</Button>
-        </Form>
-      </div>
+    <div className="background"> 
+    <div className="Login"> 
+      <form>
+        <h1>Login</h1>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className = "box" size="lg" controlId="email" >
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                autoFocus
+                type="email"
+                value={email}
+                onChange={handleChangeEmail}
+              />
+         </Form.Group>
+            <Form.Group className = "box" size="lg" controlId="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                value={password}
+                onChange={handleChangePassword}
+              />
+            </Form.Group>
+            <Button block size="lg" variant="primary" type="submit" disabled={!validateForm()}>Login</Button>
+          </Form> 
+      </form>
+        <p>
+        Don't have an account yet? <br />
+            <a href="/signup">Click here !</a>
+          </p>
+    </div>
+    </div>
+
     );
 
 }

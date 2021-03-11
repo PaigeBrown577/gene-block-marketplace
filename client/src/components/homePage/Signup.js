@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import api from "../../api"
-import "../../styles/Login.css";
+import "../../styles/Signup.css";
 
 import { useHistory } from "react-router-dom";
 
@@ -93,19 +93,29 @@ function Signup({ user, setUser }) {
 
   
     return (
+      <div className="background"> 
       <div className="Signup">
+        <h1>Create An Account</h1>
         <Form onSubmit={handleSubmit}>
-          <Form.Group size="lg" controlId="email">
+        <Form.Group controlId="exampleForm.ControlInput1" className = "box">
+              <Form.Label>Hi, What is Your Name?</Form.Label>
+              <Form.Control type="text" placeholder="Name" value={name} onChange={handleNameChange} required/>
+          </Form.Group>
+          <Form.Group controlId="exampleForm.ControlInput1" className = "box">
+              <Form.Label>And What Should We Call You?</Form.Label>
+              <Form.Control type="text" placeholder="Enter a username" value={name} onChange={handleNameChange} required/>
+          </Form.Group>
+          <Form.Group size="lg" controlId="email" className = "box">
             <Form.Label>Email</Form.Label>
             <Form.Control
               autoFocus
               type="email" required
-              placeholder="Email"
+              placeholder="Enter your UCLA email"
               value={email}
               onChange={handleEmailChange}
             />
           </Form.Group>
-          <Form.Group size="lg" controlId="password">
+          <Form.Group size="lg" controlId="password" className = "box">
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password" required
@@ -117,7 +127,7 @@ function Signup({ user, setUser }) {
                 Minimum 8 characters
             </Form.Text>
           </Form.Group>
-          <Form.Group size="lg" controlId="password">
+          <Form.Group size="lg" controlId="password" className = "box">
             <Form.Label>Confirm Password</Form.Label>
             <Form.Control
               type="password" required
@@ -125,11 +135,7 @@ function Signup({ user, setUser }) {
               onChange={handleConfirmPasswordChange}
             />
           </Form.Group>
-          <Form.Group controlId="exampleForm.ControlInput1">
-              <Form.Label>Name</Form.Label>
-              <Form.Control type="text" placeholder="Name" value={name} onChange={handleNameChange} required/>
-          </Form.Group>
-          <Form.Group controlId="exampleForm.ControlSelect1">
+          <Form.Group controlId="exampleForm.ControlSelect1" className = "box">
               <Form.Label>Year</Form.Label>
               <Form.Control as="select" value={year} onChange={handleYearChange} >
               <option>Freshman</option>
@@ -138,7 +144,7 @@ function Signup({ user, setUser }) {
               <option>Senior</option>
               </Form.Control>
           </Form.Group>
-          <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Group controlId="exampleForm.ControlInput1" className = "box">
               <Form.Label>Birthday</Form.Label>
               <Form.Control type="date" min="1940-07-04" max="2021-12-31" onChange={handleBirthdayChange} required />
           </Form.Group>
@@ -146,7 +152,7 @@ function Signup({ user, setUser }) {
               <Form.Label>Address</Form.Label>
               <Form.Control type="text" placeholder="currentUserAddress" value={address} onChange={handleAddressChange} />
           </Form.Group> */}
-          <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Group controlId="exampleForm.ControlInput1" className = "box">
               <Form.Label>Phone Number</Form.Label>
               <Form.Control type="tel"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onChange={handlePhoneChange} required/>
               <Form.Text className="text-muted">
@@ -159,6 +165,7 @@ function Signup({ user, setUser }) {
           </Button> */}
           <Button block size="lg" variant="primary" type="submit" disabled={!validateForm()}>Signup</Button>
         </Form>
+      </div>
       </div>
     );
 

@@ -9,6 +9,7 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
 import PostHistoryTable from "./PostHistoryTable";
+import "../../styles/PostHistory.css"
 
 import {
   BrowserRouter as Router,
@@ -20,12 +21,12 @@ import {
 function PostHistory({user, posts, setPosts}) {
 
   return (
-    <div className="PostHistory">
-        <h1>Your Previous Posts</h1>
+    <div className="postHistory">
+        <h1 className="postHistory">Your Previous Posts</h1>
 
         <p></p>
 
-        <PostHistoryTable posts={posts} setPosts={setPosts} user={user} />
+        <PostHistoryTable posts={posts} setPosts={setPosts} user={user} className="table"/>
 
     </div>
   );

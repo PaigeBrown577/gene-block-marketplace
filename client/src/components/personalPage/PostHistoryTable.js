@@ -7,6 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Image from 'react';
 
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
@@ -14,6 +15,7 @@ import 'reactjs-popup/dist/index.css';
 import Button from "react-bootstrap/Button";
 
 import SearchIcon from "@material-ui/icons/Search";
+import "../../styles/PostHistoryTable.css"
 
 import FlipMove from "react-flip-move";
 
@@ -25,7 +27,7 @@ const StyledTableCell = withStyles((theme) => ({
     color: theme.palette.common.white,
   },
   body: {
-    fontSize: 14,
+    fontSize: 16,
   },
 }))(TableCell);
 
@@ -54,7 +56,7 @@ function ViewMorePopup ({title, tag, price, text, image, date, meeting_location,
         <Popup trigger={<Button variant="primary">View more</Button>} modal>
           {close => ( 
           <div>
-              <div className="header"> <b>{title}</b> </div>
+              <div className="header" className="popUpText"> <b>{title}</b> </div>
               <div>Tag: {tag}</div>
               <div>Posted on {date} </div>
               <div>Price: ${price} </div>
@@ -66,8 +68,8 @@ function ViewMorePopup ({title, tag, price, text, image, date, meeting_location,
 
               <p></p>
 
-                <Button variant="primary" onClick={handleDeleteClick}>DELETE POST</Button>
-
+              <Button color="#1DA1F2" variant="primary" onClick={handleDeleteClick}>Delete Post</Button>
+              <div className="divider"></div>
               <Button variant="primary" onClick={() => {close()}}>Close</Button>
 
           </div>
@@ -123,25 +125,26 @@ export default function PostHistoryTable({user, posts, setPosts}) {
         <p></p>
 
 
-    <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="customized table">
+    <TableContainer component={Paper} className="table">
+      <Table className={classes.table} aria-label="customized table"> 
         <TableHead>
           <TableRow>
-            <StyledTableCell>Title</StyledTableCell>
-            <StyledTableCell align="right">Tag</StyledTableCell>
-            <StyledTableCell align="right">View More</StyledTableCell>
-            <StyledTableCell align="right">Delete</StyledTableCell>
+            <StyledTableCell class="th" align="left">Title</StyledTableCell>
+            <StyledTableCell align="left" class = "th">Tag</StyledTableCell>
+            <StyledTableCell align="center" class="th">View More</StyledTableCell>
+            <StyledTableCell align="center" class="th">Delete</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {searchFilteredPosts.map((post, index) => (
             <StyledTableRow key={index}>
-              <StyledTableCell component="th" scope="row">
+              <StyledTableCell component="td" scope="row" class="td">
                 {post.title}
               </StyledTableCell>
-              <StyledTableCell align="right">{post.tag}</StyledTableCell>
-              <StyledTableCell align="right"> <ViewMorePopup title={post.title} tag={post.tag} price={post.price} text={post.text} image={post.image} date={post.date} meeting_location={post.meeting_location} user={user} /> </StyledTableCell>
-              <StyledTableCell align="right"><Button variant="primary" onClick={handleDeleteClick}>DELETE POST</Button></StyledTableCell>
+              <StyledTableCell align="left" class="td">{post.tag}</StyledTableCell>
+              <StyledTableCell align="center" class="td"> <ViewMorePopup title={post.title} tag={post.tag} price={post.price} text={post.text} image={post.image} date={post.date} meeting_location={post.meeting_location} user={user}/> </StyledTableCell>
+              <StyledTableCell align="center" class="td"><Button variant="primary" onClick={handleDeleteClick}> Delete</Button></StyledTableCell> 
+            
             </StyledTableRow>
           ))}
         </TableBody>
