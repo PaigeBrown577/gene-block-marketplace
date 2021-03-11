@@ -132,7 +132,7 @@ function MakePost({ posts, setPosts, user, setUser }) {
         })
 
         // redirects to homepage
-        history.push(`/personal/home/${user._id}`);
+        // history.push(`/personal/home/${user._id}`);
 
 
     }
