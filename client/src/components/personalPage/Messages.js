@@ -38,18 +38,13 @@ function Messages({userID, setUserID}) {
   let history = useHistory();
 
   return (
-    <div className="Messages">
-      <h1>Messages</h1>
-
-
-      <p></p>
+    <div className="messages">
+      <h1 className="messages">Messages</h1>
+      <div className="sendNewMessage"> 
       <SendNewMessage userID={userID} setUserID={setUserID}/>
-
+      </div>
       <p></p>
-
-      <MessagesTable userID={userID} setUserID={setUserID} />
-
-
+      <MessagesTable userID={userID} setUserID={setUserID} className="table"/>
     </div>
   );
 }

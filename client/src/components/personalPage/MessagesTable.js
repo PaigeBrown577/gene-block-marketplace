@@ -10,6 +10,7 @@ import Paper from '@material-ui/core/Paper';
 
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import "../../styles/MessagesTable.css"
 
 import Button from "react-bootstrap/Button";
 
@@ -25,7 +26,7 @@ const StyledTableCell = withStyles((theme) => ({
     color: theme.palette.common.white,
   },
   body: {
-    fontSize: 14,
+    fontSize: 16,
   },
 }))(TableCell);
 
@@ -88,7 +89,9 @@ function ViewMorePopup ({subject, fromEmail, text, userID, setUserID}) {
               <p></p>
 
               <SendNewMessage userID={userID} setUserID={setUserID} replyTo={fromEmail} buttonMessage="Reply" />
+              <div className="divider"></div>
               <Button variant="primary" onClick={handleReadClick}>Mark as read</Button>
+              <div className="divider"></div>
               <Button variant="primary" onClick={() => {close()}}>Close</Button>
 
           </div>   
@@ -135,23 +138,23 @@ export default function MessagesTable({userID, setUserID}) {
         <p></p>
 
 
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} className="table">
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Subject</StyledTableCell>
-            <StyledTableCell align="right">From</StyledTableCell>
-            <StyledTableCell align="right">View More</StyledTableCell>
+            <StyledTableCell class="th">Subject</StyledTableCell>
+            <StyledTableCell class="th" align="center">From</StyledTableCell>
+            <StyledTableCell class="th" align="center">View More</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {filteredMessages.map((row, index) => (
             <StyledTableRow key={index}>
-              <StyledTableCell component="th" scope="row">
+              <StyledTableCell component="th" scope="row" class="td">
                 {row.subject}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.fromEmail}</StyledTableCell>
-              <StyledTableCell align="right"> <ViewMorePopup subject={row.subject} fromEmail={row.fromEmail} text={row.text} userID={userID} setUserID={setUserID} /> </StyledTableCell>
+              <StyledTableCell align="left" class="td">{row.fromEmail}</StyledTableCell>
+              <StyledTableCell align="center" class="td"> <ViewMorePopup subject={row.subject} fromEmail={row.fromEmail} text={row.text} userID={userID} setUserID={setUserID} /> </StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

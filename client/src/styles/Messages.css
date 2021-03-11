@@ -1,5 +1,17 @@
-.messages {
-    flex: 0.9;
+.messages{
+    padding-left: 20px;
+    padding-top: 20px;
 }
+
+.sendNewMessage{
+    padding-left: 20px;
+}
+
+.table {
+    align-content: center;
+    margin: 25px 0 0 25px;
+}
+
+
 
 
