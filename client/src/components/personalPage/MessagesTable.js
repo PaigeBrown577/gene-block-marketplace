@@ -45,23 +45,23 @@ const StyledTableRow = withStyles((theme) => ({
 
 
 
-function createData(subject, fromEmail, text) {
+function createData(subject, toEmail, fromEmail, text) {
 
   //  await api.getAllMessages().then(messages => {
   //     console.log(messages.data.data);
   // })
-    return { subject, fromEmail, text, read: false };
+    return { subject, toEmail, fromEmail, text};
   }
 
 
-let rows = [
-    createData("u up ;)", "CadeMeraz@ucla.com", "Rohit wake up"),
-    createData("looking for husband", "RohitGouldthorpe@ucla.com", "hackathon time"),
-    createData("1", "RyanRosenthal@ucla.com", "11"),
-    createData("2", "AmritaChew@ucla.com", "12"),
-    createData("3", "OliveSatoor@ucla.com", "13"),
-    createData("4", "VarshiniFengel@ucla.com", "14"),
-];
+// let rows = [
+//     createData("u up ;)", "CadeMeraz@ucla.com", "Rohit wake up"),
+//     createData("looking for husband", "RohitGouldthorpe@ucla.com", "hackathon time"),
+//     createData("1", "RyanRosenthal@ucla.com", "11"),
+//     createData("2", "AmritaChew@ucla.com", "12"),
+//     createData("3", "OliveSatoor@ucla.com", "13"),
+//     createData("4", "VarshiniFengel@ucla.com", "14"),
+// ];
 
 const useStyles = makeStyles({
   table: {
@@ -115,19 +115,40 @@ export default function MessagesTable({user}) {
   const [searchbarValue, setSearchbarValue] = useState("");
   const [messages, setMessages] = useState([]);
 
+
+  // let messageData1 = [];
+  // let tempRows1 = [];
+  // const getMessages1 = () => {
+  //   api.getAllMessages().then(message => {
+  //     messageData1 = message.data.data;
+  //     setMessages(message.data.data)
+
+  //   for (let i  = 0; i < messageData1.length; i++){
+  //     tempRows1.push(createData(messageData1[i].subject, messageData1[i].toEmail, messageData1[i].fromEmail, messageData1[i].text));
+  //   }
+  // })
+  // }
+
+  // getMessages1();
+
+
+  const [rows, setRows] = useState([]);
+
   useEffect(() => {
     let messageData = [];
+
     const getMessages = async () => {
       await api.getAllMessages().then(message => {
         messageData = message.data.data;
         setMessages(message.data.data)
 
-      rows = [];
+      let tempRows = [];
       console.log(messageData);
       for (let i  = 0; i < messageData.length; i++){
-        rows.push(createData(messageData[i].subject, messageData[i].fromEmail, messageData[i].text));
+        tempRows.push(createData(messageData[i].subject, messageData[i].toEmail, messageData[i].fromEmail, messageData[i].text));
       }
-      console.log(rows);
+      console.log(tempRows);
+      setRows(tempRows);
     })
     }
 
