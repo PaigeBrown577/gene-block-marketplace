@@ -29,17 +29,84 @@
 }
 
 .WelcomeText {
-  color: white;
-  padding-top: 500px;
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
+  padding-top: 300px;
   text-align: center;
   align-items:center;
   font-weight: bold;
+  font-size: 60px;
+
 }
 
 .MessageText {
   color: white;
+  text-shadow: 2px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
   padding-top:10px;
   text-align:center;
   align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+
 
 }
+button{
+  
+}
+.buttons{
+  padding:20px ;
+}
+/************************************/
+
+.wrapper{
+  padding-top: 100px;
+  font-family: Arial, Helvetica, sans-serifs;
+}
+.wrapper .button{
+  display: inline-block; /*makes them alongside each other*/
+  height: 60px; 
+  width: 60px;
+  margin: 0 5px;
+  overflow: hidden; 
+  background: whitesmoke;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+  transition:  0.3s ;
+}
+.wrapper .button:hover{
+  width: 100px;
+}
+.wrapper .button .icon{
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  border-radius: 50px;
+  box-sizing: border-box;
+  line-height: 60px;
+  transition: all 0.3s ease-out;
+}
+
+span{
+  font-size: 10px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", sans-serif;
+}
+a:link{
+  text-decoration: none;
+}
+.wrapper .button:nth-child(1):hover {
+  background: #4267B2;
+}
+.wrapper .button:nth-child(2):hover {
+  background: #9c4898;
+}
+.wrapper .button:nth-child(3):hover {
+  background: #3f97a7;
+}
+/* .wrapper .button:nth-child(4):hover .icon{
+  background: #333;
+}
+.wrapper .button:nth-child(5):hover .icon{
+  background: #ff0000;
+} */
