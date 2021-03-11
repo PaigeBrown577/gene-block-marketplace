@@ -49,9 +49,9 @@
     background-repeat: no-repeat;
     /* background-size: cover; */
     background-position-x: left;
-    background-color: rgb(52, 136, 189);
+    /* background-color: rgb(52, 136, 189); */
     height: 100px;
-    padding: 87.7vh;
+    width: 100vh;
   }
 
 
