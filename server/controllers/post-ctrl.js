@@ -116,6 +116,9 @@ getPosts = async (req, res) => {
                 .status(404)
                 .json({ success: false, error: `Post not found` })
         }
+
+        posts.sort((a, b) => (a.updatedAt < b.updatedAt) ? 1 : -1)
+
         return res.status(200).json({ success: true, data: posts })
     }).catch(err => console.log(err))
 }

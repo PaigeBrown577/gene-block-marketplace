@@ -3,8 +3,41 @@
     align-items: flex-start;
     border-bottom: 1px solid var(--twitter-background);
     padding-bottom: 10px;
+    border: 2px solid lightgray;
+    border-radius: 30px;    
+    box-shadow: 0 0 20px 2px  grey;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    padding-right: 35px;
+
   }
-  
+
+  .username {
+  text-align: left;
+  font-weight: bold;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  font-size: medium;
+  border-bottom: 2px solid grey;
+}
+.title{
+  font-weight: bold;
+  text-align: left;
+  padding-top: 20px;
+}
+
+.price{
+  color:rgb(0, 110, 255);
+  text-align: left;
+}
+.description{
+  text-align: left;
+}
+.post__headerText > h3 {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
   .post__body {
     flex: 1;
     padding: 10px;
@@ -23,13 +56,14 @@
   .post__headerDescription {
     margin-bottom: 10px;
     font-size: 15px;
+    text-align: left;
+
   }
-  
-  .post__headerText > h3 {
-    font-size: 15px;
-    margin-bottom: 5px;
-  }
-  
+  /* body{
+    position: absolute;
+    background-repeat: no-repeat;
+    background-image: url(../bruin_logo.jpg);
+  }  */
   .post__badge {
     font-size: 14px !important;
     color: var(--twitter-color);
@@ -42,9 +76,12 @@
   }
   
   .post__avatar {
-    padding: 20px;
+    padding-top: 35px;
+    padding-left: 35px;
+
   }
   
 mark {
   background-color: #FFFF00;
+  font-size: small;
 }

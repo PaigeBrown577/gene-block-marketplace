@@ -4,7 +4,7 @@ import background from '../ucla-img.jpg';
 import '../styles/App.css';
 import {PostsList, UsersList, MessagesList} from '../pages';
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -26,7 +26,14 @@ import SignedInNavbar from "../components/personalPage/SignedInNavbar";
 
 function App() {
 
-  const [userID, setUserID] = useState("");
+  // const [userID, setUserID] = useState("");
+
+  const [userID, setUserID] = useState(sessionStorage.getItem("sessionUserID") || "");
+
+  useEffect(() => {
+    sessionStorage.setItem("sessionUserID", userID);
+  }, [userID]);
+
 
   return (
     <Router>

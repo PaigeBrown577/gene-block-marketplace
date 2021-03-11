@@ -45,6 +45,10 @@ function Sidebar({ userID, setUserID }) {
         <SidebarOption Icon={MailOutlineIcon} text="Messages" />
       </Link>
 
+      <Link to={`/personal/postHistory/${userID}`}>
+        <SidebarOption Icon={SettingsIcon} text="Your Posts" />
+      </Link>
+
       <Link to={`/personal/makePost/${userID}`}>
         <SidebarOption Icon={SettingsIcon} text="Create New Listing" />
       </Link>
@@ -52,7 +56,7 @@ function Sidebar({ userID, setUserID }) {
       <Link to={`/personal/profile/${userID}`}>
         <SidebarOption Icon={SettingsIcon} text="Profile" />
       </Link>
-
+      <img src={ require('../../bruin_logo.jpg') } />
     </div>
   );
 }
