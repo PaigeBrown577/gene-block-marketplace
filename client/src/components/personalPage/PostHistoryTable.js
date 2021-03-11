@@ -97,7 +97,7 @@ function PostHistoryTable({user, posts, setPosts}) {
   function handleDeleteClick(id) {
     console.log("hello", id);
     api.deletePostById(id);
-    swal("Deleted post!");
+    // swal("Deleted post!");
 
     // redirect back to this pages
     // history.push(`/personal/postHistory/${user._id}`);
