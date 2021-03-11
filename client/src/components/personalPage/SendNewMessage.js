@@ -25,7 +25,8 @@ function SendNewMessage({user, replyTo, buttonMessage}) {
 
     useEffect(() => {
       // console.log(user);
-      setFromEmail(user.email);
+      if(user)
+        setFromEmail(user.email);
     }, []);
 
       let history = useHistory();

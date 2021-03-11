@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,6 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import api from '../../api';
 
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
@@ -41,17 +42,24 @@ const StyledTableRow = withStyles((theme) => ({
 //   return { name, calories, fat, carbs, protein };
 // }
 
+
+
 function createData(subject, fromEmail, text) {
+
+  //  await api.getAllMessages().then(messages => {
+  //     console.log(messages.data.data);
+  // })
     return { subject, fromEmail, text, read: false };
   }
 
-const rows = [
-    createData("u up ;)", "CadeMeraz@ucla.com", "Rohit wake up"),
-    createData("looking for husband", "RohitGouldthorpe@ucla.com", "hackathon time"),
-    createData("1", "RyanRosenthal@ucla.com", "11"),
-    createData("2", "AmritaChew@ucla.com", "12"),
-    createData("3", "OliveSatoor@ucla.com", "13"),
-    createData("4", "VarshiniFengel@ucla.com", "14"),
+
+let rows = [
+    // createData("u up ;)", "CadeMeraz@ucla.com", "Rohit wake up"),
+    // createData("looking for husband", "RohitGouldthorpe@ucla.com", "hackathon time"),
+    // createData("1", "RyanRosenthal@ucla.com", "11"),
+    // createData("2", "AmritaChew@ucla.com", "12"),
+    // createData("3", "OliveSatoor@ucla.com", "13"),
+    // createData("4", "VarshiniFengel@ucla.com", "14"),
 ];
 
 const useStyles = makeStyles({
@@ -102,6 +110,28 @@ export default function MessagesTable({user}) {
   const classes = useStyles();
 
   const [searchbarValue, setSearchbarValue] = useState("");
+  const [messages, setMessages] = useState([]);
+
+  useEffect(() => {
+    let messageData = [];
+    const getMessages = async () => {
+      await api.getAllMessages().then(message => {
+        console.log(message.data.data);
+        messageData = message.data.data;
+        console.log(messageData);
+          setMessages(message.data.data)
+
+      rows = [];
+      console.log(messageData);
+      for (let i  = 0; i < messageData.length; i++){
+        rows.push(createData(messageData[i].subject, messageData[i].toEmail, messageData[i].text));
+      }
+      console.log(rows);
+    })
+    }
+
+    getMessages();
+}, [])
 
   const handleSearchbarChange = (event) => {
     setSearchbarValue(event.target.value);
