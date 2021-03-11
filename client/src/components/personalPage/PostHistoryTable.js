@@ -96,7 +96,7 @@ export default function PostHistoryTable({user, posts, setPosts}) {
   let filteredPosts = posts;
 
   filteredPosts = posts.filter((post) => {
-    console.log(post.email, user.email);
+  //   console.log(post.email, user.email);
     return post.email === user.email;
   })
 

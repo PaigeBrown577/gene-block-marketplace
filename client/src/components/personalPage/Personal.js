@@ -39,7 +39,7 @@ function Personal({ user, setUser}) {
   );
 
 
-  console.log(user);
+  // console.log(user);
 
 
   return (

@@ -42,7 +42,7 @@ const Post = forwardRef(
           </div>
           <img src="http://localhost:3000/b537dadf-c2e4-4538-9f74-7f8b095ee022" alt="" />
           <div className="post__footer">
-            {displayDeleteButton && <button onClick={deletePost}>Delete</button>}
+            {/* {displayDeleteButton && <button onClick={deletePost}>Delete</button>} */}
             {/* <ChatBubbleOutlineIcon fontSize="small" /> */}
             <SendNewMessage user={user} buttonMessage="Message now" replyTo={email} />
 
