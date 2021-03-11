@@ -56,7 +56,7 @@ function Sidebar({ userID, setUserID }) {
       <Link to={`/personal/profile/${userID}`}>
         <SidebarOption Icon={SettingsIcon} text="Profile" />
       </Link>
-
+      <img src={ require('../../bruin_logo.jpg') } />
     </div>
   );
 }

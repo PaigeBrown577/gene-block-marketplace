@@ -20,28 +20,29 @@ const Post = forwardRef(
         <div className="post__body">
           <div className="post__header">
             <div className="post__headerText">
-              <h3>
+              <h4 className= "username">{displayName}</h4>
+              <h2 className = "title">{title}</h2>
+              <h3 className="price">Price: ${price}</h3>
+              <img src={image} alt="" />
+              
+            </div>
+            <div className="post__headerDescription">
+              <p className = "description">Description:{text}</p>
+              <p>Meeting Location: {meeting_location} </p>
+            </div>
+          </div>
+          <div className="post__footer">
+            {/* <ChatBubbleOutlineIcon fontSize="small" /> */}
+            <SendNewMessage userID={userID} setUserID={setUserID} buttonMessage="Message now" replyTo={displayName} />
+
+            {/* <StarOutlineIcon fontSize="small" /> */}
+            <h3>
                 <mark>#{tag}</mark>
                 {" "}
                 <span className="post__headerSpecial">
                   Posted by {displayName} on {date}
                 </span>
               </h3>
-              <h1>{title}</h1>
-              <h3>${price}</h3>
-              <br/>
-            </div>
-            <div className="post__headerDescription">
-              <p>{text}</p>
-              <p>Meeting Location: {meeting_location} </p>
-            </div>
-          </div>
-          <img src={image} alt="" />
-          <div className="post__footer">
-            {/* <ChatBubbleOutlineIcon fontSize="small" /> */}
-            <SendNewMessage userID={userID} setUserID={setUserID} buttonMessage="Message now" replyTo={displayName} />
-
-            {/* <StarOutlineIcon fontSize="small" /> */}
           </div>
         </div>
       </div>
