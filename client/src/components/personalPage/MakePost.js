@@ -90,16 +90,6 @@ function MakePost({ posts, setPosts, user, setUser }) {
     // don't know how to deal with uploaded images yet
 
 
-
-    // console.log(title);
-    // console.log(price);
-    // console.log(description);
-    // console.log(dropdownMeetingLocation);
-    // console.log(otherMeetingLocation);
-    // console.log(finalMeetingLocation);
-    // console.log(tag);
-
-
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -147,15 +137,15 @@ function MakePost({ posts, setPosts, user, setUser }) {
                     <Form.Label>Title</Form.Label>
                     <Form.Control className="inputBoxes" type="text" placeholder="Title" value={title} onChange={handleTitleChange} required />
                 </Form.Group>
-                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Group size = "lg" controlId="exampleForm.ControlInput1">
                     <Form.Label>Price ($)</Form.Label>
                     <Form.Control className="inputBoxes" type="number" placeholder="Price" min="0.00" step="0.01" value={price} onChange={handlePriceChange} required/>
                 </Form.Group>
-                <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Group size = "lg" controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Description</Form.Label>
                     <Form.Control className="inputBoxes" as="textarea" rows={5} value={description} onChange={handleDescriptionChange} />
                 </Form.Group>
-                <Form.Group controlId="exampleForm.ControlSelect1">
+                <Form.Group size = "lg" controlId="exampleForm.ControlSelect1">
                     <Form.Label>Meeting Location</Form.Label>
                     <Form.Control className="inputBoxes" as="select" value={dropdownMeetingLocation} onChange={handleDropdownLocationChange} >
                     <option>Powell</option>
@@ -164,11 +154,11 @@ function MakePost({ posts, setPosts, user, setUser }) {
                     <option>Other</option>
                     </Form.Control>
                 </Form.Group>
-                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Group size = "lg" controlId="exampleForm.ControlInput1">
                     <Form.Label>If selected other meeting location, please specify:</Form.Label>
                     <Form.Control className="inputBoxes" type="text" placeholder="Other location" value={otherMeetingLocation} onChange={handleOtherLocationChange} />
                 </Form.Group>
-                <Form.Group controlId="exampleForm.ControlSelect1">
+                <Form.Group size = "lg" controlId="exampleForm.ControlSelect1">
                     <Form.Label>Tag</Form.Label>
                     <Form.Control className="inputBoxes" as="select" value={tag} onChange={handleTagChange} >
                     <option>Books</option>

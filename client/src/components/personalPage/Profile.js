@@ -95,69 +95,68 @@ function Profile({ user, setUser, posts, setPosts }) {
         <h1 className="profile">Profile</h1>
 
         <div className="profileForm">
+            <Form onSubmit={handleSubmit}>
+            <Form.Group size="lg" controlId="email">
+                <Form.Label>Email</Form.Label>
+                <p>{email}</p>
+            </Form.Group>
+            <Form.Group size="lg" controlId="password">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                className="inputBoxes"
+                type="password" required
+                value={password}
+                onChange={handlePasswordChange}
+                />
+                <Form.Text className="text-muted">
+                    Minimum 8 characters
+                </Form.Text>
+            </Form.Group>
+            <Form.Group size="lg" controlId="password">
+                <Form.Label>Confirm New Password</Form.Label>
+                <Form.Control
+                className="inputBoxes"
+                type="password" required
+                minLength="8"
+                value={confirmPassword}
+                onChange={handleConfirmPasswordChange}
+                />
+            </Form.Group>
+            <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Name</Form.Label>
+                <Form.Control className="inputBoxes" type="text" placeholder="Name" value={name} onChange={handleNameChange} required/>
+            </Form.Group>
+            <Form.Group controlId="exampleForm.ControlSelect1">
+                <Form.Label>Year</Form.Label>
+                <Form.Control className="inputBoxes" as="select" value={year} onChange={handleYearChange} >
+                <option>Freshman</option>
+                <option>Sophomore</option>
+                <option>Junior</option>
+                <option>Senior</option>
+                </Form.Control>
+            </Form.Group>
+            <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Birthday</Form.Label>
+                <Form.Control className="inputBoxes" type="date" value={birthday} min="1940-07-04" max="2021-12-31" onChange={handleBirthdayChange} required />
+            </Form.Group>
+            {/* <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Address</Form.Label>
+                <Form.Control type="text" placeholder="currentUserAddress" value={address} onChange={handleAddressChange} />
+            </Form.Group> */}
+            <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Phone Number</Form.Label>
+                <Form.Control className="inputBoxes" type="tel" value={phone} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onChange={handlePhoneChange} required/>
+                <Form.Text className="text-muted">
+                    Format: 123-456-7890
+                </Form.Text>
+            </Form.Group>
 
-        <Form onSubmit={handleSubmit}>
-          <Form.Group size="lg" controlId="email">
-            <Form.Label>Email</Form.Label>
-            <p>{email}</p>
-          </Form.Group>
-          <Form.Group size="lg" controlId="password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              className="inputBoxes"
-              type="password" required
-              value={password}
-              onChange={handlePasswordChange}
-            />
-            <Form.Text className="text-muted">
-                Minimum 8 characters
-            </Form.Text>
-          </Form.Group>
-          <Form.Group size="lg" controlId="password">
-            <Form.Label>Confirm New Password</Form.Label>
-            <Form.Control
-              className="inputBoxes"
-              type="password" required
-              minLength="8"
-              value={confirmPassword}
-              onChange={handleConfirmPasswordChange}
-            />
-          </Form.Group>
-          <Form.Group controlId="exampleForm.ControlInput1">
-              <Form.Label>Name</Form.Label>
-              <Form.Control className="inputBoxes" type="text" placeholder="Name" value={name} onChange={handleNameChange} required/>
-          </Form.Group>
-          <Form.Group controlId="exampleForm.ControlSelect1">
-              <Form.Label>Year</Form.Label>
-              <Form.Control className="inputBoxes" as="select" value={year} onChange={handleYearChange} >
-              <option>Freshman</option>
-              <option>Sophomore</option>
-              <option>Junior</option>
-              <option>Senior</option>
-              </Form.Control>
-          </Form.Group>
-          <Form.Group controlId="exampleForm.ControlInput1">
-              <Form.Label>Birthday</Form.Label>
-              <Form.Control className="inputBoxes" type="date" value={birthday} min="1940-07-04" max="2021-12-31" onChange={handleBirthdayChange} required />
-          </Form.Group>
-          {/* <Form.Group controlId="exampleForm.ControlInput1">
-              <Form.Label>Address</Form.Label>
-              <Form.Control type="text" placeholder="currentUserAddress" value={address} onChange={handleAddressChange} />
-          </Form.Group> */}
-          <Form.Group controlId="exampleForm.ControlInput1">
-              <Form.Label>Phone Number</Form.Label>
-              <Form.Control className="inputBoxes" type="tel" value={phone} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onChange={handlePhoneChange} required/>
-              <Form.Text className="text-muted">
-                  Format: 123-456-7890
-              </Form.Text>
-          </Form.Group>
-
-          {/* <Button block size="lg" type="submit" disabled={!validateForm()}>
-          <a href="/login" style={{color:"white"}}>Signup </a>
-          </Button> */}
-          <Button block size="lg" variant="primary" type="submit">Submit</Button>
-        </Form>
-        </div>
+            {/* <Button block size="lg" type="submit" disabled={!validateForm()}>
+            <a href="/login" style={{color:"white"}}>Signup </a>
+            </Button> */}
+            <Button block size="lg" variant="primary" type="submit">Submit</Button>
+            </Form>
+            </div>
       </div>
   );
 }
