@@ -1,0 +1,51 @@
+@media all and (min-width: 480px) {
+    .Signup {
+      position:absolute; 
+      top:100px;
+      right:30%;
+      bottom:-210px;
+      left:30%;
+      /*The border/shadow of the box*/
+      border: 2px solid lightgray;
+      border-radius: 30px;    
+      background-color: whitesmoke;
+      box-shadow: 0 0 20px 2px  grey;
+      
+    }
+
+  .box{
+    padding-top:  0px; 
+    font-weight: 50px;
+    font-size: medium;
+    text-align: left;
+  }
+  h1{
+      padding-top: 20px;
+    font-weight: 400;
+  }
+  body {
+    /* background: #A0A9CC; */
+    /* color: #fff; */
+    font-size: 1.5em;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", sans-serif;
+    font-weight: 100;
+    text-align: center;
+  }
+    /* .Login form {
+      margin: 0 auto;
+      max-width: 320px;
+    } */
+
+  .background{
+    background: url(../colored_seal.jpeg);
+    background-repeat: no-repeat;
+    background-position-x: left;
+    background-color: rgb(52, 136, 189);
+    height: 100px;
+    padding: 87.7vh;
+  }
+
+
+  } 
+
+  

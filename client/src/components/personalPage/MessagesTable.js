@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,9 +7,11 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import api from '../../api';
 
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import "../../styles/MessagesTable.css"
 
 import Button from "react-bootstrap/Button";
 
@@ -25,7 +27,7 @@ const StyledTableCell = withStyles((theme) => ({
     color: theme.palette.common.white,
   },
   body: {
-    fontSize: 14,
+    fontSize: 16,
   },
 }))(TableCell);
 
@@ -41,11 +43,18 @@ const StyledTableRow = withStyles((theme) => ({
 //   return { name, calories, fat, carbs, protein };
 // }
 
+
+
 function createData(subject, fromEmail, text) {
+
+  //  await api.getAllMessages().then(messages => {
+  //     console.log(messages.data.data);
+  // })
     return { subject, fromEmail, text, read: false };
   }
 
-const rows = [
+
+let rows = [
     createData("u up ;)", "CadeMeraz@ucla.com", "Rohit wake up"),
     createData("looking for husband", "RohitGouldthorpe@ucla.com", "hackathon time"),
     createData("1", "RyanRosenthal@ucla.com", "11"),
@@ -73,7 +82,7 @@ const handleReadClick = () => {
 
 }
 
-function ViewMorePopup ({subject, fromEmail, text, userID, setUserID}) {
+function ViewMorePopup ({subject, fromEmail, text, user}) {
     return (
         <Popup trigger={<Button variant="primary" >View more</Button>} modal>
           {close => ( 
@@ -87,21 +96,43 @@ function ViewMorePopup ({subject, fromEmail, text, userID, setUserID}) {
 
               <p></p>
 
-              <SendNewMessage userID={userID} setUserID={setUserID} replyTo={fromEmail} buttonMessage="Reply" />
+              <SendNewMessage user={user} replyTo={fromEmail} buttonMessage="Reply" />
+              <div className="divider"></div>
               <Button variant="primary" onClick={handleReadClick}>Mark as read</Button>
+              <div className="divider"></div>
               <Button variant="primary" onClick={() => {close()}}>Close</Button>
 
-          </div>   
+          </div>
           )}
       </Popup>
     );
 }
 
 
-export default function MessagesTable({userID, setUserID}) {
+export default function MessagesTable({user}) {
   const classes = useStyles();
 
   const [searchbarValue, setSearchbarValue] = useState("");
+  const [messages, setMessages] = useState([]);
+
+  useEffect(() => {
+    let messageData = [];
+    const getMessages = async () => {
+      await api.getAllMessages().then(message => {
+        messageData = message.data.data;
+        setMessages(message.data.data)
+
+      rows = [];
+      console.log(messageData);
+      for (let i  = 0; i < messageData.length; i++){
+        rows.push(createData(messageData[i].subject, messageData[i].fromEmail, messageData[i].text));
+      }
+      console.log(rows);
+    })
+    }
+
+    getMessages();
+}, [])
 
   const handleSearchbarChange = (event) => {
     setSearchbarValue(event.target.value);
@@ -135,23 +166,23 @@ export default function MessagesTable({userID, setUserID}) {
         <p></p>
 
 
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} className="table">
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Subject</StyledTableCell>
-            <StyledTableCell align="right">From</StyledTableCell>
-            <StyledTableCell align="right">View More</StyledTableCell>
+            <StyledTableCell class="th">Subject</StyledTableCell>
+            <StyledTableCell class="th" align="center">From</StyledTableCell>
+            <StyledTableCell class="th" align="center">View More</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {filteredMessages.map((row, index) => (
             <StyledTableRow key={index}>
-              <StyledTableCell component="th" scope="row">
+              <StyledTableCell component="th" scope="row" class="td">
                 {row.subject}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.fromEmail}</StyledTableCell>
-              <StyledTableCell align="right"> <ViewMorePopup subject={row.subject} fromEmail={row.fromEmail} text={row.text} userID={userID} setUserID={setUserID} /> </StyledTableCell>
+              <StyledTableCell align="left" class="td">{row.fromEmail}</StyledTableCell>
+              <StyledTableCell align="center" class="td"> <ViewMorePopup subject={row.subject} fromEmail={row.fromEmail} text={row.text} user={user} /> </StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

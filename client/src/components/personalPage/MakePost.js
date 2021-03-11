@@ -8,8 +8,9 @@ import api, {getPostById, getUserByID } from "../../api"
 import { useHistory } from "react-router-dom";
 
 import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
+import { useRadioGroup } from "@material-ui/core";
 
-function MakePost({ posts, setPosts, userID, setUserID }) {
+function MakePost({ posts, setPosts, user, setUser }) {
 
     const[displayName, setDisplayName] = useState("");
     // const[username, setUsername] = useState("");
@@ -95,40 +96,43 @@ function MakePost({ posts, setPosts, userID, setUserID }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(userID);
-        const user = api.getUserById(userID);
 
         let fileObject = fileInput.current.files;
-        console.log(fileObject);
+        // console.log(fileObject);
         // this is an object
         // it has a length property
 
+        let reader = new FileReader();
+
+        let imageArray = []
         // for loop to make sure we get all the files
         for (let i = 0; i < fileObject.length; i++)
         {
-            let imageURL = URL.createObjectURL(fileInput.current.files[i]);
-            console.log(imageURL);
+            // let imageURL = URL.createObjectURL(fileInput.current.files[i]);
+            // imageArray = imageURL;
+            // imageArray.push(imageURL);
         }
 
+        setImage(imageArray);
+        const name = user.name;
+        setDisplayName(name);
 
-        user.then((value) => {
-            const name = value.data.data.name;
-            setDisplayName(name);
+        // console.log(image);
+        // let newPost = [{displayName: name, tag: tag, title: title, date: date, price: price, text: description, meeting_location: finalMeetingLocation, image: image, displayDeleteButton: true}]
+        // let newPostsArray = newPost.concat(posts);
 
-            console.log(image);
-            let newPost = [{displayName: name, tag: tag, title: title, date: date, price: price, text: description, meeting_location: finalMeetingLocation, image: image}]
-            let newPostsArray = newPost.concat(posts);
+        // setPosts(newPostsArray);
+        // imageArray = imageArray[0];
+        const userID = user._id;
+        const email = user.email;
+        const payload = {name, tag, date, title, price, description, finalMeetingLocation, userID, imageArray, email};
+        
+        api.insertPost(payload).then(res => {
+            window.alert(`Post inserted successfully`)
+        })
 
-            setPosts(newPostsArray);
-            const payload = {name, tag, date, title, price, description, finalMeetingLocation, image};
-
-            api.insertPost(payload).then(res => {
-                window.alert(`Post inserted successfully`)
-            })
-
-            // redirects to homepage
-            history.push(`/personal/home/${userID}`);
-        });
+        // redirects to homepage
+        history.push(`/personal/home/${user._id}`);
 
 
     }
@@ -136,7 +140,7 @@ function MakePost({ posts, setPosts, userID, setUserID }) {
 
   return (
       <div className="makepost">
-        <h1 className="makepost">Make a New Post</h1>
+        <h1 className="makepost">Create New Listing</h1>
 
         {/* <DropdownMultiselect
         options={["Australia", "Canada", "USA", "Poland", "Spain", "France"]}
@@ -152,7 +156,7 @@ function MakePost({ posts, setPosts, userID, setUserID }) {
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Price ($)</Form.Label>
-                    <Form.Control type="number" placeholder="Price" min="0.00" step="0.01" value={price} onChange={handlePriceChange} />
+                    <Form.Control className="inputBoxes" type="number" placeholder="Price" min="0.00" step="0.01" value={price} onChange={handlePriceChange} />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Description</Form.Label>

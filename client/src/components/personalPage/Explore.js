@@ -27,7 +27,7 @@ function Explore({posts, setPosts}) {
 
     const getPosts = async () => {
       await api.getAllPosts().then(post => {
-        console.log(post.data.data)
+        // console.log(post.data.data)
         // if(post.data.data !== posts)
           setPosts(post.data.data)
       })
@@ -38,7 +38,7 @@ function Explore({posts, setPosts}) {
     const handleFilterSubmit = (event) => {
         event.preventDefault();
         
-        console.log(filterValue);
+        // console.log(filterValue);
 
         if (filterValue === "All")
         {

@@ -1,21 +1,19 @@
 import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap'
 import { LinkContainer } from "react-router-bootstrap";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import api from "../../api"
 
 import { useHistory } from "react-router-dom";
 
-function SignedInNavbar({ userID, setUserID }) {
+function SignedInNavbar({ user, setUser }) {
     const [name, setName] = useState("");
-    // get name from database, using the userID
-    const user = api.getUserById(userID);
 
-    user.then((value) => {
-        if(value !== null){
-            const username = value.data.data.name;
-            setName(username);
+    useEffect(() => {
+        if(user){
+            setName(user.name);
         }
-    });
+    }, [user])
+
 
     // for redirecting to home page
     let history = useHistory();
@@ -23,7 +21,7 @@ function SignedInNavbar({ userID, setUserID }) {
     const handleClick = () => {
         // set user id back to "", and redirect to homepage
 
-        setUserID("");
+        setUser(null);
         history.push("/");
 
         // lol if you just press back on your browser it still takes you back to the previous page
@@ -32,7 +30,7 @@ function SignedInNavbar({ userID, setUserID }) {
 
     return (
         <Navbar collapseOnSelect expand="md" className="navbar navbar-dark bg-primary">
-            <LinkContainer to={`/personal/home/${userID}`}>
+            <LinkContainer to={`/personal/home/${user ? user._id : ""}`}>
             <Navbar.Brand className="font-weight-bold navbarBrand">
                 Block Marketplace
             </Navbar.Brand>

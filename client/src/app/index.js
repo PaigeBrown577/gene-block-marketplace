@@ -1,7 +1,7 @@
 import logo from '../logo.svg';
 import background from '../ucla-img.jpg';
+import api from '../api';
 import '../styles/App.css';
-
 import {PostsList, UsersList, MessagesList} from '../pages';
 
 import React, { useState, useEffect } from "react";
@@ -19,17 +19,32 @@ import SetUserID from "../components/homePage/SetUserID";
 
 import SignedInNavbar from "../components/personalPage/SignedInNavbar";
 
+// import { SocialIcon } from 'react-social-icons';
+// ReactDOM.render(<SocialIcon url="http://instagram.com/" />, document.body);
+
 //import background from "src/ucla-react-image.jpeg";
 
 function App() {
 
   // const [userID, setUserID] = useState("");
 
+  const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("sessionUser")) || "");
   const [userID, setUserID] = useState(sessionStorage.getItem("sessionUserID") || "");
 
   useEffect(() => {
     sessionStorage.setItem("sessionUserID", userID);
-  }, [userID]);
+
+    const getUser = async () => {
+      if(userID !== ""){
+          await api.getUserById(userID).then(user => {
+            setUser(user.data.data);
+          })
+        }
+      }
+
+    getUser();
+    sessionStorage.setItem("sessionUser", JSON.stringify(user))
+  }, [user, userID]);
 
 
   return (
@@ -42,13 +57,13 @@ function App() {
           <Route path="/login">
             <NavigationBar />
             <header className="App-header">
-              <Login userID={userID} setUserID={setUserID} />
+              <Login user={user} setUser={setUser} />
             </header>
           </Route>
           <Route path="/signup">
             <NavigationBar />
             <header className="App-header">
-              <Signup userID={userID} setUserID={setUserID} />
+              <Signup user={user} setUser={setUser} />
             </header>
           </Route>
           <Route path="/posts/list" exact component={PostsList} />
@@ -65,8 +80,8 @@ function App() {
 
       <Switch>
         <Route path="/personal">
-          <SignedInNavbar userID={userID} setUserID={setUserID} />
-          <Personal userID={userID} setUserID={setUserID} />
+          <SignedInNavbar user={user} setUser={setUser} />
+          <Personal user={user} setUser={setUser}/>
         </Route>
       </Switch>
 
@@ -77,13 +92,38 @@ function App() {
 function Home() {
   return (
     <div className="Background" >
-        <h1 class="WelcomeText">Welcome to Block Marketplace!</h1>
-        <p class="MessageText">Buy, Sell, and Discover textbooks, furniture, and more from the UCLA community!</p>
-        <Button variant="primary" size="lg" type="submit"><a href="/login" style={{color:"white"}}>Login </a></Button>
-        
-        <p></p>
+        <h1 className="WelcomeText">Welcome to Block Marketplace!</h1>
+        <p className="MessageText">Buy, Sell, and Discover textbooks, furniture, and more from the UCLA community!</p>
+        <div className="buttons">
+          <Button variant="primary" size="lg" type="submit"><a href="/login" style={{color:"white"}}>Login </a></Button>
+        </div>
         <Button variant="primary" size="lg" type="submit"><a href="/signup" style={{color:"white"}}>Signup </a></Button>
-    </div>
+        <div className = "wrapper">
+       
+          {/* <div class = "button"> */}
+          <a href="http://facebook.com" target="_blank" className="button">
+            {/* <div className="icon">
+              <i className= "fab fa-facebook-f"></i></div> */}
+             <span>Facebook</span>
+             </a>
+                {/* </div>  */}
+         
+          {/* <div className="button"> */}
+          <a href="https://www.instagram.com/block_marketplace/" target="_blank" className="button">
+            {/* <div className="icon">
+              <i className="fab fa-instagram"></i></div> */}
+              <span>Instagram</span>
+              </a>
+                {/* </div> */}
+          <a href="http://tiktok.com" target="_blank" className="button" >
+          {/* <div className="button"> */}
+            {/* <div className="icon">
+              <i className="fab fa-instagram"></i></div> */}
+              <span>TikTok</span>
+                {/* </div> */}
+          </a>
+          </div>
+        </div>
     );
 }
 

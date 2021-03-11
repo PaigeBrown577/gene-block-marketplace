@@ -7,6 +7,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Image from 'react';
+import api from '../../api';
 
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
@@ -14,6 +16,7 @@ import 'reactjs-popup/dist/index.css';
 import Button from "react-bootstrap/Button";
 
 import SearchIcon from "@material-ui/icons/Search";
+import "../../styles/PostHistoryTable.css"
 
 import FlipMove from "react-flip-move";
 
@@ -25,7 +28,7 @@ const StyledTableCell = withStyles((theme) => ({
     color: theme.palette.common.white,
   },
   body: {
-    fontSize: 14,
+    fontSize: 16,
   },
 }))(TableCell);
 
@@ -39,8 +42,9 @@ const StyledTableRow = withStyles((theme) => ({
 
 
 // need to delete from the database
-const handleDeleteClick = () => {
-    console.log("Deleted post");
+function handleDeleteClick(_id) {
+  console.log("hello", _id);
+  //  api.deletePostById(_id);
 }
 
 const useStyles = makeStyles({
@@ -49,12 +53,13 @@ const useStyles = makeStyles({
   },
 });
 
-function ViewMorePopup ({title, tag, price, text, image, date, meeting_location, userID, setUserID}) {
+function ViewMorePopup ({title, tag, price, text, image, date, meeting_location, user, _id}) {
+  console.log(_id);
     return (
         <Popup trigger={<Button variant="primary">View more</Button>} modal>
-          {close => ( 
+          {close => (
           <div>
-              <div className="header"> <b>{title}</b> </div>
+              <div className="header" className="popUpText"> <b>{title}</b> </div>
               <div>Tag: {tag}</div>
               <div>Posted on {date} </div>
               <div>Price: ${price} </div>
@@ -66,18 +71,18 @@ function ViewMorePopup ({title, tag, price, text, image, date, meeting_location,
 
               <p></p>
 
-                <Button variant="primary" onClick={handleDeleteClick}>DELETE POST</Button>
-
+              <Button color="#1DA1F2" variant="primary" onClick={() => handleDeleteClick(_id)}>Delete Post</Button>
+              <div className="divider"></div>
               <Button variant="primary" onClick={() => {close()}}>Close</Button>
 
-          </div>   
+          </div>
           )}
       </Popup>
     );
 }
 
 
-export default function PostHistoryTable({userID, setUserID, posts, setPosts}) {
+export default function PostHistoryTable({user, posts, setPosts}) {
   const classes = useStyles();
 
   const [searchbarValue, setSearchbarValue] = useState("");
@@ -94,8 +99,11 @@ export default function PostHistoryTable({userID, setUserID, posts, setPosts}) {
 
   // need to filter out posts, only get the ones written by the current user
   let filteredPosts = posts;
-  // CODE GOES HERE ROHIT, just assign filteredPosts to the correct thing
-  
+
+  filteredPosts = posts.filter((post) => {
+  //   console.log(post.email, user.email);
+    return post.email === user.email;
+  })
 
   let searchFilteredPosts = filteredPosts.filter((post) => {
     let search = searchbarValue.toLowerCase();
@@ -120,25 +128,25 @@ export default function PostHistoryTable({userID, setUserID, posts, setPosts}) {
         <p></p>
 
 
-    <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="customized table">
+    <TableContainer component={Paper} className="table">
+      <Table className={classes.table} aria-label="customized table"> 
         <TableHead>
           <TableRow>
-            <StyledTableCell>Title</StyledTableCell>
-            <StyledTableCell align="right">Tag</StyledTableCell>
-            <StyledTableCell align="right">View More</StyledTableCell>
-            <StyledTableCell align="right">Delete</StyledTableCell>
+            <StyledTableCell class="th" align="left">Title</StyledTableCell>
+            <StyledTableCell align="left" class = "th">Tag</StyledTableCell>
+            <StyledTableCell align="center" class="th">View More</StyledTableCell>
+            <StyledTableCell align="center" class="th">Delete</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {searchFilteredPosts.map((post, index) => (
             <StyledTableRow key={index}>
-              <StyledTableCell component="th" scope="row">
+              <StyledTableCell component="td" scope="row" class="td">
                 {post.title}
               </StyledTableCell>
-              <StyledTableCell align="right">{post.tag}</StyledTableCell>
-              <StyledTableCell align="right"> <ViewMorePopup title={post.title} tag={post.tag} price={post.price} text={post.text} image={post.image} date={post.date} meeting_location={post.meeting_location} userID={userID} setUserID={setUserID} /> </StyledTableCell>
-              <StyledTableCell align="right"><Button variant="primary" onClick={handleDeleteClick}>DELETE POST</Button></StyledTableCell>
+              <StyledTableCell align="left" class="td">{post.tag}</StyledTableCell>
+              <StyledTableCell align="center" class="td"> <ViewMorePopup title={post.title} tag={post.tag} price={post.price} text={post.text} image={post.image} date={post.date} meeting_location={post.meeting_location} user={user} _id={post._id}/> </StyledTableCell>
+              <StyledTableCell align="center" class="td"><Button variant="primary" onClick={handleDeleteClick}> Delete</Button></StyledTableCell> 
             </StyledTableRow>
           ))}
         </TableBody>
