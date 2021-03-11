@@ -10,6 +10,8 @@ import { Button } from "@material-ui/core";
 
 import Icon from '@material-ui/core/Icon';
 
+import SendNewMessage from "./SendNewMessage";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -32,6 +34,10 @@ function Sidebar({ user, setUser }) {
 
     <div className="sidebar">
       {/* <SidebarOption Icon={PermIdentityIcon} text="Profile" /> */}
+
+      <SendNewMessage user={user}/>
+
+      <br></br>
 
       <Link to={`/personal/home/${user._id}`}>
         <SidebarOption active Icon={HomeIcon} text="Home" />

@@ -22,7 +22,6 @@ import api from "../../api"
 function Explore({posts, setPosts}) {
     const [searchbarValue, setSearchbarValue] = useState("");
     const [filterValue, setFilterValue] = useState("All");
-    const [tagFilteredPosts, setTagFilteredPosts] = useState(posts);
 
 
     const getPosts = async () => {
@@ -34,6 +33,15 @@ function Explore({posts, setPosts}) {
     }
   
     useEffect(getPosts, []);
+
+    const [tagFilteredPosts, setTagFilteredPosts] = useState(posts);
+
+    useEffect(() => {setTagFilteredPosts(posts)}, [posts]);
+
+    // this page doesn't load when you refresh
+    // try passing it into useState
+    // try moving tag filtered posts usetate down further below
+
 
     const handleFilterSubmit = (event) => {
         event.preventDefault();
@@ -88,13 +96,19 @@ function Explore({posts, setPosts}) {
       })
 
 
+    console.log(posts.length);
+    console.log(tagFilteredPosts.length);
+    console.log(filteredPosts.length);
 
   return (
       <div className="explore">
         <h1>Explore</h1>
         
-        <p></p>
+        {/* <p></p> */}
 
+        <div className="test">
+
+        <div className="leftSide">
         <div className="exploreForm">
             <Form onSubmit={handleFilterSubmit}>
                 <Form.Group controlId="exampleForm.ControlInput1">
@@ -124,8 +138,11 @@ function Explore({posts, setPosts}) {
                 {shouldDisplayClearButton && <button onClick={handleClearClick}>clear</button>} 
             </div>
 
-            <hr/>
+        </div>
 
+            {/* <hr/> */}
+
+        <div className="rightSide">
             <FlipMove>
                 {filteredPosts.map((post, index) => (
                 <Post
@@ -144,6 +161,9 @@ function Explore({posts, setPosts}) {
 
 
             </FlipMove>
+
+            </div> 
+        </div>
         </div>
 
 

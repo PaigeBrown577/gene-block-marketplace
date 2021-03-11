@@ -4,6 +4,23 @@
     padding-top: 20px;
 }
 
+/* .test {
+    display: flex;
+    flex-direction: row; */
+    /* display: flex;
+} */
+
+/* .leftSide {
+    display: 0.5;
+    justify-content: left;
+} */
+
+/* .rightSide {
+    display: 0.5;
+    justify-content: right;
+    overflow-y: scroll;
+} */
+
 .searchBar {
     display: flex;
     align-items: center;
