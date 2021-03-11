@@ -171,13 +171,16 @@ export default function MessagesTable({user}) {
     let lowercaseSubject = row.subject.toLowerCase();
     let lowercaseFromEmail = row.fromEmail.toLowerCase();
 
-    return lowercaseSubject.includes(search) || lowercaseFromEmail.includes(search);
+    return (lowercaseSubject.includes(search) || lowercaseFromEmail.includes(search)) && row.toEmail === user.email;
 
   })
 
+  const hasMessages = filteredMessages.length > 0;
 
   return (
     <div> 
+
+      <div className="messageTableComponent">
         <div className="searchBar">
             <SearchIcon className="widgets__searchIcon" />
             <input placeholder="Search" type="text" value={searchbarValue} onChange={handleSearchbarChange} />
@@ -186,29 +189,31 @@ export default function MessagesTable({user}) {
 
         <p></p>
 
+        <TableContainer component={Paper} className="table">
+          <Table className={classes.table} aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell class="th">Subject</StyledTableCell>
+                <StyledTableCell class="th" align="center">From</StyledTableCell>
+                <StyledTableCell class="th" align="center">View More</StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {filteredMessages.map((row, index) => (
+                <StyledTableRow key={index}>
+                  <StyledTableCell component="th" scope="row" class="td">
+                    {row.subject}
+                  </StyledTableCell>
+                  <StyledTableCell align="left" class="td">{row.fromEmail}</StyledTableCell>
+                  <StyledTableCell align="center" class="td"> <ViewMorePopup subject={row.subject} fromEmail={row.fromEmail} text={row.text} user={user} /> </StyledTableCell>
+                </StyledTableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        </div>
 
-    <TableContainer component={Paper} className="table">
-      <Table className={classes.table} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell class="th">Subject</StyledTableCell>
-            <StyledTableCell class="th" align="center">From</StyledTableCell>
-            <StyledTableCell class="th" align="center">View More</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {filteredMessages.map((row, index) => (
-            <StyledTableRow key={index}>
-              <StyledTableCell component="th" scope="row" class="td">
-                {row.subject}
-              </StyledTableCell>
-              <StyledTableCell align="left" class="td">{row.fromEmail}</StyledTableCell>
-              <StyledTableCell align="center" class="td"> <ViewMorePopup subject={row.subject} fromEmail={row.fromEmail} text={row.text} user={user} /> </StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+
     </div> 
   );
 }
