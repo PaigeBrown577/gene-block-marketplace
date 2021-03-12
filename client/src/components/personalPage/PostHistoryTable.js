@@ -155,7 +155,7 @@ function PostHistoryTable({user, posts, setPosts}) {
 
   return (
     <div> 
-        <div className="searchBar">
+        <div className="searchBar" style={{width:900}}>
             <SearchIcon className="widgets__searchIcon" />
             <input placeholder="Search" type="text" value={searchbarValue} onChange={handleSearchbarChange} />
             {shouldDisplayClearButton && <button onClick={handleClearClick}>clear</button>} 
