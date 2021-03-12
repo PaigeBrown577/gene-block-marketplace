@@ -5,22 +5,26 @@
 .card_wrapper {
     width: 50%;
     align-items: center;   
-     /* float: center;  */
-    /* padding-top: 50%; */
-    /* padding-right: 10%;  */
+    /* padding: 10px; */
 
 }   
 .profileForm {
     text-align: left;
     display: flex;
+    /* border:2px black; */
     /* align-items: center; */
     /* justify-content: flex-start; */
-    /* padding-left: 50%; */
-
+    padding-left: 50%;
 }
 
 .title_profile{
-    /* padding-left: %; */
+    font-weight: bold;
+    display: inline-block;
+    margin-right:16%;
+    margin-left: 4%;
+    /* paddig-left: 50%; */
+    padding-top: 20px;
+    padding-bottom: 50px;
 }
 /* .divider{
     width: 10px;
@@ -34,37 +38,36 @@
 }
 
 .card {
+    position: absolute;
+    top: 45%;
+    width:33%;
+    left:21%;
     margin: auto;
     border: none;
     border-radius: 10px;
-    background-color: #fff
+    background-color: white  ;
 }
 
 .stats {
+    /* margin-right: 10%; */
     background: #f2f5f8 !important;
     color: #000 !important
 }
 
 .year {
     font-size: 10px;
-    color: #a1aab9
+    color: #a1aab9;
 }
 
-.number {
-    font-weight: 50
-}
+
 
 .phone_number {
     font-size: 10px;
-    color: #a1aab9
+    color: #a1aab9;
 }
 
 
 .email {
     font-size: 10px;
-    color: #a1aab9
+    color: #a1aab9;
 }
-
-/* .number3 {
-    font-weight: 500
-} */
