@@ -28,7 +28,7 @@ function Messages({user}) {
   let history = useHistory();
 
   return (
-    <div className="messages">
+    <div>
       <h1 className="messages">Messages</h1>
       <div className="sendNewMessage"> 
       <SendNewMessage user={user}/>
