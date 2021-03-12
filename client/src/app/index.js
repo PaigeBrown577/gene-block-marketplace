@@ -1,10 +1,10 @@
 import background from '../ucla-img.jpg';
-<<<<<<< HEAD
+
 // import ReactDOM from 'react-dom';
 import { SocialIcon } from 'react-social-icons';
-=======
+
 import api from '../api';
->>>>>>> main
+
 import '../styles/App.css';
 import {PostsList, UsersList, MessagesList} from '../pages';
 

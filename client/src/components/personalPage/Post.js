@@ -59,9 +59,4 @@ const Post = forwardRef(
   }
 );
 
-
-
-
-
-
 export default Post;

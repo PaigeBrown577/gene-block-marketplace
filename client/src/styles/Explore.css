@@ -28,6 +28,9 @@
     padding: 10px;
     border-radius: 20px;
     margin-top: 20px;
+    margin-bottom: 20px;
+    overflow: scroll;
+    /* height: 100%; */
     /*margin-left: 20px; */
     padding-left: 20px;
 }
