@@ -55,10 +55,10 @@ function Login({ user, setUser }) {
     <div className="background"> 
     <div className="Login"> 
 
-      <form className="form_login">
+      
         <h1 className="h1_login">Login</h1>
 
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} style={{padding:20}}>
             <Form.Group className = "box" size="lg" controlId="email" >
               <Form.Label>Email</Form.Label>
               <Form.Control
@@ -79,7 +79,7 @@ function Login({ user, setUser }) {
             <Button block size="lg" variant="primary" type="submit" disabled={!validateForm()}>Login</Button>
 
           </Form> 
-      </form>
+   
         <p className ="p_login">
 
         Don't have an account yet? <br />

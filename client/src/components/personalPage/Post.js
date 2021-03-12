@@ -31,6 +31,7 @@ const Post = forwardRef(
               
             </div>
             <div className="post__headerDescription">
+              {console.log(text)}
               <p className = "description">Description:{text}</p>
               <p>Meeting Location: {meeting_location} </p>
             </div>
