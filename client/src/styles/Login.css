@@ -11,16 +11,16 @@
       box-shadow: 0 0 20px 2px  grey;
     }
 
-  form {
+  .form_login {
     padding: 20px;
     /* border: 2px solid red;
     border-radius: 5px; */
 
   }
-  h1{
+  .h1_login{
     font-weight: 400;
   }
-  p{
+  .p_login{
     padding-top: 40px;
     font-size: medium;
     font-weight: 20;
@@ -36,14 +36,14 @@
       margin: 0 auto;
       max-width: 320px;
     } */
-    body {
+    /* body {
       width: 100%;
       height: 100%;
       margin: 0;
       padding: 0;
       font-family: "HelveticaNeue-Light", "Helvetica Neue Light", sans-serif;
 
-    }
+    } */
   .background{
     background: url(../colored_seal.jpeg);
     background-repeat: no-repeat;

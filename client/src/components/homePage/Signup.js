@@ -97,8 +97,8 @@ function Signup({ userID, setUserID }) {
     return (
       <div className="background"> 
       <div className="Signup">
-        <h1>Create An Account</h1>
-        <Form onSubmit={handleSubmit}>
+        <h1 className="h1_signup">Create An Account</h1>
+        <Form onSubmit={handleSubmit} className = "form_signup">
         <Form.Group controlId="exampleForm.ControlInput1" className = "box">
               <Form.Label>Hi, What is Your Name?</Form.Label>
               <Form.Control type="text" placeholder="Name" value={name} onChange={handleNameChange} required/>
