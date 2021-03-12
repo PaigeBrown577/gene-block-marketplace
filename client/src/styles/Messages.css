@@ -1,12 +1,16 @@
 .messages{
-    padding-left: 20px;
-    padding-top: 20px;
+    /*padding-left: 30px;
+    padding-top: 30px; */
+    margin-left: 20px;
+    margin-top: 20px;
     display: flex;
     align-content: flex-start;
+    font-weight: bold;
 }
 
 .sendNewMessage{
-    padding-left: 20px;
+    /*padding-left: 20px; */
+    margin-left: 20px;
     display: flex;
     align-content: flex-start;
 }
@@ -16,6 +20,10 @@
     margin: 25px 0 0 25px;
 }
 
+.container {
+    display: flex;
+    align-items: stretch;
+}
 
 
 
