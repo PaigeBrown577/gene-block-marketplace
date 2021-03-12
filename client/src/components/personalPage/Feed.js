@@ -4,24 +4,43 @@ import Post from "./Post";
 import "../../styles/Feed.css";
 import FlipMove from "react-flip-move";
 import SearchIcon from "@material-ui/icons/Search";
-import api from "../../api"
+import api, { getAllPosts } from "../../api"
 
 
-function Feed({ posts, setPosts, userID, setUserID }) {
+function Feed({ posts, setPosts, user }) {
   const [searchbarValue, setSearchbarValue] = useState("");
 
 
   const getPosts = async () => {
-    await api.getAllPosts().then(post => {
-      console.log(post.data.data)
+    await api.getAllPosts().then(posts => {
+      // console.log(post.data.data)
       // if(post.data.data !== posts)
-        setPosts(post.data.data)
+
+      let postArray = posts.data.data;
+
+      // console.log("is this even called?");
+        for(let i = 0; i < postArray.length; i++){
+          // console.log(postArray[i].userID, user._id);
+
+          if(postArray[i].userID === user._id){
+            postArray[i].displayDeleteButton = true;
+
+          }
+        }
+
+        setPosts(postArray);
+
+        <button onClick={handleClearClick}>clear</button>
     })
   }
 
   useEffect(getPosts, []);
 
   const handleSearchbarChange = (event) => {
+    setSearchbarValue(event.target.value);
+  }
+
+  const deletePost = (event) => {
     setSearchbarValue(event.target.value);
   }
 
@@ -68,17 +87,17 @@ function Feed({ posts, setPosts, userID, setUserID }) {
           <Post
             key={index}
             displayName={post.displayName}
-            username={post.username}
             tag={post.tag}
             date={post.date}
             title={post.title}
             price={post.price}
             text={post.text}
             avatar={post.avatar}
-            image={post.image}
             meeting_location = {post.meeting_location}
-            userID={userID}
-            setUserID={setUserID}
+            displayDeleteButton = {post.displayDeleteButton}
+            email = {post.email}
+            user = {user}
+            _id = {post._id}
           />
         ))}
 

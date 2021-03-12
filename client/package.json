@@ -23,6 +23,7 @@
     "react-table-6": "^6.11.0",
     "reactjs-popup": "^2.0.4",
     "styled-components": "^5.2.1",
+    "sweetalert": "^2.1.2",
     "web-vitals": "^1.1.0"
   },
   "scripts": {

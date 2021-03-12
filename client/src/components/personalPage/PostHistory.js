@@ -18,7 +18,7 @@ import {
   Link
 } from "react-router-dom";
 
-function PostHistory({userID, setUserID, posts, setPosts}) {
+function PostHistory({user, posts, setPosts}) {
 
   return (
     <div className="postHistory">
@@ -26,7 +26,7 @@ function PostHistory({userID, setUserID, posts, setPosts}) {
 
         <p></p>
 
-        <PostHistoryTable posts={posts} setPosts={setPosts} userID={userID} setUserID={setUserID} className="table" />
+        <PostHistoryTable posts={posts} setPosts={setPosts} user={user} className="table"/>
 
     </div>
   );

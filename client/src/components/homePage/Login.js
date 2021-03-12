@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import api from "../../api"
+import swal from 'sweetalert';
 // import "../colored_seal.jpeg";
 // import logo from "../../styles/colored_seal.jpeg";
 
@@ -10,7 +11,7 @@ import api from "../../api"
 
 import { useHistory } from "react-router-dom";
 
-function Login({ userID, setUserID }) {
+function Login({ user, setUser }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -31,21 +32,19 @@ function Login({ userID, setUserID }) {
 
     function handleSubmit(event) {
       event.preventDefault();
-
       const user = api.getUserByEmail(email);
 
         user.then((value) => {
           if(value.data.data != null) {
               if(password === value.data.data.password){
-              setUserID(value.data.data._id);
-              console.log(value.data.data._id);
+              setUser(value.data.data);
               // redirects to homepage
               history.push(`/personal/home/${value.data.data._id}`);
             } else {
-              window.alert("Not valid password, try again");
+              swal("Incorrect password, try again!", "", "error");
             }
           } else {
-            window.alert("Not valid username, try again");
+            swal("Not a valid username, try again!", "", "error");
           }
       });
     }
@@ -53,8 +52,10 @@ function Login({ userID, setUserID }) {
     return (
     <div className="background"> 
     <div className="Login"> 
+
       <form className="form_login">
         <h1 className="h1_login">Login</h1>
+
           <Form onSubmit={handleSubmit}>
             <Form.Group className = "box" size="lg" controlId="email" >
               <Form.Label>Email</Form.Label>
@@ -74,11 +75,13 @@ function Login({ userID, setUserID }) {
               />
             </Form.Group>
             <Button block size="lg" variant="primary" type="submit" disabled={!validateForm()}>Login</Button>
+
           </Form> 
       </form>
         <p className ="p_login">
+
         Don't have an account yet? <br />
-            <a href="/signup">Click here !</a>
+            <a href="/signup">Click here!</a>
           </p>
     </div>
     </div>

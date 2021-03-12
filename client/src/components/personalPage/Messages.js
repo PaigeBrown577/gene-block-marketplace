@@ -23,17 +23,7 @@ import {
 // look in sendNewMessage for fields
 // hard code some stuff for now
 
-function Messages({userID, setUserID}) {
-  const [userEmail, setUserEmail] = useState("");
-
-  useEffect(() => {
-    const getUser = async () => {
-        await api.getUserById(userID).then(user => {
-          setUserEmail(user.data.data.email)
-        })
-    }
-    getUser();
-  }, [])
+function Messages({user}) {
 
   let history = useHistory();
 
@@ -41,10 +31,10 @@ function Messages({userID, setUserID}) {
     <div className="messages">
       <h1 className="messages">Messages</h1>
       <div className="sendNewMessage"> 
-      <SendNewMessage userID={userID} setUserID={setUserID}/>
+      <SendNewMessage user={user}/>
       </div>
       <p></p>
-      <MessagesTable userID={userID} setUserID={setUserID} className="table"/>
+      <MessagesTable user={user} className="table"/>
     </div>
   );
 }

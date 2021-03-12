@@ -1,6 +1,9 @@
 import background from '../ucla-img.jpg';
 // import ReactDOM from 'react-dom';
 import { SocialIcon } from 'react-social-icons';
+
+import api from '../api';
+
 import '../styles/App.css';
 import {PostsList, UsersList, MessagesList} from '../pages';
 
@@ -24,11 +27,23 @@ function App() {
 
   // const [userID, setUserID] = useState("");
 
+  const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("sessionUser")) || "");
   const [userID, setUserID] = useState(sessionStorage.getItem("sessionUserID") || "");
 
   useEffect(() => {
     sessionStorage.setItem("sessionUserID", userID);
-  }, [userID]);
+
+    const getUser = async () => {
+      if(userID !== ""){
+          await api.getUserById(userID).then(user => {
+            setUser(user.data.data);
+          })
+        }
+      }
+
+    getUser();
+    sessionStorage.setItem("sessionUser", JSON.stringify(user))
+  }, [user, userID]);
 
 
   return (
@@ -41,13 +56,13 @@ function App() {
           <Route path="/login">
             <NavigationBar />
             <header className="App-header">
-              <Login userID={userID} setUserID={setUserID} />
+              <Login user={user} setUser={setUser} />
             </header>
           </Route>
           <Route path="/signup">
             <NavigationBar />
             <header className="App-header">
-              <Signup userID={userID} setUserID={setUserID} />
+              <Signup user={user} setUser={setUser} />
             </header>
           </Route>
           <Route path="/posts/list" exact component={PostsList} />
@@ -64,8 +79,8 @@ function App() {
 
       <Switch>
         <Route path="/personal">
-          <SignedInNavbar userID={userID} setUserID={setUserID} />
-          <Personal userID={userID} setUserID={setUserID} />
+          <SignedInNavbar user={user} setUser={setUser} />
+          <Personal user={user} setUser={setUser}/>
         </Route>
       </Switch>
 

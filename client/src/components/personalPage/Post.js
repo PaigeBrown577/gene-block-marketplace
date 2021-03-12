@@ -7,11 +7,15 @@ import RepeatIcon from "@material-ui/icons/Repeat";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import PublishIcon from "@material-ui/icons/Publish";
 import StarOutlineIcon from '@material-ui/icons/StarOutline';
+import Button from "react-bootstrap/Button";
+import api from "../../api";
 
 import SendNewMessage from "./SendNewMessage";
 
+
 const Post = forwardRef(
-  ({ displayName, username, text, image, avatar, date, tag, title, price, meeting_location, userID, setUserID }, ref) => {
+  ({ displayName, text, avatar, date, tag, title, price, meeting_location, displayDeleteButton, deletePost, user, email, _id}, ref) => {
+
     return (
       <div className="post" ref={ref}>
         <div className="post__avatar">
@@ -31,9 +35,13 @@ const Post = forwardRef(
               <p>Meeting Location: {meeting_location} </p>
             </div>
           </div>
+
+          <img src="http://localhost:3000/b537dadf-c2e4-4538-9f74-7f8b095ee022" alt="" />
+
           <div className="post__footer">
+            {/* {displayDeleteButton && <button onClick={deletePost}>Delete</button>} */}
             {/* <ChatBubbleOutlineIcon fontSize="small" /> */}
-            <SendNewMessage userID={userID} setUserID={setUserID} buttonMessage="Message now" replyTo={displayName} />
+            <SendNewMessage user={user} buttonMessage="Message now" replyTo={email} />
 
             {/* <StarOutlineIcon fontSize="small" /> */}
             <h3>
