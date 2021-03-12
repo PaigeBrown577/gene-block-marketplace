@@ -27,7 +27,7 @@ const Post = forwardRef(
               <h4 className= "username">{displayName}</h4>
               <h2 className = "title">{title}</h2>
               <h3 className="price">Price: ${price}</h3>
-              <img src={image} alt="" />
+              {/* <img src={image} alt="" /> */}
               
             </div>
             <div className="post__headerDescription">
@@ -37,6 +37,8 @@ const Post = forwardRef(
           </div>
 
           <img src="http://localhost:3000/b537dadf-c2e4-4538-9f74-7f8b095ee022" alt="" />
+
+
 
           <div className="post__footer">
             {/* {displayDeleteButton && <button onClick={deletePost}>Delete</button>} */}
@@ -57,10 +59,5 @@ const Post = forwardRef(
     );
   }
 );
-
-
-
-
-
 
 export default Post;
