@@ -2,6 +2,9 @@ import background from '../ucla-img.jpg';
 // import ReactDOM from 'react-dom';
 import { SocialIcon } from 'react-social-icons';
 
+import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap/dist/css/bootstrap-theme.css'
+
 import api from '../api';
 
 import '../styles/App.css';

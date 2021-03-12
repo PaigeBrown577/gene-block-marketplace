@@ -141,6 +141,7 @@ function Explore({posts, setPosts}) {
         </div>
 
             {/* <hr/> */}
+            <br></br>
 
         <div className="rightSide">
             <FlipMove>
