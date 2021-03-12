@@ -12,20 +12,27 @@
       box-shadow: 0 0 20px 2px  grey;
       
     }
-
+    .form_signup {
+      padding: 20px;
+      /* border: 2px solid red;
+      border-radius: 5px; */
+  
+    }
   .box{
     padding-top:  0px; 
     font-weight: 50px;
     font-size: medium;
     text-align: left;
   }
-  h1{
+  .h1_signup{
       padding-top: 20px;
-    font-weight: 400;
+      font-weight: 400;
   }
   body {
-    /* background: #A0A9CC; */
-    /* color: #fff; */
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
     font-size: 1.5em;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", sans-serif;
     font-weight: 100;
@@ -39,10 +46,11 @@
   .background{
     background: url(../colored_seal.jpeg);
     background-repeat: no-repeat;
+    /* background-size: cover; */
     background-position-x: left;
     background-color: rgb(52, 136, 189);
-    height: 100px;
-    padding: 87.7vh;
+    height: 150vh;
+    width: 100%;
   }
 
 

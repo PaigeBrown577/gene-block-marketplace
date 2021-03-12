@@ -52,7 +52,10 @@ function Login({ user, setUser }) {
     return (
     <div className="background"> 
     <div className="Login"> 
-        <h1>Login</h1>
+
+      <form className="form_login">
+        <h1 className="h1_login">Login</h1>
+
           <Form onSubmit={handleSubmit}>
             <Form.Group className = "box" size="lg" controlId="email" >
               <Form.Label>Email</Form.Label>
@@ -72,8 +75,11 @@ function Login({ user, setUser }) {
               />
             </Form.Group>
             <Button block size="lg" variant="primary" type="submit" disabled={!validateForm()}>Login</Button>
-          </Form>
-        <p>
+
+          </Form> 
+      </form>
+        <p className ="p_login">
+
         Don't have an account yet? <br />
             <a href="/signup">Click here!</a>
           </p>
