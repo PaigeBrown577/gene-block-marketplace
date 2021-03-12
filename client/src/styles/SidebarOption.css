@@ -2,6 +2,8 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    text-align: left;
+    margin-left: -20px;
   }
   
   .sidebarOption:hover {
@@ -17,7 +19,7 @@
   
   .sidebarOption > h2 {
     font-weight: 800;
-    font-size: 20px;
+    font-size: 25px;
     margin-right: 20px;
   }
   

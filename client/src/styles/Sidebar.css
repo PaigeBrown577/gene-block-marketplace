@@ -5,10 +5,14 @@
     margin-top: 20px;
     padding-left: 0px;
     padding-right: 20px;
+    padding-bottom: 20px;
+    text-align: middle;
   
     /* background-color: rgb(52, 136, 189);; */
   }
  .img_bruin {
+   margin-top: 300px;
+   margin-left: -50px;
   width: 100%;
   height: auto;
  }
@@ -30,5 +34,6 @@
     border-radius: 30px !important;
     height: 50px !important;
     margin-top: 20px !important;
+    /* text-align: left; */
   }
   
