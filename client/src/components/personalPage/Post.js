@@ -24,29 +24,33 @@ const Post = forwardRef(
         <div className="post__body">
           <div className="post__header">
             <div className="post__headerText">
-              <h3>
-                <mark>#{tag}</mark>
-                {" "}
-                <span className="post__headerSpecial">
-                  Posted by {displayName} on {date}
-                </span>
-              </h3>
-              <h1>{title}</h1>
-              <h3>${price}</h3>
-              <br/>
+              <h4 className= "username">{displayName}</h4>
+              <h2 className = "title">{title}</h2>
+              <h3 className="price">Price: ${price}</h3>
+              <img src={image} alt="" />
+              
             </div>
             <div className="post__headerDescription">
-              <p>{text}</p>
+              <p className = "description">Description:{text}</p>
               <p>Meeting Location: {meeting_location} </p>
             </div>
           </div>
+
           <img src="http://localhost:3000/b537dadf-c2e4-4538-9f74-7f8b095ee022" alt="" />
+
           <div className="post__footer">
             {/* {displayDeleteButton && <button onClick={deletePost}>Delete</button>} */}
             {/* <ChatBubbleOutlineIcon fontSize="small" /> */}
             <SendNewMessage user={user} buttonMessage="Message now" replyTo={email} />
 
             {/* <StarOutlineIcon fontSize="small" /> */}
+            <h3>
+                <mark>#{tag}</mark>
+                {" "}
+                <span className="post__headerSpecial">
+                  Posted by {displayName} on {date}
+                </span>
+              </h3>
           </div>
         </div>
       </div>
