@@ -38,7 +38,7 @@ function Messages({user}) {
       <div className="container">
         <br></br>
       <MessagesTable user={user} className="table"/>
-      <img src={ad} alt="image" className="image" style={{paddingLeft:100, paddingTop:10}}/>
+      <a href= "https://www.mcdonalds.com/us/en-us.html" target = "blank"><img src={ad} alt="image" className="image" style={{paddingLeft:100, paddingTop:10}}/></a>
       </div>
     </div>
   );

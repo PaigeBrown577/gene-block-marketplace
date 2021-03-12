@@ -3,6 +3,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import api from "../../api"
 import swal from 'sweetalert';
+
+// import background from "../../colored_seal.jpeg"
 // import "../colored_seal.jpeg";
 // import logo from "../../styles/colored_seal.jpeg";
 

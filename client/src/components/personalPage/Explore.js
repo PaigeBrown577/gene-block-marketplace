@@ -102,7 +102,7 @@ function Explore({posts, setPosts}) {
 
   return (
       <div className="explore">
-        <h1>Explore</h1>
+        <h1 className="explore_title">Explore</h1>
         
         {/* <p></p> */}
 

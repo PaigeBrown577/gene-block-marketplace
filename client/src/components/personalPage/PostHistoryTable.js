@@ -10,6 +10,8 @@ import Paper from '@material-ui/core/Paper';
 import Image from 'react';
 import api from '../../api';
 import swal from 'sweetalert';
+import CloseIcon from '@material-ui/icons/Close';
+import RemoveRedEyeIcon from '@material-ui/icons/RemoveRedEye';
 
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
@@ -181,8 +183,8 @@ function PostHistoryTable({user, posts, setPosts}) {
                 {post.title}
               </StyledTableCell>
               <StyledTableCell align="left" class="td">{post.tag}</StyledTableCell>
-              <StyledTableCell align="center" class="td"> <ViewMorePopup title={post.title} tag={post.tag} price={post.price} text={post.text} image={post.image} date={post.date} meeting_location={post.meeting_location} user={user} _id={post._id}/> </StyledTableCell>
-              <StyledTableCell align="center" class="td"><Button variant="primary" onClick={() => handleDeleteClick(post._id)}> Delete</Button></StyledTableCell> 
+              <StyledTableCell align="center" class="td"><ViewMorePopup title={post.title} tag={post.tag} price={post.price} text={post.text} image={post.image} date={post.date} meeting_location={post.meeting_location} user={user} _id={post._id}/></StyledTableCell>
+              <StyledTableCell align="center" class="td"><CloseIcon className = "redcross"variant="primary" onClick={() => handleDeleteClick(post._id)}> Delete</CloseIcon></StyledTableCell> 
             </StyledTableRow>
           ))}
         </TableBody>
@@ -191,6 +193,7 @@ function PostHistoryTable({user, posts, setPosts}) {
     </div> 
   );
 }
+
 
 
 export default PostHistoryTable;
