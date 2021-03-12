@@ -1,5 +1,4 @@
 import background from '../ucla-img.jpg';
-
 // import ReactDOM from 'react-dom';
 import { SocialIcon } from 'react-social-icons';
 
