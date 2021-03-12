@@ -46,18 +46,17 @@ function Signup({ user, setUser }) {
         if(password === confirmPassword){
           api.insertUser(payload).then(res => {
             swal("Welcome to Block Marketplace!", "", "success");
+            user = api.getUserByEmail(email);
+            // console.log(email);
+            user.then((value) => {
+              setUser(value.data.data);
+              // redirects to personal page
+              history.push(`/personal/home/${value.data.data._id}`);
+            });
           })
         } else {
           swal("Passwords don't match, try again", "", "error");
         }
-
-        user = api.getUserByEmail(email);
-        // console.log(email);
-        user.then((value) => {
-          setUser(value.data.data);
-          // redirects to personal page
-          history.push(`/personal/home/${value.data.data._id}`);
-        });
       });
     }
 
