@@ -4,7 +4,8 @@ createPost = (req, res) => {
     const body = req.body;
     body.displayName = body.name;
     body.meeting_location = body.finalMeetingLocation;
-
+    body.text = body.description;
+    
     if (!body) {
         return res.status(400).json({
             success: false,

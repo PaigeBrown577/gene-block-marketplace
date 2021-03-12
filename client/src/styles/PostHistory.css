@@ -1,20 +1,24 @@
 .postHistory{
     padding-left: 45%;
+    padding-right: 10%;
     padding-top: 50px;
     display: flex;
-    align-content: center;
+    align-content: left;
     font-weight: bold;
+    margin-right: -50px;
 }
 
 .table {
     display: flex;
     align-content: center;
+    /*margin-left: -50px; */
     /*margin: 25px 0 0 25px; */
 }
 
 .aroundTable{
     padding-left: 175px;
 }
+
 .redcross{
     color: red;
 }
