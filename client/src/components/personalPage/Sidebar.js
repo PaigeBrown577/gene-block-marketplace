@@ -1,4 +1,5 @@
 import React from "react";
+import logo from '../../bruin_logo.jpg';
 import "../../styles/Sidebar.css";
 import SidebarOption from "./SidebarOption";
 import HomeIcon from "@material-ui/icons/Home";
@@ -62,7 +63,10 @@ function Sidebar({ user, setUser }) {
       <Link to={`/personal/profile/${user._id}`}>
         <SidebarOption Icon={SettingsIcon} text="Profile" />
       </Link>
-      <img src={ require('../../bruin_logo.jpg') } />
+      {/* console.log(logo) */}
+      <img className = "img_bruin" src={logo} alt="Logo" />
+      {/* <img src={ require('../../bruin_logo.jpg') } /> */}
+
     </div>
   );
 }

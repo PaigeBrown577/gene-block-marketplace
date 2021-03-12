@@ -1,6 +1,9 @@
-import logo from '../logo.svg';
 import background from '../ucla-img.jpg';
+// import ReactDOM from 'react-dom';
+import { SocialIcon } from 'react-social-icons';
+
 import api from '../api';
+
 import '../styles/App.css';
 import {PostsList, UsersList, MessagesList} from '../pages';
 
@@ -19,10 +22,6 @@ import SetUserID from "../components/homePage/SetUserID";
 
 import SignedInNavbar from "../components/personalPage/SignedInNavbar";
 
-// import { SocialIcon } from 'react-social-icons';
-// ReactDOM.render(<SocialIcon url="http://instagram.com/" />, document.body);
-
-//import background from "src/ucla-react-image.jpeg";
 
 function App() {
 
@@ -99,31 +98,18 @@ function Home() {
         </div>
         <Button variant="primary" size="lg" type="submit"><a href="/signup" style={{color:"white"}}>Signup </a></Button>
         <div className = "wrapper">
-       
-          {/* <div class = "button"> */}
-          <a href="http://facebook.com" target="_blank" className="button">
-            {/* <div className="icon">
-              <i className= "fab fa-facebook-f"></i></div> */}
-             <span>Facebook</span>
-             </a>
-                {/* </div>  */}
-         
-          {/* <div className="button"> */}
-          <a href="https://www.instagram.com/block_marketplace/" target="_blank" className="button">
-            {/* <div className="icon">
-              <i className="fab fa-instagram"></i></div> */}
-              <span>Instagram</span>
-              </a>
-                {/* </div> */}
-          <a href="http://tiktok.com" target="_blank" className="button" >
-          {/* <div className="button"> */}
-            {/* <div className="icon">
-              <i className="fab fa-instagram"></i></div> */}
-              <span>TikTok</span>
-                {/* </div> */}
-          </a>
+        <div className="button">
+               <span className="span_icon"><SocialIcon url="http://facebook.com/block_marketplace" target = "blank" style={{ height: 60, width: 60 }} /></span>
+                </div>
+          <div className="button">
+               <span className="span_icon"><SocialIcon url="http://instagram.com/block_marketplace" target = "blank" style={{ height: 60, width: 60 }}/></span>
+                </div>
+                <div className="button">
+               <span className="span_icon"><SocialIcon url="https://github.com/PaigeBrown577/gene-block-marketplace" target = "blank" style={{ height: 60, width: 60 }}/></span>
+                </div>
           </div>
-        </div>
+
+          </div>
     );
 }
 

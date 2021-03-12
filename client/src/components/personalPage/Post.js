@@ -35,10 +35,11 @@ const Post = forwardRef(
               <p>Meeting Location: {meeting_location} </p>
             </div>
           </div>
-{/* <<<<<<< HEAD
-======= */}
+
           <img src="http://localhost:3000/b537dadf-c2e4-4538-9f74-7f8b095ee022" alt="" />
-{/* >>>>>>> 117cf857f719eecca309736ebe311c523aa5fa3a */}
+
+
+
           <div className="post__footer">
             {/* {displayDeleteButton && <button onClick={deletePost}>Delete</button>} */}
             {/* <ChatBubbleOutlineIcon fontSize="small" /> */}

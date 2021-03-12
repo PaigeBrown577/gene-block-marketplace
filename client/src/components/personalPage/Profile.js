@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import "../../styles/Profile.css";
 
+import { Avatar } from "@material-ui/core";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -89,10 +90,26 @@ function Profile({ user, setUser, posts, setPosts }) {
 
 
 
-
   return (
-      <div className="profile">
-        <h1 className="profile">Profile</h1>
+    //   <div className="float-container">
+<div className="profile">
+        <div className="card_wrapper">
+        <div className="card">
+        {/* style={{marginRight: spacing + 'em'}} */}
+          <div className="d-flex align-items-center">
+            <div className="post__avatar"><Avatar src="../../bruin_logo.jpg" /></div>  
+             <div className="ml-3 w-100">
+                <h4 className="mb-0 mt-0">{name}</h4> 
+                  <div className="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                      <div className="d-flex flex-column"> <span className="year">Year</span> <span className="number">{year}</span> </div>
+                      <div className="d-flex flex-column"> <span className="phone_number">Phone Number</span> <span className="number">{phone}</span> </div>
+                      <div className="d-flex flex-column"> <span className="email">Email</span> <span className="number">{email}</span> </div>
+                  </div>
+                  <div className="button mt-2 d-flex flex-row align-items-center"> <button className="btn btn-sm btn-outline-primary w-100">Message</button> <button className="btn btn-sm btn-primary w-100 ml-2">Follow</button> </div>
+              </div>
+          </div>
+          </div>
+      </div>
 
         <div className="profileForm">
             <Form onSubmit={handleSubmit}>
