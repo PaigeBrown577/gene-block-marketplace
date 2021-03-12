@@ -9,10 +9,9 @@ import Personal from './personalPage/Personal'
 import Post from './personalPage/Post'
 import SendNewMessage from './personalPage/SendNewMessage'
 import Sidebar from './personalPage/Sidebar'
-import SidebarMessage from './personalPage/SidebarMessage'
 import SidebarOption from './personalPage/SidebarOption'
 import TweetBox from './personalPage/TweetBox'
 import Widgets from './personalPage/Widgets'
 import Profile from './personalPage/Profile'
 
-export { Login, NavigationBar, Profile, Signup, Explore, Feed, MakePost, Messages, Personal, Post, SidebarMessage, SendNewMessage, Sidebar, SidebarOption, TweetBox, Widgets}
+export { Login, NavigationBar, Profile, Signup, Explore, Feed, MakePost, Messages, Personal, Post, SendNewMessage, Sidebar, SidebarOption, TweetBox, Widgets}
