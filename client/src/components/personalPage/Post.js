@@ -27,7 +27,7 @@ const Post = forwardRef(
               <h4 className= "username">{displayName}</h4>
               <h2 className = "title">{title}</h2>
               <h3 className="price">Price: ${price}</h3>
-              <img src={image} alt="" />
+              {/* <img src={image} alt="" /> */}
               
             </div>
             <div className="post__headerDescription">

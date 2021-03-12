@@ -20,6 +20,16 @@ import {
   Link
 } from "react-router-dom";
 
+
+// function SidebarMessage({user, setUser}){
+//   return(
+//   <div className="sidebarmessage">
+//       {}
+
+//     <SendNewMessage user={user} text_/>
+//   </div>);
+// }
+
 function Sidebar({ user, setUser }) {
   return (
     // <div className="sidebar">
@@ -32,11 +42,10 @@ function Sidebar({ user, setUser }) {
     // </div>
 
 
-
     <div className="sidebar">
       {/* <SidebarOption Icon={PermIdentityIcon} text="Profile" /> */}
 
-      <SendNewMessage user={user}/>
+      <SendNewMessage user={user} text_/>
 
       <br></br>
 
