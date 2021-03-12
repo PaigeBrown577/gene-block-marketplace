@@ -45,9 +45,9 @@ function Sidebar({ user, setUser }) {
     <div className="sidebar">
       {/* <SidebarOption Icon={PermIdentityIcon} text="Profile" /> */}
 
-      <SendNewMessage user={user} text_/>
+      {/* <SendNewMessage user={user} text_/> */}
 
-      <br></br>
+      {/* <br></br> */}
 
       <Link to={`/personal/home/${user._id}`}>
         <SidebarOption active Icon={HomeIcon} text="Home" />
@@ -72,9 +72,17 @@ function Sidebar({ user, setUser }) {
       <Link to={`/personal/profile/${user._id}`}>
         <SidebarOption Icon={SettingsIcon} text="Profile" />
       </Link>
+
+      <br></br>
+
+      <SendNewMessage user={user} text_/>
+
+      <br></br>
       {/* console.log(logo) */}
       <img className = "img_bruin" src={logo} alt="Logo" />
       {/* <img src={ require('../../bruin_logo.jpg') } /> */}
+
+
 
     </div>
   );
