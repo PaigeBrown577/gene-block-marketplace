@@ -21,13 +21,13 @@ import {
 function PostHistory({user, posts, setPosts}) {
 
   return (
-    <div className="postHistory">
+    <div>
         <h1 className="postHistory">Your Previous Posts</h1>
 
         <p></p>
-
+        <div className="aroundTable">
         <PostHistoryTable posts={posts} setPosts={setPosts} user={user} className="table"/>
-
+        </div>
     </div>
   );
 }

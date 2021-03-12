@@ -10,6 +10,7 @@ import { useHistory } from "react-router-dom";
 
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import ad from "../../ad.jpg"
 
 import MessagesTable from "./MessagesTable";
 
@@ -28,13 +29,17 @@ function Messages({user}) {
   let history = useHistory();
 
   return (
-    <div className="messages">
-      <h1 className="messages">Messages</h1>
-      <div className="sendNewMessage"> 
+    <div>
+      <h1 className="messages" style={{paddingLeft:20, paddingTop:20}}>Messages</h1>
+      <div className="sendNewMessage" style={{paddingLeft:20}}> 
       <SendNewMessage user={user}/>
       </div>
       <p></p>
+      <div className="container">
+        <br></br>
       <MessagesTable user={user} className="table"/>
+      <img src={ad} alt="image" className="image" style={{paddingLeft:100, paddingTop:10}}/>
+      </div>
     </div>
   );
 }
