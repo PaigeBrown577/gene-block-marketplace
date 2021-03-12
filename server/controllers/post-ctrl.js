@@ -53,14 +53,14 @@ updatePost = async (req, res) => {
             })
         }
         post.displayName = body.displayName;
-        post.username = body.username;
+        post.userID = body.userID;
         post.tag = body.tag;
         post.date = body.date;
         post.title = body.title;
         post.price = body.price;
         post.text = body.text;
         post.meeting_location = body.meeting_location;
-        post.image = body.image;
+        post.email = body.email;
         post
             .save()
             .then(() => {

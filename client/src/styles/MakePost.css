@@ -1,14 +1,24 @@
 .makepost {
     flex: 0.9;
     padding: 20px;
+    align-items: left;
+    text-align: left;
+    width: 70%
 }
 
 .makepostForm {
     /* display: flex; */
-    align-items: center;
+    align-items: left;
+    text-align: left;
     justify-content: flex-start;
     padding-left: 20px;
+    width: 70%;
 }
+
+.formlabel {
+    text-align: 'left';
+}
+
 
 /* puts a border around the input text boxes */
 .inputBoxes {
