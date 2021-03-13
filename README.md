@@ -39,7 +39,19 @@ As you can see, on the top right and middle you can click Login or Signup (if yo
 
 <img width="1463" alt="Signup" src="https://user-images.githubusercontent.com/78663982/111019672-b837a980-8375-11eb-9b15-d8ea38f92216.png">
 
-Once you're here, you can input your information which is all going to be tied to your email account. If you enter an invalid email or a password less than 8 characters, the site will make you fix your errors.
+Once you're here, you can input your information which is all going to be tied to your email account. If you enter an invalid email or a password less than 8 characters, the site will make you fix your errors. After you sign up and log in, then you're brought to the main feed:
+
+<img width="1464" alt="MainFeed" src="https://user-images.githubusercontent.com/78663982/111019721-ea490b80-8375-11eb-9ede-f75be31fc71d.png">
+
+Here you can see all the most recent posts done by other users, as well as a sidebar with the different pages that you can visit. To create a new listing, we'll head over to "Create New Listing":
+
+<img width="1463" alt="CreateNewListing" src="https://user-images.githubusercontent.com/78663982/111019749-0056cc00-8376-11eb-8f24-afb216a9129c.png">
+
+After you create your new listing, it will appear under your previous posts, as well as back on the main page. Another user scrolling through their feed who comes upon your post can message you if they're interested, which would appear under the "Messages" tab:
+
+<img width="1462" alt="Messages" src="https://user-images.githubusercontent.com/78663982/111019758-0ea4e800-8376-11eb-9419-9c30afe0a799.png">
+
+Here you can see all your past messages that you received from other people. On the explore page, you can filter by posts depending on the tag of the post (books, furniture, meal swipes, and other):
 
 
 
