@@ -51,9 +51,15 @@ After you create your new listing, it will appear under your previous posts, as 
 
 <img width="1462" alt="Messages" src="https://user-images.githubusercontent.com/78663982/111019758-0ea4e800-8376-11eb-9419-9c30afe0a799.png">
 
-Here you can see all your past messages that you received from other people. On the explore page, you can filter by posts depending on the tag of the post (books, furniture, meal swipes, and other):
+Here you can see all your past messages that you received from other people. On the "Explore" page, you can filter by posts depending on the tag of the post (books, furniture, meal swipes, and other):
 
+<img width="1464" alt="Screen Shot 2021-03-12 at 9 05 52 PM" src="https://user-images.githubusercontent.com/78663982/111019886-e073d800-8376-11eb-9b0a-5cf9506a52d6.png">
 
+Now, say that you want to see your profile. Clicking the "Profile" tab brings you directly to your own profile:
+
+<img width="1466" alt="Profile" src="https://user-images.githubusercontent.com/78663982/111019762-19f81380-8376-11eb-8aaa-ab593e5e9cac.png">
+
+On the left you can see your "profile card," which is what other users can see if they visit your profile or message you. On the right side, you can edit your own personal information. The one setting held constant is the user's email address, which is what everything is linked to.
 
 
 # Getting Started with Create React App
