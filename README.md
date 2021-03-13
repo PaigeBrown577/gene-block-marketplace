@@ -1,3 +1,8 @@
+## Project Background
+The Block Marketplace’s purpose is to connect the thousands of UCLA students who attempt to sell furniture, textbooks, meal swipes, and more to each other. Currently, the main sites used for this are Facebook Marketplace and Craigslist, neither of which provide a super secure way to verify the buyer and seller are who they say they are.
+
+The site is built using React, NodeJS, and MongoDB.
+
 ## Quick Start
 
 1. Clone this repository
