@@ -13,18 +13,32 @@ cd gene-block-marketplace
 ```
 
 
-2. Install all the dependencies
-
-```
-npm install
-```
-3. Run the frontend
+2. Go into client and install all the dependencies there
 
 ```
 cd client
+npm install
+
+```
+
+3. Go into server and install all the dependencies there
+
+```
+cd ../
+cd server
+npm install
+
+```
+
+4. Run the frontend
+
+```
+cd ../
+cd client
 npm start
 ```
-4. Run the backend -- open another terminal window and:
+
+5. Run the backend -- open another terminal window and:
 ```
 cd gene-block-marketplace
 cd server
