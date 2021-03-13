@@ -3,7 +3,7 @@
 1. Clone this repository
 
 ```
-git clone https://github.com/
+git clone https://github.com/PaigeBrown577/gene-block-marketplace.git
 cd gene-block-marketplace
 ```
 
