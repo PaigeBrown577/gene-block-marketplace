@@ -19,8 +19,7 @@ npm install
 cd client
 npm start
 ```
-4. Run the backend
-In another terminal window:
+4. Run the backend -- open another terminal window and:
 ```
 cd gene-block-marketplace
 cd server
