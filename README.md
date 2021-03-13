@@ -1,3 +1,32 @@
+## Quick Start
+
+1. Clone this repository
+
+```
+git clone https://github.com/
+cd gene-block-marketplace
+```
+
+
+2. Install all the dependencies
+
+```
+npm install
+```
+3. Run the frontend
+
+```
+cd client
+npm start
+```
+4. Run the backend
+In another terminal window:
+```
+cd gene-block-marketplace
+cd server
+node index.js
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
