@@ -38,9 +38,6 @@ function Explore({posts, setPosts}) {
 
     useEffect(() => {setTagFilteredPosts(posts)}, [posts]);
 
-    // this page doesn't load when you refresh
-    // try passing it into useState
-    // try moving tag filtered posts usetate down further below
 
 
     const handleFilterSubmit = (event) => {
@@ -157,6 +154,8 @@ function Explore({posts, setPosts}) {
                     avatar={post.avatar}
                     image={post.image}
                     meeting_location = {post.meeting_location}
+                    email = {post.email}
+                    _id = {post._id}
                 />
                 ))}
 

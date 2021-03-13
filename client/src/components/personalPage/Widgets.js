@@ -18,21 +18,7 @@ function Widgets({ user }) {
       </div>
 
       <div className="widgets__widgetContainer">
-        <h2>Unread Messages</h2>
-        <br/>
-        <hr/>
-        <p>hello</p>
 
-
-        <br/>
-        <hr/>
-        <p>looking for house</p>
-
-        <br/>
-        <hr/>
-        <p>anyone with 19p got spare swipes</p>
-
-        <br/>
 
 
       </div>

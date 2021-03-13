@@ -165,9 +165,9 @@ function Profile({ user, setUser, posts, setPosts }) {
                   Format: 123-456-7890
               </Form.Text>
           </Form.Group>
-          <Form.Group>
+          {/* <Form.Group>
                 <Form.File id="exampleFormControlFile1" label="Change Profile Picture" ref={fileInput} />
-          </Form.Group>
+          </Form.Group> */}
           <Button block size="lg" variant="primary" type="submit">Submit</Button>
         </Form>
         </div>

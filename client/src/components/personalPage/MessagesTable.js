@@ -54,14 +54,6 @@ function createData(subject, toEmail, fromEmail, text) {
   }
 
 
-// let rows = [
-//     createData("u up ;)", "CadeMeraz@ucla.com", "Rohit wake up"),
-//     createData("looking for husband", "RohitGouldthorpe@ucla.com", "hackathon time"),
-//     createData("1", "RyanRosenthal@ucla.com", "11"),
-//     createData("2", "AmritaChew@ucla.com", "12"),
-//     createData("3", "OliveSatoor@ucla.com", "13"),
-//     createData("4", "VarshiniFengel@ucla.com", "14"),
-// ];
 
 const useStyles = makeStyles({
   table: {
@@ -73,9 +65,6 @@ const handleReadClick = () => {
     // set the 'read' field on the message
     // this is how we can keep track of read messages
 
-    // i couldn't get it to work without adding an extra "mark as read" button, basically I
-    // couldn't get it to run automatically when you press view more
-    // it's ugly but it works
 
     // console.log("message read");
     // alert("Message marked as read");
@@ -98,7 +87,7 @@ function ViewMorePopup ({subject, fromEmail, text, user}) {
 
               <SendNewMessage user={user} replyTo={fromEmail} buttonMessage="Reply" />
               <div className="divider"></div>
-              <Button variant="primary" onClick={handleReadClick}>Mark as read</Button>
+              {/* <Button variant="primary" onClick={handleReadClick}>Mark as read</Button> */}
               <div className="divider"></div>
               <Button variant="primary" onClick={() => {close()}}>Close</Button>
 
