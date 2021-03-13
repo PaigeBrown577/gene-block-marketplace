@@ -37,6 +37,12 @@ Once you run the project, you will be brought to the site on your default browse
 
 As you can see, on the top right and middle you can click Login or Signup (if you're new). On the bottom you can also view our Facebook, GitHub, and Instagram page. If you were to click Signup, you're brought to the signup page:
 
+<img width="1463" alt="Signup" src="https://user-images.githubusercontent.com/78663982/111019672-b837a980-8375-11eb-9b15-d8ea38f92216.png">
+
+Once you're here, you can input your information which is all going to be tied to your email account. If you enter an invalid email or a password less than 8 characters, the site will make you fix your errors.
+
+
+
 
 # Getting Started with Create React App
 
