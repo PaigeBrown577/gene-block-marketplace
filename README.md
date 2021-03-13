@@ -30,6 +30,13 @@ cd gene-block-marketplace
 cd server
 node index.js
 ```
+## Project Description
+Once you run the project, you will be brought to the site on your default browser. The initial homepage looks like this:
+
+<img width="1465" alt="HomePage" src="https://user-images.githubusercontent.com/78663982/111019606-262fa100-8375-11eb-9090-ed388936cbc6.png">
+
+As you can see, on the top right and middle you can click Login or Signup (if you're new). On the bottom you can also view our Facebook, GitHub, and Instagram page. If you were to click Signup, you're brought to the signup page:
+
 
 # Getting Started with Create React App
 
